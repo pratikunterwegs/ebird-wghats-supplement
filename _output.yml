@@ -1,0 +1,21 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      collapse: section
+      before: |
+#        <li><a href="./">eBird Best Practices</a></li>
+      after: null
+    sharing: no
+  includes:
+#    in_header: ga.html
+bookdown::pdf_book:
+  keep_tex: true
+  documentclass: scrreprt
+  papersize: a4
+  latex_engine: xelatex
+  highlight: pygments
+  includes:
+    in_header: latex/preamble.tex
+    before_body: latex/before-body.tex
+    # after_body: latex/after_body.tex
