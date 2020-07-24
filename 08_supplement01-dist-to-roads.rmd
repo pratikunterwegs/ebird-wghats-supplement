@@ -64,7 +64,8 @@ roads.head()
 # get unique coordinates, assign them to the df
 # convert df to geo-df
 chkCovars = pd.read_csv("data/eBirdChecklistVars.csv")
-unique_locs = chkCovars.drop_duplicates(subset=['longitude','latitude'])[['longitude', 'latitude']]
+unique_locs = chkCovars.drop_duplicates(subset=['longitude',
+                                         'latitude'])[['longitude', 'latitude']]
 unique_locs['coordId'] = np.arange(1, unique_locs.shape[0]+1)
 chkCovars = chkCovars.merge(unique_locs, on=['longitude', 'latitude'])
 
@@ -130,7 +131,8 @@ unique_locs['nnb'] = unique_locs['nnb']
 unique_locs.to_csv(path_or_buf="data/locs_dist_to_road.csv", index=False)
 
 # merge unique locs with chkCovars
-chkCovars = chkCovars.merge(unique_locs, on=['latitude', 'longitude', 'coordId'])
+chkCovars = chkCovars.merge(unique_locs, on=['latitude', 
+                                             'longitude', 'coordId'])
 ```
 
 ## Species specific nearest sites
@@ -144,12 +146,14 @@ py$data <- dataGrouped
 
 ```{python sp_spec_nnb, eval=FALSE}
 # split data by species
-datalist = [pd.DataFrame(y) for x, y in data.groupby('scientific_name', as_index=False)]
+datalist = [pd.DataFrame(y) for x, y in data.groupby('scientific_name', 
+                                                      as_index=False)]
 
 
 # function to get unique vals anc convert to gpd
 def convData(somedata):
-    somedata = somedata.drop_duplicates(subset=['longitude','latitude'])[['longitude', 'latitude', 'scientific_name']]
+    somedata = somedata.drop_duplicates(subset=
+    ['longitude','latitude'])[['longitude', 'latitude', 'scientific_name']]
     unique_locs = gpd.GeoDataFrame(somedata,
                                   geometry=gpd.points_from_xy(somedata.longitude, 
                                   somedata.latitude))
@@ -216,7 +220,8 @@ hist_roads <- ggplot(chkCovars)+
   labs(x = "distance to roads (km)", y = "# checklists")+
   scale_x_log10(label=label_number(accuracy = 0.1), 
                 breaks = c(0.1, 1, 10))+
-  scale_y_continuous(label=label_number(scale=0.001, accuracy = 1, suffix = "K"))+
+  scale_y_continuous(label=label_number(scale=0.001, 
+                                        accuracy = 1, suffix = "K"))+
   theme_few()+
   theme(plot.background = element_rect(fill=NA, colour = 1),
         panel.background = element_blank(),
@@ -261,7 +266,8 @@ hist_sites <-
   # scale_x_log10(label=label_number(accuracy = 0.1), 
   #               breaks = c(0.1, 1, 10))+
   coord_cartesian(xlim=c(0,10))+
-  scale_y_continuous(label=label_number(scale=0.001, accuracy = 1, suffix = "K"))+
+  scale_y_continuous(label=label_number(scale=0.001, accuracy = 1, 
+                                        suffix = "K"))+
   theme_few()+
   theme(plot.background = element_rect(fill=NA, colour = 1),
         panel.background = element_blank(),
@@ -282,7 +288,8 @@ hist_sites_sp <-
   facet_wrap(~scientific_name)+
   scale_x_log10()+
   #coord_cartesian(xlim=c(0,10))+
-  scale_y_continuous(label=label_number(scale=0.001, accuracy = 1, suffix = "K"))+
+  scale_y_continuous(label=label_number(scale=0.001, accuracy = 1, 
+                                        suffix = "K"))+
   theme_few()+
   theme(plot.background = element_rect(fill=NA, colour = 1),
         panel.background = element_blank(),
@@ -365,7 +372,9 @@ ggplot()+
         legend.key = element_rect(fill="grey90"),
         axis.title = element_blank(),
         panel.background = element_rect(fill="lightblue"))+
-  coord_sf(expand = FALSE, xlim = bbox[c("xmin", "xmax")], ylim = bbox[c("ymin", "ymax")])+
+  coord_sf(expand = FALSE, 
+           xlim = bbox[c("xmin", "xmax")], 
+           ylim = bbox[c("ymin", "ymax")])+
   labs(fill = "checklists", colour=NULL)
 
 # save figure
@@ -406,7 +415,8 @@ ggplot()+
         legend.key = element_rect(fill="grey90"),
         axis.title = element_blank(),
         panel.background = element_rect(fill="lightblue"))+
-  coord_sf(expand = FALSE, xlim = bbox[c("xmin", "xmax")], ylim = bbox[c("ymin", "ymax")])+
+  coord_sf(expand = FALSE, xlim = bbox[c("xmin", "xmax")], 
+           ylim = bbox[c("ymin", "ymax")])+
   labs(fill = "checklists", colour=NULL)
 ```
 
