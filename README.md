@@ -2,7 +2,7 @@
 
 This repository is the source for a project on the influence of land cover and climate on the distribution of common and endemic birds in the Western Ghats, using eBird data.
 
-## [Readable version](https://pratikunterwegs.github.io/eBirdOccupancy/)
+## [Readable version](https://pratikunterwegs.github.io/ebird-wghats-supplement/)
 
 A human-readable version of this code is available in bookdown format by clicking on the heading.
 
