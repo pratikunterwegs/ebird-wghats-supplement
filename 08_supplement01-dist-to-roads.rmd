@@ -420,9 +420,4 @@ ggplot()+
   labs(fill = "checklists", colour=NULL)
 ```
 
-
-```{r plot_figure1, eval=TRUE, echo=FALSE, fig.cap="Checklist locations across the Nilgiris, Anamalais and the Palani hills. Inset histogram shows checklists' distance to the nearest road, with the X-axis on a log-scale."}
-# inset image here
-knitr::include_graphics("figs/fig_distRoads.png")
-
-```
+[Checklist locations across the Nilgiris, Anamalais and the Palani hills. Inset histogram shows checklists' distance to the nearest road, with the X-axis on a log-scale.](figs/fig_distRoads.png)
