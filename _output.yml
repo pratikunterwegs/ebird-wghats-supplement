@@ -10,7 +10,7 @@ bookdown::gitbook:
   includes:
 #    in_header: ga.html
 bookdown::pdf_book:
-  keep_tex: true
+  keep_tex: yes
   documentclass: scrreprt
   papersize: a4
   latex_engine: xelatex
