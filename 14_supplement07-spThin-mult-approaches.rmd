@@ -235,7 +235,6 @@ tot_module_data.to_csv(path_or_buf="data/site_modules.csv", index=False)
 tot_pair_data.to_csv(path_or_buf="data/site_pairs.csv", index=False)
 
 # ends here
-
 ```
 
 ## Process proximity networks in R
@@ -281,7 +280,6 @@ data$data <- map(data$data, function(df){
 ## A function that removes sites
 
 ```{r func_select_sites, eval=FALSE, message=FALSE, warning=FALSE}
-
 # a function to remove sites
 remove_which_sites <- function(pair_data){
   
@@ -348,7 +346,6 @@ remove_which_sites <- function(pair_data){
   
   return(as.integer(nodes_removed))
 }
-
 ```
 
 ## Removing non-independent sites
@@ -499,11 +496,9 @@ fig_spatial_thinning <-
   labs(x= "buffer distance (m)")
 
 # save
-ggsave(fig_spatial_thinning, filename = "figs/fig_spatial_thinning_02.png", width = 10, height = 4,
+ggsave(fig_spatial_thinning, 
+       filename = "figs/fig_spatial_thinning_02.png", width = 10, height = 4,
        dpi=300); dev.off()
 ```
 
-```{r fig_spatial_thinning, eval=TRUE}
-knitr::include_graphics("figs/fig_spatial_thinning_02.png")
-```
-
+![](figs/fig_spatial_thinning_02.png)

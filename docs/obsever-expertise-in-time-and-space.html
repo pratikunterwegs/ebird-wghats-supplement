@@ -220,95 +220,85 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Section 7</span> Obsever expertise in time and space</h1>
 <div id="prepare-libraries-4" class="section level2">
 <h2><span class="header-section-number">7.1</span> Prepare libraries</h2>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co"># load libs</span></a>
-<a class="sourceLine" id="cb42-2" title="2"><span class="kw">library</span>(raster)</a>
-<a class="sourceLine" id="cb42-3" title="3"><span class="kw">library</span>(glue)</a>
-<a class="sourceLine" id="cb42-4" title="4"><span class="kw">library</span>(purrr)</a>
-<a class="sourceLine" id="cb42-5" title="5"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb42-6" title="6"><span class="kw">library</span>(tidyr)</a>
-<a class="sourceLine" id="cb42-7" title="7"><span class="kw">library</span>(readr)</a>
-<a class="sourceLine" id="cb42-8" title="8"><span class="kw">library</span>(scales)</a>
-<a class="sourceLine" id="cb42-9" title="9"></a>
-<a class="sourceLine" id="cb42-10" title="10"><span class="co"># plotting libs</span></a>
-<a class="sourceLine" id="cb42-11" title="11"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb42-12" title="12"><span class="kw">library</span>(ggthemes)</a>
-<a class="sourceLine" id="cb42-13" title="13"><span class="kw">library</span>(scico)</a>
-<a class="sourceLine" id="cb42-14" title="14"></a>
-<a class="sourceLine" id="cb42-15" title="15"><span class="co"># get ci func</span></a>
-<a class="sourceLine" id="cb42-16" title="16">ci &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(x, <span class="dt">na.rm =</span> T)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(x))}</a></code></pre></div>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="co"># read in scores and checklist data and link</span></a>
-<a class="sourceLine" id="cb43-2" title="2">scores &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/dataObsExpScore.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb43-3" title="3">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/eBirdChecklistVars.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb43-4" title="4"></a>
-<a class="sourceLine" id="cb43-5" title="5">data &lt;-<span class="st"> </span><span class="kw">left_join</span>(data, scores, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;observer&quot;</span> =<span class="st"> &quot;observer&quot;</span>))</a>
-<a class="sourceLine" id="cb43-6" title="6">data &lt;-<span class="st"> </span><span class="kw">select</span>(data, score, nSp, nSoi, landcover, year) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb43-7" title="7"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(score))</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="co"># load libs</span></a>
+<a class="sourceLine" id="cb37-2" title="2"><span class="kw">library</span>(raster)</a>
+<a class="sourceLine" id="cb37-3" title="3"><span class="kw">library</span>(glue)</a>
+<a class="sourceLine" id="cb37-4" title="4"><span class="kw">library</span>(purrr)</a>
+<a class="sourceLine" id="cb37-5" title="5"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb37-6" title="6"><span class="kw">library</span>(tidyr)</a>
+<a class="sourceLine" id="cb37-7" title="7"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb37-8" title="8"><span class="kw">library</span>(scales)</a>
+<a class="sourceLine" id="cb37-9" title="9"></a>
+<a class="sourceLine" id="cb37-10" title="10"><span class="co"># plotting libs</span></a>
+<a class="sourceLine" id="cb37-11" title="11"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb37-12" title="12"><span class="kw">library</span>(ggthemes)</a>
+<a class="sourceLine" id="cb37-13" title="13"><span class="kw">library</span>(scico)</a>
+<a class="sourceLine" id="cb37-14" title="14"></a>
+<a class="sourceLine" id="cb37-15" title="15"><span class="co"># get ci func</span></a>
+<a class="sourceLine" id="cb37-16" title="16">ci &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(x, <span class="dt">na.rm =</span> T)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(x))}</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="co"># read in scores and checklist data and link</span></a>
+<a class="sourceLine" id="cb38-2" title="2">scores &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/dataObsExpScore.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb38-3" title="3">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/eBirdChecklistVars.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb38-4" title="4"></a>
+<a class="sourceLine" id="cb38-5" title="5">data &lt;-<span class="st"> </span><span class="kw">left_join</span>(data, scores, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;observer&quot;</span> =<span class="st"> &quot;observer&quot;</span>))</a>
+<a class="sourceLine" id="cb38-6" title="6">data &lt;-<span class="st"> </span><span class="kw">select</span>(data, score, nSp, nSoi, landcover, year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb38-7" title="7"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(score))</a></code></pre></div>
 </div>
 <div id="species-seen-in-relation-to-osberver-expertise" class="section level2">
 <h2><span class="header-section-number">7.2</span> Species seen in relation to osberver expertise</h2>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="co"># summarise data by rounded score and year</span></a>
-<a class="sourceLine" id="cb44-2" title="2">data_summary01 &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb44-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">score =</span> plyr<span class="op">::</span><span class="kw">round_any</span>(score, <span class="fl">0.2</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb44-4" title="4"><span class="st">  </span><span class="kw">select</span>(score, year, nSp, nSoi) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb44-5" title="5"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;nSp&quot;</span>, <span class="st">&quot;nSoi&quot;</span>),</a>
-<a class="sourceLine" id="cb44-6" title="6">               <span class="dt">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb44-7" title="7"><span class="st">  </span><span class="kw">group_by</span>(score, year, variable) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb44-8" title="8"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(value), <span class="kw">list</span>(<span class="op">~</span><span class="kw">mean</span>(.), <span class="op">~</span><span class="kw">ci</span>(.)))</a>
-<a class="sourceLine" id="cb44-9" title="9"></a>
-<a class="sourceLine" id="cb44-10" title="10"><span class="co"># make plot and export</span></a>
-<a class="sourceLine" id="cb44-11" title="11">fig_nsp_score &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb44-12" title="12"><span class="st">  </span><span class="kw">ggplot</span>(data_summary01)<span class="op">+</span></a>
-<a class="sourceLine" id="cb44-13" title="13"><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">data =</span> data, <span class="kw">aes</span>(<span class="dt">x =</span> score, <span class="dt">y =</span> nSp), </a>
-<a class="sourceLine" id="cb44-14" title="14">             <span class="dt">col =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">size =</span> <span class="fl">0.1</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb44-15" title="15"><span class="st">  </span><span class="kw">geom_pointrange</span>(<span class="kw">aes</span>(<span class="dt">x =</span> score, <span class="dt">y =</span> mean, </a>
-<a class="sourceLine" id="cb44-16" title="16">                      <span class="dt">ymin=</span>mean<span class="op">-</span>ci, <span class="dt">ymax=</span>mean<span class="op">+</span>ci,</a>
-<a class="sourceLine" id="cb44-17" title="17">                      <span class="dt">col =</span> <span class="kw">as.factor</span>(variable)),</a>
-<a class="sourceLine" id="cb44-18" title="18">                  <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="dt">width =</span> <span class="fl">0.05</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb44-19" title="19"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>year)<span class="op">+</span></a>
-<a class="sourceLine" id="cb44-20" title="20"><span class="st">  </span><span class="kw">scale_y_log10</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb44-21" title="21"><span class="co">#  coord_cartesian(ylim=c(0,50))+</span></a>
-<a class="sourceLine" id="cb44-22" title="22"><span class="st">  </span><span class="kw">scale_colour_scico_d</span>(<span class="dt">palette =</span> <span class="st">&quot;cork&quot;</span>, <span class="dt">begin =</span> <span class="fl">0.2</span>, <span class="dt">end =</span> <span class="fl">0.8</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb44-23" title="23"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;expertise score&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;species reported&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb44-24" title="24"><span class="st">  </span><span class="kw">theme_few</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb44-25" title="25"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb44-26" title="26"></a>
-<a class="sourceLine" id="cb44-27" title="27"><span class="co"># export figure</span></a>
-<a class="sourceLine" id="cb44-28" title="28"><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;figs/fig_nsp_score.png&quot;</span>, <span class="dt">width =</span> <span class="dv">8</span>, <span class="dt">height =</span> <span class="dv">6</span>, <span class="dt">device =</span> <span class="kw">png</span>(), <span class="dt">dpi =</span> <span class="dv">300</span>); <span class="kw">dev.off</span>()</a></code></pre></div>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"></a>
-<a class="sourceLine" id="cb45-2" title="2"><span class="co"># show exported image</span></a>
-<a class="sourceLine" id="cb45-3" title="3">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figs/fig_nsp_score.png&quot;</span>)</a></code></pre></div>
-<div class="figure" style="text-align: center">
-<img src="figs/fig_nsp_score.png" alt="Total number of species (blue) and species of interest to this study (green) reported in checklists from the study area over the years 2013 -- 2018, as a function of the expertise score of the reporting observer. Points represent means, with bars showing the 95% confidence intervals; data shown are for expertise scores rounded to multiples of 0.2, and the y-axis is on a log scale. Raw data are shown in the background (grey points)." width="\textwidth" />
-<p class="caption">
-(#fig:show_fig_nsp_score)Total number of species (blue) and species of interest to this study (green) reported in checklists from the study area over the years 2013 – 2018, as a function of the expertise score of the reporting observer. Points represent means, with bars showing the 95% confidence intervals; data shown are for expertise scores rounded to multiples of 0.2, and the y-axis is on a log scale. Raw data are shown in the background (grey points).
-</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="co"># summarise data by rounded score and year</span></a>
+<a class="sourceLine" id="cb39-2" title="2">data_summary01 &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb39-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">score =</span> plyr<span class="op">::</span><span class="kw">round_any</span>(score, <span class="fl">0.2</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb39-4" title="4"><span class="st">  </span><span class="kw">select</span>(score, year, nSp, nSoi) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb39-5" title="5"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;nSp&quot;</span>, <span class="st">&quot;nSoi&quot;</span>),</a>
+<a class="sourceLine" id="cb39-6" title="6">               <span class="dt">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb39-7" title="7"><span class="st">  </span><span class="kw">group_by</span>(score, year, variable) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb39-8" title="8"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(value), <span class="kw">list</span>(<span class="op">~</span><span class="kw">mean</span>(.), <span class="op">~</span><span class="kw">ci</span>(.)))</a>
+<a class="sourceLine" id="cb39-9" title="9"></a>
+<a class="sourceLine" id="cb39-10" title="10"><span class="co"># make plot and export</span></a>
+<a class="sourceLine" id="cb39-11" title="11">fig_nsp_score &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb39-12" title="12"><span class="st">  </span><span class="kw">ggplot</span>(data_summary01)<span class="op">+</span></a>
+<a class="sourceLine" id="cb39-13" title="13"><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">data =</span> data, <span class="kw">aes</span>(<span class="dt">x =</span> score, <span class="dt">y =</span> nSp), </a>
+<a class="sourceLine" id="cb39-14" title="14">             <span class="dt">col =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">size =</span> <span class="fl">0.1</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb39-15" title="15"><span class="st">  </span><span class="kw">geom_pointrange</span>(<span class="kw">aes</span>(<span class="dt">x =</span> score, <span class="dt">y =</span> mean, </a>
+<a class="sourceLine" id="cb39-16" title="16">                      <span class="dt">ymin=</span>mean<span class="op">-</span>ci, <span class="dt">ymax=</span>mean<span class="op">+</span>ci,</a>
+<a class="sourceLine" id="cb39-17" title="17">                      <span class="dt">col =</span> <span class="kw">as.factor</span>(variable)),</a>
+<a class="sourceLine" id="cb39-18" title="18">                  <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="dt">width =</span> <span class="fl">0.05</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb39-19" title="19"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>year)<span class="op">+</span></a>
+<a class="sourceLine" id="cb39-20" title="20"><span class="st">  </span><span class="kw">scale_y_log10</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb39-21" title="21"><span class="co">#  coord_cartesian(ylim=c(0,50))+</span></a>
+<a class="sourceLine" id="cb39-22" title="22"><span class="st">  </span><span class="kw">scale_colour_scico_d</span>(<span class="dt">palette =</span> <span class="st">&quot;cork&quot;</span>, <span class="dt">begin =</span> <span class="fl">0.2</span>, <span class="dt">end =</span> <span class="fl">0.8</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb39-23" title="23"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;expertise score&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;species reported&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb39-24" title="24"><span class="st">  </span><span class="kw">theme_few</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb39-25" title="25"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb39-26" title="26"></a>
+<a class="sourceLine" id="cb39-27" title="27"><span class="co"># export figure</span></a>
+<a class="sourceLine" id="cb39-28" title="28"><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;figs/fig_nsp_score.png&quot;</span>, <span class="dt">width =</span> <span class="dv">8</span>, <span class="dt">height =</span> <span class="dv">6</span>, <span class="dt">device =</span> <span class="kw">png</span>(), <span class="dt">dpi =</span> <span class="dv">300</span>); <span class="kw">dev.off</span>()</a></code></pre></div>
+<div class="figure">
+<img src="figs/fig_nsp_score.png" alt="Total number of species (blue) and species of interest to this study (green) reported in checklists from the study area over the years 2013 – 2018, as a function of the expertise score of the reporting observer. Points represent means, with bars showing the 95% confidence intervals; data shown are for expertise scores rounded to multiples of 0.2, and the y-axis is on a log scale. Raw data are shown in the background (grey points)." />
+<p class="caption">Total number of species (blue) and species of interest to this study (green) reported in checklists from the study area over the years 2013 – 2018, as a function of the expertise score of the reporting observer. Points represent means, with bars showing the 95% confidence intervals; data shown are for expertise scores rounded to multiples of 0.2, and the y-axis is on a log scale. Raw data are shown in the background (grey points).</p>
 </div>
 </div>
 <div id="expertise-in-relation-to-landcover" class="section level2">
 <h2><span class="header-section-number">7.3</span> Expertise in relation to landcover</h2>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="co"># plot histograms of expertise scores in different landcover classes</span></a>
-<a class="sourceLine" id="cb46-2" title="2">data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, <span class="op">!</span><span class="kw">is.na</span>(landcover))</a>
-<a class="sourceLine" id="cb46-3" title="3"></a>
-<a class="sourceLine" id="cb46-4" title="4"><span class="co"># make plot</span></a>
-<a class="sourceLine" id="cb46-5" title="5">fig_exp_lc &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data)<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-6" title="6"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> score), <span class="dt">fill =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="dt">bins =</span> <span class="dv">20</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-7" title="7"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>landcover, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="dt">labeller =</span> label_both, <span class="dt">nrow =</span> <span class="dv">2</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-8" title="8"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> comma)<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-9" title="9"><span class="st">  </span><span class="kw">theme_few</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-10" title="10"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-11" title="11"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;expertise score&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;count&quot;</span>)</a>
-<a class="sourceLine" id="cb46-12" title="12"></a>
-<a class="sourceLine" id="cb46-13" title="13"><span class="co"># export figure</span></a>
-<a class="sourceLine" id="cb46-14" title="14"></a>
-<a class="sourceLine" id="cb46-15" title="15"><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;figs/fig_exp_lc.png&quot;</span>, <span class="dt">width =</span> <span class="dv">8</span>, <span class="dt">height =</span> <span class="dv">4</span>, <span class="dt">device =</span> <span class="kw">png</span>(), <span class="dt">dpi =</span> <span class="dv">300</span>); <span class="kw">dev.off</span>()</a></code></pre></div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"></a>
-<a class="sourceLine" id="cb47-2" title="2"><span class="co"># show exported image</span></a>
-<a class="sourceLine" id="cb47-3" title="3">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figs/fig_exp_lc.png&quot;</span>)</a></code></pre></div>
-<div class="figure" style="text-align: center">
-<img src="figs/fig_exp_lc.png" alt="Distribution of expertise scores in the seven landcover classes present in the study site." width="\textwidth" />
-<p class="caption">
-(#fig:show_fig_exp_lc)Distribution of expertise scores in the seven landcover classes present in the study site.
-</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="co"># plot histograms of expertise scores in different landcover classes</span></a>
+<a class="sourceLine" id="cb40-2" title="2">data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, <span class="op">!</span><span class="kw">is.na</span>(landcover))</a>
+<a class="sourceLine" id="cb40-3" title="3"></a>
+<a class="sourceLine" id="cb40-4" title="4"><span class="co"># make plot</span></a>
+<a class="sourceLine" id="cb40-5" title="5">fig_exp_lc &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data)<span class="op">+</span></a>
+<a class="sourceLine" id="cb40-6" title="6"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> score), <span class="dt">fill =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="dt">bins =</span> <span class="dv">20</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb40-7" title="7"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>landcover, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="dt">labeller =</span> label_both, <span class="dt">nrow =</span> <span class="dv">2</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb40-8" title="8"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> comma)<span class="op">+</span></a>
+<a class="sourceLine" id="cb40-9" title="9"><span class="st">  </span><span class="kw">theme_few</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb40-10" title="10"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb40-11" title="11"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;expertise score&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;count&quot;</span>)</a>
+<a class="sourceLine" id="cb40-12" title="12"></a>
+<a class="sourceLine" id="cb40-13" title="13"><span class="co"># export figure</span></a>
+<a class="sourceLine" id="cb40-14" title="14"></a>
+<a class="sourceLine" id="cb40-15" title="15"><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;figs/fig_exp_lc.png&quot;</span>, <span class="dt">width =</span> <span class="dv">8</span>, <span class="dt">height =</span> <span class="dv">4</span>, <span class="dt">device =</span> <span class="kw">png</span>(), <span class="dt">dpi =</span> <span class="dv">300</span>); <span class="kw">dev.off</span>()</a></code></pre></div>
+<div class="figure">
+<img src="figs/fig_exp_lc.png" alt="Distribution of expertise scores in the seven landcover classes present in the study site." />
+<p class="caption">Distribution of expertise scores in the seven landcover classes present in the study site.</p>
 </div>
 
 </div>
@@ -352,7 +342,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["ebird_wghats-supplement.pdf"],
 "toc": {
 "collapse": "section"
 }

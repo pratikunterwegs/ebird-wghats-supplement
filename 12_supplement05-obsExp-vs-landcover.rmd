@@ -69,11 +69,7 @@ fig_nsp_score <-
 ggsave(filename = "figs/fig_nsp_score.png", width = 8, height = 6, device = png(), dpi = 300); dev.off()
 ```
 
-```{r show_fig_nsp_score, eval=TRUE, fig.cap="Total number of species (blue) and species of interest to this study (green) reported in checklists from the study area over the years 2013 -- 2018, as a function of the expertise score of the reporting observer. Points represent means, with bars showing the 95% confidence intervals; data shown are for expertise scores rounded to multiples of 0.2, and the y-axis is on a log scale. Raw data are shown in the background (grey points)."}
-
-# show exported image
-knitr::include_graphics("figs/fig_nsp_score.png")
-```
+![Total number of species (blue) and species of interest to this study (green) reported in checklists from the study area over the years 2013 -- 2018, as a function of the expertise score of the reporting observer. Points represent means, with bars showing the 95% confidence intervals; data shown are for expertise scores rounded to multiples of 0.2, and the y-axis is on a log scale. Raw data are shown in the background (grey points).](figs/fig_nsp_score.png)
 
 ## Expertise in relation to landcover
 
@@ -95,8 +91,4 @@ fig_exp_lc <- ggplot(data)+
 ggsave(filename = "figs/fig_exp_lc.png", width = 8, height = 4, device = png(), dpi = 300); dev.off()
 ```
 
-```{r show_fig_exp_lc, eval=TRUE, fig.cap="Distribution of expertise scores in the seven landcover classes present in the study site."}
-
-# show exported image
-knitr::include_graphics("figs/fig_exp_lc.png")
-```
+![Distribution of expertise scores in the seven landcover classes present in the study site.](figs/fig_exp_lc.png)

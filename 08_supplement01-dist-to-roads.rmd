@@ -317,10 +317,7 @@ readr::read_csv("data/results/dist_nnb_species_specific.csv") %>%
 
 Histograms showing the species-specific distances to nearest neighbouring site.
 
-```{r show_sp_spec_nnb, eval=TRUE}
-knitr::include_graphics("figs/fig_nnb_species.png")
-```
-
+![](figs/fig_nnb_species.png)
 
 ## Plot map: points on roads
 
@@ -420,4 +417,4 @@ ggplot()+
   labs(fill = "checklists", colour=NULL)
 ```
 
-[Checklist locations across the Nilgiris, Anamalais and the Palani hills. Inset histogram shows checklists' distance to the nearest road, with the X-axis on a log-scale.](figs/fig_distRoads.png)
+![Checklist locations across the Nilgiris, Anamalais and the Palani hills. Inset histogram shows checklists' distance to the nearest road, with the X-axis on a log-scale.](figs/fig_distRoads.png)

@@ -83,9 +83,4 @@ ggsave(fig_climate_lc, filename = "figs/fig_climate_landcover.png",
        height = 5, width = 8, device = png(), dpi = 300); dev.off()
 ```
 
-
-```{r export_fig_clim_lc, eval=TRUE, fig.cap="CHELSA climatic variables as a function of landcover class. Grey points in the background represent raw data."}
-
-# show exported image
-knitr::include_graphics("figs/fig_climate_landcover.png")
-```
+![CHELSA climatic variables as a function of landcover class. Grey points in the background represent raw data.](figs/fig_climate_landcover.png)

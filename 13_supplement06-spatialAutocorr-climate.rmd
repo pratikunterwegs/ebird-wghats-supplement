@@ -170,10 +170,7 @@ plot_grid <- grid.arrange(grobs = fig_list_chelsa, layout_matrix = lmatrix)
 ggsave(plot = plot_grid, filename = "figs/fig_chelsa_variograms.png", dpi = 300, width = 12, height = 6)
 ```
 
-```{r show_fig_chelsa, eval=TRUE, fig.cap="CHELSA rasters with study area outline, and associated semivariograms. Semivariograms are on a log-transformed y-axis."}
-
-# show exported image
-knitr::include_graphics("figs/fig_chelsa_variograms.png")
+![CHELSA rasters with study area outline, and associated semivariograms. Semivariograms are on a log-transformed y-axis.](figs/fig_chelsa_variograms.png)
 ```
 
 # Climatic raster resampling
@@ -309,8 +306,4 @@ pl <- image_read_pdf("figs/fig_chelsa_resamp.pdf")
 image_write(pl, path = "figs/fig_chelsa_resamp.png", format = "png")
 ```
 
-```{r show_fig_chelsa_resamp, eval=TRUE, fig.cap="CHELSA rasters with study area outline, at different scales. Semivariograms are on a log-transformed y-axis."}
-
-# show exported image
-knitr::include_graphics("figs/fig_chelsa_resamp.png")
-```
+![CHELSA rasters with study area outline, at different scales. Semivariograms are on a log-transformed y-axis.](figs/fig_chelsa_resamp.png)

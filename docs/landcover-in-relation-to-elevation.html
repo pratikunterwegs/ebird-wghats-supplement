@@ -220,42 +220,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Section 5</span> Landcover in relation to elevation</h1>
 <div id="get-data-from-landscape-rasters" class="section level2">
 <h2><span class="header-section-number">5.1</span> Get data from landscape rasters</h2>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="co"># get data from landscape rasters</span></a>
-<a class="sourceLine" id="cb34-2" title="2">lc_elev &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">elev =</span> <span class="kw">getValues</span>(landscape[[<span class="st">&quot;elev&quot;</span>]]),</a>
-<a class="sourceLine" id="cb34-3" title="3">                  <span class="dt">landcover =</span> <span class="kw">getValues</span>(landscape[[<span class="st">&quot;landcover&quot;</span>]]))</a>
-<a class="sourceLine" id="cb34-4" title="4"><span class="co"># process data for proportions</span></a>
-<a class="sourceLine" id="cb34-5" title="5">lc_elev &lt;-<span class="st"> </span>lc_elev <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb34-6" title="6"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(landcover), landcover <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb34-7" title="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">elev =</span> plyr<span class="op">::</span><span class="kw">round_any</span>(elev, <span class="dv">100</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb34-8" title="8"><span class="st">  </span><span class="kw">count</span>(elev, landcover) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb34-9" title="9"><span class="st">  </span><span class="kw">group_by</span>(elev) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb34-10" title="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n<span class="op">/</span><span class="kw">sum</span>(n))</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="co"># get data from landscape rasters</span></a>
+<a class="sourceLine" id="cb31-2" title="2">lc_elev &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">elev =</span> <span class="kw">getValues</span>(landscape[[<span class="st">&quot;elev&quot;</span>]]),</a>
+<a class="sourceLine" id="cb31-3" title="3">                  <span class="dt">landcover =</span> <span class="kw">getValues</span>(landscape[[<span class="st">&quot;landcover&quot;</span>]]))</a>
+<a class="sourceLine" id="cb31-4" title="4"><span class="co"># process data for proportions</span></a>
+<a class="sourceLine" id="cb31-5" title="5">lc_elev &lt;-<span class="st"> </span>lc_elev <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb31-6" title="6"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(landcover), landcover <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb31-7" title="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">elev =</span> plyr<span class="op">::</span><span class="kw">round_any</span>(elev, <span class="dv">100</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb31-8" title="8"><span class="st">  </span><span class="kw">count</span>(elev, landcover) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb31-9" title="9"><span class="st">  </span><span class="kw">group_by</span>(elev) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb31-10" title="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n<span class="op">/</span><span class="kw">sum</span>(n))</a></code></pre></div>
 </div>
 <div id="plot-proportional-landcover-in-elevation" class="section level2">
 <h2><span class="header-section-number">5.2</span> Plot proportional landcover in elevation</h2>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="co"># plot figure as tilemap</span></a>
-<a class="sourceLine" id="cb35-2" title="2">fig_lc_elev &lt;-<span class="st"> </span><span class="kw">ggplot</span>(lc_elev)<span class="op">+</span></a>
-<a class="sourceLine" id="cb35-3" title="3"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">x=</span>elev, <span class="dt">y=</span><span class="kw">factor</span>(landcover), </a>
-<a class="sourceLine" id="cb35-4" title="4">                <span class="dt">fill=</span>prop), </a>
-<a class="sourceLine" id="cb35-5" title="5">            <span class="dt">col=</span><span class="st">&quot;grey99&quot;</span>, <span class="dt">size =</span> <span class="fl">0.6</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb35-6" title="6"><span class="st">  </span><span class="kw">scale_fill_scico</span>(<span class="dt">palette =</span> <span class="st">&quot;bilbao&quot;</span>, <span class="dt">begin =</span> <span class="fl">0.0</span>, <span class="dt">end =</span> <span class="fl">1.0</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb35-7" title="7"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">2500</span>, <span class="dv">500</span>), <span class="dt">labels =</span> comma)<span class="op">+</span></a>
-<a class="sourceLine" id="cb35-8" title="8"><span class="st">  </span><span class="kw">scale_alpha_continuous</span>(<span class="dt">range =</span> <span class="kw">c</span>(<span class="fl">0.3</span>, <span class="dv">1</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb35-9" title="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;elevation (m)&quot;</span>, </a>
-<a class="sourceLine" id="cb35-10" title="10">       <span class="dt">y =</span> <span class="st">&quot;landcover&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb35-11" title="11"><span class="st">  </span><span class="kw">theme_few</span>()</a>
-<a class="sourceLine" id="cb35-12" title="12"></a>
-<a class="sourceLine" id="cb35-13" title="13"><span class="co"># export figure</span></a>
-<a class="sourceLine" id="cb35-14" title="14"><span class="kw">ggsave</span>(fig_lc_elev, <span class="dt">filename =</span> <span class="st">&quot;figs/fig_lc_elev.png&quot;</span>, </a>
-<a class="sourceLine" id="cb35-15" title="15">       <span class="dt">height =</span> <span class="dv">3</span>, <span class="dt">width =</span> <span class="dv">6</span>, <span class="dt">device =</span> <span class="kw">png</span>(), <span class="dt">dpi =</span> <span class="dv">300</span>); <span class="kw">dev.off</span>()</a></code></pre></div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"></a>
-<a class="sourceLine" id="cb36-2" title="2"><span class="co"># show exported image</span></a>
-<a class="sourceLine" id="cb36-3" title="3">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figs/fig_lc_elev.png&quot;</span>)</a></code></pre></div>
-<div class="figure" style="text-align: center">
-<img src="figs/fig_lc_elev.png" alt="Proportional landcover (low = white, high = dark red), as a function of elevation in the study site. Data represent elevation in increments of 100m." width="\textwidth" />
-<p class="caption">
-(#fig:show_fig_lc_elev)Proportional landcover (low = white, high = dark red), as a function of elevation in the study site. Data represent elevation in increments of 100m.
-</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="co"># plot figure as tilemap</span></a>
+<a class="sourceLine" id="cb32-2" title="2">fig_lc_elev &lt;-<span class="st"> </span><span class="kw">ggplot</span>(lc_elev)<span class="op">+</span></a>
+<a class="sourceLine" id="cb32-3" title="3"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">x=</span>elev, <span class="dt">y=</span><span class="kw">factor</span>(landcover), </a>
+<a class="sourceLine" id="cb32-4" title="4">                <span class="dt">fill=</span>prop), </a>
+<a class="sourceLine" id="cb32-5" title="5">            <span class="dt">col=</span><span class="st">&quot;grey99&quot;</span>, <span class="dt">size =</span> <span class="fl">0.6</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb32-6" title="6"><span class="st">  </span><span class="kw">scale_fill_scico</span>(<span class="dt">palette =</span> <span class="st">&quot;bilbao&quot;</span>, <span class="dt">begin =</span> <span class="fl">0.0</span>, <span class="dt">end =</span> <span class="fl">1.0</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb32-7" title="7"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">2500</span>, <span class="dv">500</span>), <span class="dt">labels =</span> comma)<span class="op">+</span></a>
+<a class="sourceLine" id="cb32-8" title="8"><span class="st">  </span><span class="kw">scale_alpha_continuous</span>(<span class="dt">range =</span> <span class="kw">c</span>(<span class="fl">0.3</span>, <span class="dv">1</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb32-9" title="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;elevation (m)&quot;</span>, </a>
+<a class="sourceLine" id="cb32-10" title="10">       <span class="dt">y =</span> <span class="st">&quot;landcover&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb32-11" title="11"><span class="st">  </span><span class="kw">theme_few</span>()</a>
+<a class="sourceLine" id="cb32-12" title="12"></a>
+<a class="sourceLine" id="cb32-13" title="13"><span class="co"># export figure</span></a>
+<a class="sourceLine" id="cb32-14" title="14"><span class="kw">ggsave</span>(fig_lc_elev, <span class="dt">filename =</span> <span class="st">&quot;figs/fig_lc_elev.png&quot;</span>, </a>
+<a class="sourceLine" id="cb32-15" title="15">       <span class="dt">height =</span> <span class="dv">3</span>, <span class="dt">width =</span> <span class="dv">6</span>, <span class="dt">device =</span> <span class="kw">png</span>(), <span class="dt">dpi =</span> <span class="dv">300</span>); <span class="kw">dev.off</span>()</a></code></pre></div>
+<div class="figure">
+<img src="figs/fig_lc_elev.png" alt="Proportional landcover (low = white, high = dark red), as a function of elevation in the study site. Data represent elevation in increments of 100m." />
+<p class="caption">Proportional landcover (low = white, high = dark red), as a function of elevation in the study site. Data represent elevation in increments of 100m.</p>
 </div>
 
 </div>
@@ -299,7 +294,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["ebird_wghats-supplement.pdf"],
 "toc": {
 "collapse": "section"
 }

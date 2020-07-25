@@ -79,12 +79,7 @@ ggsave(fig_climate_elev, filename = "figs/fig_climate_elev.png",
        height = 4, width = 6, device = png(), dpi = 300); dev.off()
 ```
 
-
-```{r export_fig_clim_elev, eval=TRUE, fig.cap="CHELSA climatic variables as a function of elevation, in increments of 200m. Points represent means, while vertical lines show 95% confidence intervals."}
-
-# show exported image
-knitr::include_graphics("figs/fig_climate_elev.png")
-```
+![CHELSA climatic variables as a function of elevation, in increments of 200m. Points represent means, while vertical lines show 95% confidence intervals.]("figs/fig_climate_elev.png")
 
 # Landcover in relation to elevation
 
@@ -123,8 +118,4 @@ ggsave(fig_lc_elev, filename = "figs/fig_lc_elev.png",
        height = 3, width = 6, device = png(), dpi = 300); dev.off()
 ```
 
-```{r show_fig_lc_elev, eval=TRUE, fig.cap="Proportional landcover (low = white, high = dark red), as a function of elevation in the study site. Data represent elevation in increments of 100m."}
-
-# show exported image
-knitr::include_graphics("figs/fig_lc_elev.png")
-```
+![Proportional landcover (low = white, high = dark red), as a function of elevation in the study site. Data represent elevation in increments of 100m.](figs/fig_lc_elev.png)

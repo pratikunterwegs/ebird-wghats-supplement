@@ -51,7 +51,4 @@ ggsave(plot = fig_dist_exclusion, "figs/fig_cutoff_effort.png", height = 6, widt
 dev.off()
 ```
 
-```{r fig_dist_exclusion, eval=TRUE}
-knitr::include_graphics("figs/fig_cutoff_effort.png")
-```
-
+![](figs/fig_cutoff_effort.png)

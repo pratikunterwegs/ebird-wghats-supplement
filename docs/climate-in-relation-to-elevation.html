@@ -220,74 +220,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Section 4</span> Climate in relation to elevation</h1>
 <div id="prepare-libraries-2" class="section level2">
 <h2><span class="header-section-number">4.1</span> Prepare libraries</h2>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="co"># load libs</span></a>
-<a class="sourceLine" id="cb29-2" title="2"><span class="kw">library</span>(raster)</a>
-<a class="sourceLine" id="cb29-3" title="3"><span class="kw">library</span>(glue)</a>
-<a class="sourceLine" id="cb29-4" title="4"><span class="kw">library</span>(purrr)</a>
-<a class="sourceLine" id="cb29-5" title="5"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb29-6" title="6"><span class="kw">library</span>(tidyr)</a>
-<a class="sourceLine" id="cb29-7" title="7"></a>
-<a class="sourceLine" id="cb29-8" title="8"><span class="kw">library</span>(scales)</a>
-<a class="sourceLine" id="cb29-9" title="9"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb29-10" title="10"><span class="kw">library</span>(ggthemes)</a>
-<a class="sourceLine" id="cb29-11" title="11"></a>
-<a class="sourceLine" id="cb29-12" title="12"><span class="co"># get ci func</span></a>
-<a class="sourceLine" id="cb29-13" title="13">ci &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(x, <span class="dt">na.rm =</span> T)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(x))}</a></code></pre></div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="co"># read landscape prepare for plotting</span></a>
-<a class="sourceLine" id="cb30-2" title="2">landscape &lt;-<span class="st"> </span><span class="kw">stack</span>(<span class="st">&quot;data/spatial/landscape_resamp01km.tif&quot;</span>)</a>
-<a class="sourceLine" id="cb30-3" title="3"></a>
-<a class="sourceLine" id="cb30-4" title="4"><span class="co"># get proper names</span></a>
-<a class="sourceLine" id="cb30-5" title="5">elev_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;elev&quot;</span>, <span class="st">&quot;slope&quot;</span>, <span class="st">&quot;aspect&quot;</span>)</a>
-<a class="sourceLine" id="cb30-6" title="6">chelsa_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;chelsa_bio10_04&quot;</span>, <span class="st">&quot;chelsa_bio10_17&quot;</span>, <span class="st">&quot;chelsa_bio10_18&quot;</span>,</a>
-<a class="sourceLine" id="cb30-7" title="7">                  <span class="st">&quot;chelsa_prec&quot;</span>, <span class="st">&quot;chelsa_temp&quot;</span>)</a>
-<a class="sourceLine" id="cb30-8" title="8"></a>
-<a class="sourceLine" id="cb30-9" title="9"><span class="kw">names</span>(landscape) &lt;-<span class="st"> </span><span class="kw">as.character</span>(<span class="kw">glue</span>(<span class="st">&#39;{c(elev_names, chelsa_names, &quot;landcover&quot;)}&#39;</span>))</a></code></pre></div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="co"># make duplicate stack</span></a>
-<a class="sourceLine" id="cb31-2" title="2">land_data &lt;-<span class="st"> </span>landscape[[<span class="kw">c</span>(<span class="st">&quot;elev&quot;</span>, chelsa_names)]]</a>
-<a class="sourceLine" id="cb31-3" title="3"></a>
-<a class="sourceLine" id="cb31-4" title="4"><span class="co"># convert to list</span></a>
-<a class="sourceLine" id="cb31-5" title="5">land_data &lt;-<span class="st"> </span><span class="kw">as.list</span>(land_data)</a>
-<a class="sourceLine" id="cb31-6" title="6"></a>
-<a class="sourceLine" id="cb31-7" title="7"><span class="co"># map get values over the stack</span></a>
-<a class="sourceLine" id="cb31-8" title="8">land_data &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw">map</span>(land_data, getValues)</a>
-<a class="sourceLine" id="cb31-9" title="9"><span class="kw">names</span>(land_data) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;elev&quot;</span>, chelsa_names)</a>
-<a class="sourceLine" id="cb31-10" title="10"></a>
-<a class="sourceLine" id="cb31-11" title="11"><span class="co"># conver to dataframe and round to 100m</span></a>
-<a class="sourceLine" id="cb31-12" title="12">land_data &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(land_data)</a>
-<a class="sourceLine" id="cb31-13" title="13">land_data &lt;-<span class="st"> </span><span class="kw">drop_na</span>(land_data) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb31-14" title="14"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">elev_round  =</span> plyr<span class="op">::</span><span class="kw">round_any</span>(elev, <span class="dv">200</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb31-15" title="15"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>elev) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb31-16" title="16"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">contains</span>(<span class="st">&quot;chelsa&quot;</span>),</a>
-<a class="sourceLine" id="cb31-17" title="17">               <span class="dt">names_to =</span> <span class="st">&quot;clim_var&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb31-18" title="18"><span class="st">  </span><span class="kw">group_by</span>(elev_round, clim_var) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb31-19" title="19"><span class="st">  </span><span class="kw">summarise_all</span>(<span class="dt">.funs =</span> <span class="kw">list</span>(<span class="op">~</span><span class="kw">mean</span>(.), <span class="op">~</span><span class="kw">ci</span>(.)))</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="co"># load libs</span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="kw">library</span>(raster)</a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="kw">library</span>(glue)</a>
+<a class="sourceLine" id="cb27-4" title="4"><span class="kw">library</span>(purrr)</a>
+<a class="sourceLine" id="cb27-5" title="5"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb27-6" title="6"><span class="kw">library</span>(tidyr)</a>
+<a class="sourceLine" id="cb27-7" title="7"></a>
+<a class="sourceLine" id="cb27-8" title="8"><span class="kw">library</span>(scales)</a>
+<a class="sourceLine" id="cb27-9" title="9"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb27-10" title="10"><span class="kw">library</span>(ggthemes)</a>
+<a class="sourceLine" id="cb27-11" title="11"></a>
+<a class="sourceLine" id="cb27-12" title="12"><span class="co"># get ci func</span></a>
+<a class="sourceLine" id="cb27-13" title="13">ci &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(x, <span class="dt">na.rm =</span> T)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(x))}</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="co"># read landscape prepare for plotting</span></a>
+<a class="sourceLine" id="cb28-2" title="2">landscape &lt;-<span class="st"> </span><span class="kw">stack</span>(<span class="st">&quot;data/spatial/landscape_resamp01km.tif&quot;</span>)</a>
+<a class="sourceLine" id="cb28-3" title="3"></a>
+<a class="sourceLine" id="cb28-4" title="4"><span class="co"># get proper names</span></a>
+<a class="sourceLine" id="cb28-5" title="5">elev_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;elev&quot;</span>, <span class="st">&quot;slope&quot;</span>, <span class="st">&quot;aspect&quot;</span>)</a>
+<a class="sourceLine" id="cb28-6" title="6">chelsa_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;chelsa_bio10_04&quot;</span>, <span class="st">&quot;chelsa_bio10_17&quot;</span>, <span class="st">&quot;chelsa_bio10_18&quot;</span>,</a>
+<a class="sourceLine" id="cb28-7" title="7">                  <span class="st">&quot;chelsa_prec&quot;</span>, <span class="st">&quot;chelsa_temp&quot;</span>)</a>
+<a class="sourceLine" id="cb28-8" title="8"></a>
+<a class="sourceLine" id="cb28-9" title="9"><span class="kw">names</span>(landscape) &lt;-<span class="st"> </span><span class="kw">as.character</span>(<span class="kw">glue</span>(<span class="st">&#39;{c(elev_names, chelsa_names, &quot;landcover&quot;)}&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="co"># make duplicate stack</span></a>
+<a class="sourceLine" id="cb29-2" title="2">land_data &lt;-<span class="st"> </span>landscape[[<span class="kw">c</span>(<span class="st">&quot;elev&quot;</span>, chelsa_names)]]</a>
+<a class="sourceLine" id="cb29-3" title="3"></a>
+<a class="sourceLine" id="cb29-4" title="4"><span class="co"># convert to list</span></a>
+<a class="sourceLine" id="cb29-5" title="5">land_data &lt;-<span class="st"> </span><span class="kw">as.list</span>(land_data)</a>
+<a class="sourceLine" id="cb29-6" title="6"></a>
+<a class="sourceLine" id="cb29-7" title="7"><span class="co"># map get values over the stack</span></a>
+<a class="sourceLine" id="cb29-8" title="8">land_data &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw">map</span>(land_data, getValues)</a>
+<a class="sourceLine" id="cb29-9" title="9"><span class="kw">names</span>(land_data) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;elev&quot;</span>, chelsa_names)</a>
+<a class="sourceLine" id="cb29-10" title="10"></a>
+<a class="sourceLine" id="cb29-11" title="11"><span class="co"># conver to dataframe and round to 100m</span></a>
+<a class="sourceLine" id="cb29-12" title="12">land_data &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(land_data)</a>
+<a class="sourceLine" id="cb29-13" title="13">land_data &lt;-<span class="st"> </span><span class="kw">drop_na</span>(land_data) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-14" title="14"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">elev_round  =</span> plyr<span class="op">::</span><span class="kw">round_any</span>(elev, <span class="dv">200</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-15" title="15"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>elev) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-16" title="16"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">contains</span>(<span class="st">&quot;chelsa&quot;</span>),</a>
+<a class="sourceLine" id="cb29-17" title="17">               <span class="dt">names_to =</span> <span class="st">&quot;clim_var&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-18" title="18"><span class="st">  </span><span class="kw">group_by</span>(elev_round, clim_var) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-19" title="19"><span class="st">  </span><span class="kw">summarise_all</span>(<span class="dt">.funs =</span> <span class="kw">list</span>(<span class="op">~</span><span class="kw">mean</span>(.), <span class="op">~</span><span class="kw">ci</span>(.)))</a></code></pre></div>
 </div>
 <div id="plot-climatic-variables-over-elevation" class="section level2">
 <h2><span class="header-section-number">4.2</span> Plot climatic variables over elevation</h2>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="co"># plot in facets</span></a>
-<a class="sourceLine" id="cb32-2" title="2"></a>
-<a class="sourceLine" id="cb32-3" title="3">fig_climate_elev &lt;-<span class="st"> </span><span class="kw">ggplot</span>(land_data)<span class="op">+</span></a>
-<a class="sourceLine" id="cb32-4" title="4"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> elev_round, <span class="dt">y =</span> mean),</a>
-<a class="sourceLine" id="cb32-5" title="5">            <span class="dt">size =</span> <span class="fl">0.2</span>, <span class="dt">col =</span> <span class="st">&quot;grey&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb32-6" title="6"><span class="st">  </span><span class="kw">geom_pointrange</span>(<span class="kw">aes</span>(<span class="dt">x =</span> elev_round, <span class="dt">y =</span> mean, <span class="dt">ymin=</span>mean<span class="op">-</span>ci, <span class="dt">ymax=</span>mean<span class="op">+</span>ci),</a>
-<a class="sourceLine" id="cb32-7" title="7">                  <span class="dt">size =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb32-8" title="8"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span>comma)<span class="op">+</span></a>
-<a class="sourceLine" id="cb32-9" title="9"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span>comma)<span class="op">+</span></a>
-<a class="sourceLine" id="cb32-10" title="10"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>clim_var, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb32-11" title="11"><span class="st">  </span><span class="kw">theme_few</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb32-12" title="12"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;elevation (m)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;CHELSA variable value&quot;</span>)</a>
-<a class="sourceLine" id="cb32-13" title="13"></a>
-<a class="sourceLine" id="cb32-14" title="14"><span class="co"># save as png</span></a>
-<a class="sourceLine" id="cb32-15" title="15"><span class="kw">ggsave</span>(fig_climate_elev, <span class="dt">filename =</span> <span class="st">&quot;figs/fig_climate_elev.png&quot;</span>, </a>
-<a class="sourceLine" id="cb32-16" title="16">       <span class="dt">height =</span> <span class="dv">4</span>, <span class="dt">width =</span> <span class="dv">6</span>, <span class="dt">device =</span> <span class="kw">png</span>(), <span class="dt">dpi =</span> <span class="dv">300</span>); <span class="kw">dev.off</span>()</a></code></pre></div>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"></a>
-<a class="sourceLine" id="cb33-2" title="2"><span class="co"># show exported image</span></a>
-<a class="sourceLine" id="cb33-3" title="3">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figs/fig_climate_elev.png&quot;</span>)</a></code></pre></div>
-<div class="figure" style="text-align: center">
-<img src="figs/fig_climate_elev.png" alt="CHELSA climatic variables as a function of elevation, in increments of 200m. Points represent means, while vertical lines show 95% confidence intervals." width="\textwidth" />
-<p class="caption">
-(#fig:export_fig_clim_elev)CHELSA climatic variables as a function of elevation, in increments of 200m. Points represent means, while vertical lines show 95% confidence intervals.
-</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="co"># plot in facets</span></a>
+<a class="sourceLine" id="cb30-2" title="2"></a>
+<a class="sourceLine" id="cb30-3" title="3">fig_climate_elev &lt;-<span class="st"> </span><span class="kw">ggplot</span>(land_data)<span class="op">+</span></a>
+<a class="sourceLine" id="cb30-4" title="4"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> elev_round, <span class="dt">y =</span> mean),</a>
+<a class="sourceLine" id="cb30-5" title="5">            <span class="dt">size =</span> <span class="fl">0.2</span>, <span class="dt">col =</span> <span class="st">&quot;grey&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb30-6" title="6"><span class="st">  </span><span class="kw">geom_pointrange</span>(<span class="kw">aes</span>(<span class="dt">x =</span> elev_round, <span class="dt">y =</span> mean, <span class="dt">ymin=</span>mean<span class="op">-</span>ci, <span class="dt">ymax=</span>mean<span class="op">+</span>ci),</a>
+<a class="sourceLine" id="cb30-7" title="7">                  <span class="dt">size =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb30-8" title="8"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span>comma)<span class="op">+</span></a>
+<a class="sourceLine" id="cb30-9" title="9"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span>comma)<span class="op">+</span></a>
+<a class="sourceLine" id="cb30-10" title="10"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>clim_var, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb30-11" title="11"><span class="st">  </span><span class="kw">theme_few</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb30-12" title="12"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;elevation (m)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;CHELSA variable value&quot;</span>)</a>
+<a class="sourceLine" id="cb30-13" title="13"></a>
+<a class="sourceLine" id="cb30-14" title="14"><span class="co"># save as png</span></a>
+<a class="sourceLine" id="cb30-15" title="15"><span class="kw">ggsave</span>(fig_climate_elev, <span class="dt">filename =</span> <span class="st">&quot;figs/fig_climate_elev.png&quot;</span>, </a>
+<a class="sourceLine" id="cb30-16" title="16">       <span class="dt">height =</span> <span class="dv">4</span>, <span class="dt">width =</span> <span class="dv">6</span>, <span class="dt">device =</span> <span class="kw">png</span>(), <span class="dt">dpi =</span> <span class="dv">300</span>); <span class="kw">dev.off</span>()</a></code></pre></div>
+<div class="figure">
+<embed src="%22figs/fig_climate_elev.png%22" />
+<p class="caption">CHELSA climatic variables as a function of elevation, in increments of 200m. Points represent means, while vertical lines show 95% confidence intervals.</p>
 </div>
 </div>
 </div>
@@ -330,7 +325,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["ebird_wghats-supplement.pdf"],
 "toc": {
 "collapse": "section"
 }
