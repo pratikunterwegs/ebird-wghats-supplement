@@ -52,7 +52,7 @@ landscape_data <- stack(landscape_files)
 # get proper names
 {
   elev_names <- c("elev", "slope", "aspect")
-  chelsa_names <- c("chelsa_bio10_04", "chelsa_bio10_17", "chelsa_bio10_18","chelsa_prec", "chelsa_temp")
+  chelsa_names <- c("bio_01", "bio_12")
   names(landscape_data) <- as.character(glue('{c(elev_names, chelsa_names, "landcover")}'))
 }
 
@@ -101,8 +101,8 @@ land <- st_transform(land, 32643)
 
 ```{r plot_variograms_maps, eval=FALSE, message=FALSE}
 # make ggplot of variograms
-yaxis <- c("semivariance", rep("", 4))
-xaxis <- c("", "", "distance (km)", "", "")
+yaxis <- c("semivariance", "")
+xaxis <- c( "", "distance (km)")
 fig_vgrams <- purrr::pmap(list(vgrams$data, yaxis, xaxis), function(df, ya, xa){
   
   ggplot(df)+
@@ -123,17 +123,12 @@ chelsa <- as.list(landscape_data[[chelsa_names]]) %>%
   purrr::map(st_as_stars)
 
 # colour palettes
-pal <- c("bilbao", "davos", "davos", "nuuk", "bilbao")
-title <- c("a Temp. seasonality",
-           "b Ppt. driest qtr.",
-           "c Ppt. warmest qtr.",
-           "d Variation ppt.",
-           "e Variation temp.")
-direction <- c(1,-1,-1,-1,1)
-lims <- list(range(chelsa[[1]]$chelsa_bio10_04, na.rm = T), 
-             c(0, 500), c(0, 500),
-             c(0,500),#range(chelsa[[4]]$chelsa_prec, na.rm = T),
-             range(chelsa[[5]]$chelsa_temp, na.rm = T))
+pal <- c("bilbao", "davos")
+title <- c("a Mean annual temperature",
+           "b Mean annual precipitation")
+direction <- c(1,1)
+lims <- list(range(chelsa[[1]]$bio_01, na.rm = T), 
+             range(chelsa[[2]]$bio_12, na.rm = T))
 fig_list_chelsa <- 
   purrr::pmap(list(chelsa, pal, title, direction, lims), 
               function(df, pal, t, d, l){

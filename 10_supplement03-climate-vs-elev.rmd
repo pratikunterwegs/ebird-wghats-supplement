@@ -30,10 +30,9 @@ landscape <- stack("data/spatial/landscape_resamp01km.tif")
 
 # get proper names
 elev_names <- c("elev", "slope", "aspect")
-chelsa_names <- c("chelsa_bio10_04", "chelsa_bio10_17", "chelsa_bio10_18",
-                  "chelsa_prec", "chelsa_temp")
+chelsa_names <- c("bio_01", "bio_12")
 
-names(landscape) <- as.character(glue('{c(elev_names, chelsa_names, "landcover")}'))
+names(landscape) <- as.character(glue('{c(elev_names,chelsa_names, "landcover")}'))
 ```
 
 ```{r get_data_at_elev, eval=FALSE}
@@ -52,7 +51,7 @@ land_data <- bind_cols(land_data)
 land_data <- drop_na(land_data) %>% 
   mutate(elev_round  = plyr::round_any(elev, 200)) %>% 
   select(-elev) %>% 
-  pivot_longer(cols = contains("chelsa"),
+  pivot_longer(cols = contains("bio"),
                names_to = "clim_var") %>% 
   group_by(elev_round, clim_var) %>% 
   summarise_all(.funs = list(~mean(.), ~ci(.)))
