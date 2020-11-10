@@ -32,7 +32,7 @@ scores <- read_csv("data/dataObsExpScore.csv")
 data <- read_csv("data/eBirdChecklistVars.csv")
 
 data <- left_join(data, scores, by = c("observer" = "observer"))
-data <- select(data, score, nSp, nSoi, landcover, year) %>% 
+data <- dplyr::select(data, score, nSp, nSoi, landcover, year) %>% 
   filter(!is.na(score))
 ```
 
@@ -42,7 +42,7 @@ data <- select(data, score, nSp, nSoi, landcover, year) %>%
 # summarise data by rounded score and year
 data_summary01 <- data %>% 
   mutate(score = plyr::round_any(score, 0.2)) %>% 
-  select(score, year, nSp, nSoi) %>% 
+  dplyr::select(score, year, nSp, nSoi) %>% 
   pivot_longer(cols = c("nSp", "nSoi"),
                names_to = "variable", values_to = "value") %>% 
   group_by(score, year, variable) %>% 
@@ -61,12 +61,12 @@ fig_nsp_score <-
   scale_y_log10()+
 #  coord_cartesian(ylim=c(0,50))+
   scale_colour_scico_d(palette = "cork", begin = 0.2, end = 0.8)+
-  labs(x = "expertise score", y = "species reported")+
+  labs(x = "CCI", y = "Number of Species Reported")+
   theme_few()+
   theme(legend.position = "none")
 
 # export figure
-ggsave(filename = "figs/fig_nsp_score.png", width = 8, height = 6, device = png(), dpi = 300); dev.off()
+ggsave(filename = "figs/fig_nsp_score.png", width = 12, height = 7, device = png(), dpi = 300); dev.off()
 ```
 
 ![Total number of species (blue) and species of interest to this study (green) reported in checklists from the study area over the years 2013 -- 2018, as a function of the expertise score of the reporting observer. Points represent means, with bars showing the 95% confidence intervals; data shown are for expertise scores rounded to multiples of 0.2, and the y-axis is on a log scale. Raw data are shown in the background (grey points).](figs/fig_nsp_score.png)
