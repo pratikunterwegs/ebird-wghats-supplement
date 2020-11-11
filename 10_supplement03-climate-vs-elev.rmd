@@ -71,11 +71,11 @@ fig_climate_elev <- ggplot(land_data)+
   scale_y_continuous(labels = scales::comma)+
   facet_wrap(~clim_var, scales = "free_y")+
   theme_few()+
-  labs(x = "elevation (m)", y = "CHELSA variable value")
+  labs(x = "Elevation (m)", y = "CHELSA variable value")
 
 # save as png
-ggsave(fig_climate_elev, filename = "figs/fig_climate_elev.png", 
-       height = 4, width = 6, device = png(), dpi = 300); dev.off()
+ggsave(fig_climate_elev, filename = "figs/fig_climate_elev.svg", 
+       height = 4, width = 6, device = svg(), dpi = 300); dev.off()
 ```
 
 ![CHELSA climatic variables as a function of elevation, in increments of 200m. Points represent means, while vertical lines show 95% confidence intervals.]("figs/fig_climate_elev.png")
