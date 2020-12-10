@@ -17,7 +17,6 @@ library(tidyr)
 
 library(scales)
 library(ggplot2)
-library(ggthemes)
 
 # get ci func
 ci <- function(x){qnorm(0.975)*sd(x, na.rm = T)/sqrt(length(x))}
@@ -32,7 +31,7 @@ landscape <- stack("data/spatial/landscape_resamp01km.tif")
 elev_names <- c("elev", "slope", "aspect")
 chelsa_names <- c("bio_01", "bio_12")
 
-names(landscape) <- as.character(glue('{c(elev_names,chelsa_names, "landcover")}'))
+names(landscape) <- as.character(glue('{c(elev_names, chelsa_names, "landcover")}'))
 ```
 
 ```{r get_data_at_elev, eval=FALSE}
