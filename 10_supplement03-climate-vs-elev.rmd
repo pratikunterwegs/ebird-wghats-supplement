@@ -5,6 +5,8 @@ editor_options:
 
 # Climate in relation to elevation
 
+Variation of climatic predictors as a function of elevation.
+
 ## Prepare libraries
 
 ```{r prep_libs_supp03, eval=FALSE}

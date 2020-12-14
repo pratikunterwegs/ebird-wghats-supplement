@@ -1,4 +1,4 @@
-book_filename: "ebird_wghats-supplement"
+book_filename: "supplement"
 output: 
   html_document: 
     fig_caption: yes

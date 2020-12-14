@@ -5,6 +5,8 @@ editor_options:
 
 # Distance to roads
 
+This script calculates the distance to roads from each unique locality.
+
 ## Prepare libraries
 
 ```{r setup_python, eval=FALSE}

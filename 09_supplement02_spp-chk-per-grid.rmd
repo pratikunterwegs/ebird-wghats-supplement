@@ -5,6 +5,8 @@ editor_options:
 
 # Species observation distributions
 
+This script shows the proportion of checklists that report a particular species across every 25km by 25km grid across the Nilgiris and the Anamalais. Using this analysis, we arrived at a final list of species for occupancy modeling.
+
 ## Prepare libraries
 
 ```{r setup_sup_02, eval=FALSE}
@@ -243,7 +245,7 @@ ggsave(plotDistributions,
        height = 25,width = 25, device = png(), dpi = 300); dev.off()
 ```
 
-![Proportion of checklists reporting a species in each grid cell (20km side) between 2013 and 2018. Checklists were filtered to be within the boundaries of the Nilgiris, Anamalais and the Palani hills (black outline), but rounding to 20km cells may place cells outside the boundary. Deeper shades of red indicate a higher proportion of checklists reporting a species.](figs/fig_species_distributions.png)
+![Proportion of checklists reporting a species in each grid cell (25km side) between 2013 and 2019. Checklists were filtered to be within the boundaries of the Nilgiris, Anamalais and the Palani hills (black outline), but rounding to 25km cells may place cells outside the boundary. Deeper shades of red indicate a higher proportion of checklists reporting a species.](figs/fig_species_distributions.png)
 
 ## Write the new list of species
 

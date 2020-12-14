@@ -1,21 +1,30 @@
 --- 
 knit: "bookdown::render_book"
-title: "Supplementary material for: Influence of land cover and climate on the occupancy of avian distributions along a tropical montane gradient"
-author: "Vijay Ramesh, Pratik R Gupte, and Morgan Tingley"
+title: "Supplementary material for: Using citizen science to parse climatic and landcover influences on bird occupancy within a tropical biodiversity hotspot"
+author:
+    - Vijay Ramesh
+    - Pratik R. Gupte
+    - Morgan W. Tingley
+    - VV Robin
+    - Ruth DeFries
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
     fig_caption: yes
+bibliography: [refs.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: pratikunterwegs/ebird-wghats-supplement
-description: "Supplementary material for 'Influence of land cover and climate on the occupancy of avian distributions along a tropical montane gradient'"
+github-repo: pratikunterwegs/eBirdOccupancy
+description: "Influence of land cover and climate on the occupancy of avian distributions along a tropical montane gradient"
+
 ---
 
 # Introduction
 
-This is supplementary material for a project in preparation that models occupancy for birds in the Nilgiri hills. The main project can be found here: [https://github.com/pratikunterwegs/eBirdOccupancy](https://github.com/pratikunterwegs/eBirdOccupancy).
+This is supplementary material for a project in preparation that models occupancy for birds across the Nilgiri and Anamalai hills using citizen science data. 
+
+The main project can be found here: [https://github.com/pratikunterwegs/eBirdOccupancy](https://github.com/pratikunterwegs/eBirdOccupancy).
 
 ## Attribution
 
@@ -26,5 +35,3 @@ Please contact the following in case of interest in the project.
 
 - Pratik Gupte (repo maintainer)
     - PhD student, University of Groningen
-
-- [Morgan Tingley (PI)](https://www.morgantingley.com)
