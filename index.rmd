@@ -34,5 +34,3 @@ Please contact the following in case of interest in the project.
 
 - Pratik Gupte (repo maintainer)
     - PhD student, University of Groningen
-
-- [Morgan Tingley (PI)](https://www.morgantingley.com)

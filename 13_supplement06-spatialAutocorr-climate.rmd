@@ -3,7 +3,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Spatial autocorrelation in climatic predictors
+# Spatial autocorrelation within climatic predictors
 
 ## Load libs and prep data
 
@@ -124,8 +124,8 @@ chelsa <- as.list(landscape_data[[chelsa_names]]) %>%
 
 # colour palettes
 pal <- c("bilbao", "davos")
-title <- c("a Mean annual temperature",
-           "b Mean annual precipitation")
+title <- c("a Annual Mean Temperature",
+           "b Annual Precipitation")
 direction <- c(1,1)
 lims <- list(range(chelsa[[1]]$bio_01, na.rm = T), 
              range(chelsa[[2]]$bio_12, na.rm = T))
