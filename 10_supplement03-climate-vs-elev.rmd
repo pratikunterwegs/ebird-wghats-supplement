@@ -3,7 +3,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Climate in relation to elevation
+# Variation of Environmental Predictors Over Elevation
 
 Variation of climatic predictors as a function of elevation.
 
@@ -24,6 +24,7 @@ library(ggplot2)
 ci <- function(x){qnorm(0.975)*sd(x, na.rm = T)/sqrt(length(x))}
 ```
 
+## Prepare environmental data
 
 ```{r load_rasters_supp3, eval=FALSE}
 # read landscape prepare for plotting
@@ -58,7 +59,7 @@ land_data <- drop_na(land_data) %>%
   summarise_all(.funs = list(~mean(.), ~ci(.)))
 ```
 
-## Plot climatic variables over elevation
+## Climatic variation over elevation
 
 ```{r plot_clim_elev, eval=FALSE}
 # plot in facets
@@ -81,9 +82,7 @@ ggsave(fig_climate_elev, filename = "figs/fig_climate_elev.svg",
 
 ![CHELSA climatic variables as a function of elevation, in increments of 200m. Points represent means, while vertical lines show 95% confidence intervals.]("figs/fig_climate_elev.png")
 
-# Landcover in relation to elevation
-
-## Get data from landscape rasters
+## Landcover in relation to elevation
 
 ```{r prep_lc_elev, eval=FALSE, message=FALSE}
 # get data from landscape rasters
