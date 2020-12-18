@@ -1,11 +1,11 @@
-book_filename: "ebird_wghats-supplement"
+book_filename: "ebird_occupancy_supplementary_material"
 output: 
   html_document: 
     fig_caption: yes
-  bookdown::pdf_book:
+  bookdown::pdf_document2:
     keep_tex: yes
 delete_merged_file: true
-before_chapter_script: "common.r"
+before_chapter_script: "common.R"
 output_dir: "docs"
 language:
   ui:
