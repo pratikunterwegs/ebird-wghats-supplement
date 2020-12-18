@@ -14,7 +14,6 @@ bookdown::pdf_document2:
   documentclass: scrreprt
   papersize: a4
   latex_engine: xelatex
-  highlight: pygments
   includes:
     in_header: latex/preamble.tex
     before_body: latex/before-body.tex
