@@ -3,7 +3,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Visualising Species Specific Observations
+# Selecting species of interest
 
 This script shows the proportion of checklists that report a particular species across every 25km by 25km grid across the Nilgiris and the Anamalais. Using this analysis, we arrived at a final list of species for occupancy modeling.
 
