@@ -3,7 +3,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Species observation distributions
+# Visualising Species Specific Observations
 
 This script shows the proportion of checklists that report a particular species across every 25km by 25km grid across the Nilgiris and the Anamalais. Using this analysis, we arrived at a final list of species for occupancy modeling.
 
@@ -59,7 +59,8 @@ setnames(ebd, newNames)
 # keep useful columns
 columnsOfInterest <- c(
   "scientific_name", "observation_count", "locality",
-  "locality_id", "locality_type", "latitude", "longitude", "observation_date", "sampling_event_identifier"
+  "locality_id", "locality_type", "latitude", 
+  "longitude", "observation_date", "sampling_event_identifier"
 )
 
 ebd <- ebd[, ..columnsOfInterest]
@@ -94,7 +95,8 @@ coords <- coords[, .N, by = .(longitude, latitude, X, Y)]
 
 ebd <- merge(ebd, coords, all = FALSE, by = c("longitude", "latitude"))
 
-ebd <- ebd[(longitude %in% coords$longitude) & (latitude %in% coords$latitude), ]
+ebd <- ebd[(longitude %in% coords$longitude) & 
+            (latitude %in% coords$latitude), ]
 ```
 
 ## Get proportional obs counts in 25km cells
@@ -104,10 +106,12 @@ ebd <- ebd[(longitude %in% coords$longitude) & (latitude %in% coords$latitude), 
 ebd[, `:=`(X = round_any(X), Y = round_any(Y))]
 
 # count checklists in cell
-ebd_summary <- ebd[, nchk := length(unique(sampling_event_identifier)), by = .(X, Y)]
+ebd_summary <- ebd[, nchk := length(unique(sampling_event_identifier)), 
+                    by = .(X, Y)]
 
 # count checklists reporting each species in cell and get proportion
-ebd_summary <- ebd_summary[, .(nrep = length(unique(sampling_event_identifier))),
+ebd_summary <- ebd_summary[, .(nrep = length(unique(
+  sampling_event_identifier))),
   by = .(X, Y, nchk, scientific_name)
 ]
 
@@ -152,7 +156,8 @@ ebd_summary <- left_join(ebd_summary, spp_grids, by = "scientific_name")
 
 # check the proportion of grids across which this cut-off is met for each species
 # Is it > 90% or 70%?
-# For example, with a 3% cut-off, ~100 species are occurring in >50% of the grids they have been reported in
+# For example, with a 3% cut-off, ~100 species are occurring in >50% 
+# of the grids they have been reported in
 
 p_cutoff <- 0.05 # Proportion of checklists a species has been reported in
 grid_proportions <- ebd_summary %>%
@@ -185,7 +190,7 @@ prop_all_lists <- spp_sum_chk %>%
 ```
 
 
-## Plot maps
+## Figure: Checklist distribution
 
 ```{r load_map_plot_data, eval=FALSE}
 # add land
@@ -200,7 +205,7 @@ land <- ne_countries(
 land <- st_transform(land, 32643)
 ```
 
-```{r plot_obs_distributions, eval=FALSE}
+```{r plot_obs_distributions, eval=FALSE, echo=FALSE}
 # make plot
 wg <- st_transform(wg, 32643)
 bbox <- st_bbox(wg)
@@ -275,7 +280,7 @@ dev.off()
 
 ![Proportion of checklists reporting a species in each grid cell (25km side) between 2013 and 2019. Checklists were filtered to be within the boundaries of the Nilgiris, Anamalais and the Palani hills (black outline), but rounding to 25km cells may place cells outside the boundary. Deeper shades of red indicate a higher proportion of checklists reporting a species.](figs/fig_species_distributions.png)
 
-## Write the new list of species
+## Prepare the species list
 
 ```{r}
 # write the new list of species that occur in at least 3% of checklists across a minimum of 50% of the grids they have been reported in
