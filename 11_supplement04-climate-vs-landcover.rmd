@@ -3,7 +3,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Climate in relation to landcover
+# Climate in Relation to Landcover
 
 ## Prepare libraries
 
@@ -23,6 +23,8 @@ library(scico)
 # get ci func
 ci <- function(x){qnorm(0.975)*sd(x, na.rm = T)/sqrt(length(x))}
 ```
+
+## Prepare environmental data
 
 ```{r load_rasters_supp4, eval=FALSE}
 # read landscape prepare for plotting
@@ -56,11 +58,12 @@ land_data <- drop_na(land_data) %>%
 # summarise_all(.funs = list(~mean(.), ~ci(.)))
 ```
 
-## Plot climatic variables over landcover
+## Climatic variables over landcover
 
-```{r plot_clim_lc, eval=FALSE}
+Figure code is hidden in versions rendered as HTML and PDF.
+
+```{r plot_clim_lc, eval=FALSE, echo=FALSE}
 # plot in facets
-
 fig_climate_lc <- ggplot(land_data)+
   geom_jitter(aes(x = landcover-0.25, y=value,
                   col = factor(landcover)),
