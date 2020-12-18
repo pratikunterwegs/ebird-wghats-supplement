@@ -4,7 +4,7 @@ This repository contains supplementary materials for a manuscript that uses citi
 
 The manuscript's source code can be found at https://github.com/pratikunterwegs/eBirdOccupancy
 
-## [Readable version](https://pratikunterwegs.github.io/eBirdOccupancy/)
+## [Readable version](https://pratikunterwegs.github.io/ebird-wghats-supplement/)
 
 An easy to read version of this supplementary material is available in bookdown format by clicking on the heading above.
 
