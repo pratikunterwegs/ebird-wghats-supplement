@@ -196,7 +196,7 @@ ggsave(
 
 ```{r resample_landcover_mult, eval=FALSE, warning=FALSE, message=FALSE}
 # read in landcover raster location
-landcover <- "data/landUseClassification/Reprojected Image_26thJan2020_UTM_Ghats.tif"
+landcover <- "data/landUseClassification/classifiedImage-UTM.tif"
 # get extent
 e <- bbox(raster(landcover))
 

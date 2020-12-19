@@ -5,6 +5,8 @@ editor_options:
 
 # Climate in Relation to Landcover
 
+This script showcases how climate data varies as a function of land cover types across our study area. 
+
 ## Prepare libraries
 
 ```{r prep_libs_supp04, eval=FALSE}

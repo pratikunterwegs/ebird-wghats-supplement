@@ -7,6 +7,8 @@ editor_options:
 
 This script shows the proportion of checklists that report a particular species across every 25km by 25km grid across the Nilgiris and the Anamalais. Using this analysis, we arrived at a final list of species for occupancy modeling.
 
+We derived this list from inclusion criteria adapted from the State of India’s Birds 2020 (Viswanathan et al., 2020). Initially, we considered all 561 species in eBird that occurred within the outlines of our study area. We then considered only those species that had a minimum of 1000 detections each between 2013 and 2019 (reducing to 303 species). Next, the study area was divided into 25 x 25 km cells following (Viswanathan et al., 2020). We then kept only those species that occurred in at least 5% of all checklists across 50% of the 25 x 25 km cells from where they have been reported (reducing to 93 species). We used the above criteria to ensure as much uniform sampling of a species as possible across our study area and to reduce any erroneous associations between environmental drivers and species occupancy. Across our final list of 93 species, we analyzed a total of ~3.2 million detections (presences) between 2013 and 2019. 
+
 ## Prepare libraries
 
 ```{r setup_sup_02, eval=FALSE}
@@ -65,6 +67,8 @@ columnsOfInterest <- c(
 
 ebd <- ebd[, ..columnsOfInterest]
 ```
+
+Add a spatial filter and assign grids of 25km x 25km. 
 
 ```{r strict_filter_supp02, eval=FALSE}
 # strict spatial filter and assign grid
@@ -172,7 +176,7 @@ grid_prop_cut <- filter(
 )
 
 # Write the results
-write_csv(grid_prop_cut, "data/chk_3_percent.csv")
+write_csv(grid_prop_cut, "data/chk_5_percent.csv")
 
 # Identifying the number of species that occur in potentially <5% of all lists
 total_number_lists <- sum(tot_n_chklist$nchk)
@@ -188,7 +192,6 @@ prop_all_lists <- spp_sum_chk %>%
   mutate(prop_lists = sum_chk / total_number_lists) %>%
   arrange(desc(prop_lists))
 ```
-
 
 ## Figure: Checklist distribution
 
@@ -278,12 +281,12 @@ ggsave(plotDistributions,
 dev.off()
 ```
 
-![Proportion of checklists reporting a species in each grid cell (25km side) between 2013 and 2019. Checklists were filtered to be within the boundaries of the Nilgiris, Anamalais and the Palani hills (black outline), but rounding to 25km cells may place cells outside the boundary. Deeper shades of red indicate a higher proportion of checklists reporting a species.](figs/fig_species_distributions.png)
+![Proportion of checklists reporting a species in each grid cell (25km side) between 2013 and 2019. Checklists were filtered to be within the boundaries of the Nilgiris and the Anamalai hills (black outline), but rounding to 25km cells may place cells outside the boundary. Deeper shades of red indicate a higher proportion of checklists reporting a species.](figs/fig_species_distributions.png)
 
 ## Prepare the species list
 
 ```{r}
-# write the new list of species that occur in at least 3% of checklists across a minimum of 50% of the grids they have been reported in
+# write the new list of species that occur in at least 5% of checklists across a minimum of 50% of the grids they have been reported in
 
 new_sp_list <- semi_join(specieslist, grid_prop_cut, by = "scientific_name")
 

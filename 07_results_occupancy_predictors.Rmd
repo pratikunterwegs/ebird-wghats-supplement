@@ -5,6 +5,8 @@ editor_options:
 
 # Predicting Species-specific Occupancy
 
+This supplement plots species-specific probabilites of occupancy as a function of significant environmental predictors. 
+
 ## Prepare libraries
 
 ```{r load_libs_results02, eval=FALSE}

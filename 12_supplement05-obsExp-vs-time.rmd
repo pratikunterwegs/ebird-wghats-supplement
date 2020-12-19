@@ -5,6 +5,7 @@ editor_options:
 
 # Distribution of Observer Expertise
 
+This script plots observer expertise over time (2013-2019) as well as across land cover types. 
 ## Prepare libraries
 
 ```{r prep_libs_supp05, eval=FALSE}
@@ -40,7 +41,7 @@ data <- dplyr::select(data, score, nSp, nSoi, landcover, year) %>%
   filter(!is.na(score))
 ```
 
-## Species observed in relation to osberver expertise
+## Species observed in relation to observer expertise
 
 ```{r nsp_expertise, eval=FALSE, message=FALSE}
 # summarise data by rounded score and year

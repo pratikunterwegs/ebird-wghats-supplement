@@ -5,10 +5,10 @@ editor_options:
 
 # Landcover classification
 
-This script was used to classify a 2019 Sentinel composite image across the Nilgiris and the Anamalais into seven distinct land cover classes
+This script was used to classify a 2019 Sentinel composite image across the Nilgiris and the Anamalais into seven distinct land cover types. 
 
 ```{js}
-// Data: Groundtruthed points from Arasumani 
+// Data: Groundtruthed points from Arasumani et al 2019
 
 // Function to obtain a Cloud-Free Image // 
 

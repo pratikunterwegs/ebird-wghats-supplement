@@ -444,7 +444,6 @@ py$points_list <- points_list
 py$scales_list <- scales_list
 ```
 
-
 ## Count props under threshold in Python
 
 ```{python, process_for_spat_indep, eval=FALSE, message=FALSE, warning=FALSE}
