@@ -33,8 +33,8 @@ ci <- function(x) {
 
 ```{r load_data_supp05, eval=FALSE, message=FALSE}
 # read in scores and checklist data and link
-scores <- read_csv("data/dataObsExpScore.csv")
-data <- read_csv("data/eBirdChecklistVars.csv")
+scores <- read_csv("data/03_data-obsExpertise-score.csv")
+data <- read_csv("data/03_data-covars-perChklist.csv")
 
 data <- left_join(data, scores, by = c("observer" = "observer"))
 data <- dplyr::select(data, score, nSp, nSoi, landcover, year) %>%

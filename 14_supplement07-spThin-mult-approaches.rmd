@@ -40,7 +40,7 @@ wg <- st_read("data/spatial/hillsShapefile/Nil_Ana_Pal.shp") %>%
 # get scales
 # load checklist data and select one per rounded 500m coordinates
 {
-  data <- read_csv("data/eBirdChecklistVars.csv") %>%
+  data <- read_csv("data/03_data-covars-perChklist.csv") %>%
     count(longitude, latitude, name = "tot_effort")
 
 
@@ -175,7 +175,7 @@ from scipy.spatial import cKDTree
 # read in checklist covariates for conversion to gpd
 # get unique coordinates, assign them to the df
 # convert df to geo-df
-chkCovars = pd.read_csv("data/eBirdChecklistVars.csv")
+chkCovars = pd.read_csv("data/03_data-covars-perChklist.csv")
 ul = chkCovars[['longitude', 'latitude']].drop_duplicates(subset=['longitude', 'latitude'])
 ul['coordId'] = np.arange(0, ul.shape[0])
 

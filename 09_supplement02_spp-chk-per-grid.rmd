@@ -48,7 +48,7 @@ wg <- st_read("data/spatial/hillsShapefile/Nil_Ana_Pal.shp")
 box <- st_bbox(wg)
 
 # read in data and subset
-ebd <- fread("data/eBirdDataWG_filtered.txt")
+ebd <- fread("data/01_ebird-filtered-EBD-westernGhats.txt")
 ebd <- ebd[between(LONGITUDE, box["xmin"], box["xmax"]) &
   between(LATITUDE, box["ymin"], box["ymax"]), ]
 ebd <- ebd[year(`OBSERVATION DATE`) >= 2013, ]
@@ -91,7 +91,7 @@ coords <- coords %>%
   st_drop_geometry() %>%
   as.data.table()
 
-# remove unneeded objs
+# remove unneeded objects
 rm(locs)
 gc()
 
@@ -241,7 +241,7 @@ plotNchk <-
 
 # export data
 ggsave(plotNchk,
-  filename = "figs/fig_number_checklists_10km.png", height = 12,
+  filename = "figs/fig_number_checklists_25km.png", height = 12,
   width = 7, device = png(), dpi = 300
 )
 dev.off()
@@ -290,5 +290,5 @@ dev.off()
 
 new_sp_list <- semi_join(specieslist, grid_prop_cut, by = "scientific_name")
 
-write_csv(new_sp_list, "data/3_List_of_species_cutoff.csv", row.names = F)
+write_csv(new_sp_list, "data/03_list-of-species-cutoff.csv")
 ```

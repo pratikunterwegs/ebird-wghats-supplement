@@ -19,6 +19,7 @@ library(tidyr)
 library(glue)
 library(scales)
 library(gdalUtils)
+library(sf)
 
 # plot libs
 library(ggplot2)
@@ -127,7 +128,7 @@ fig_vgrams <- purrr::map(fig_vgrams, as_grob)
 
 # make ggplot of chelsa data
 chelsa <- as.list(landscape_data[[chelsa_names]]) %>%
-  purrr::map(st_as_stars)
+  purrr::map(stars::st_as_stars)
 
 # colour palettes
 pal <- c("bilbao", "davos")
@@ -145,7 +146,7 @@ fig_list_chelsa <-
     list(chelsa, pal, title, direction, lims),
     function(df, pal, t, d, l) {
       ggplot() +
-        geom_stars(data = df) +
+        stars::geom_stars(data = df) +
         geom_sf(data = land, fill = NA, colour = "black") +
         geom_sf(data = wg, fill = NA, colour = "black", size = 0.3) +
         scale_fill_scico(
@@ -156,7 +157,7 @@ fig_list_chelsa <-
           xlim = bbox[c("xmin", "xmax")],
           ylim = bbox[c("ymin", "ymax")]
         ) +
-        annotation_scale(location = "tr", width_hint = 0.4, text_cex = 1) +
+        ggspatial::annotation_scale(location = "tr", width_hint = 0.4, text_cex = 1) +
         theme_few() +
         theme(
           legend.position = "top",
@@ -166,7 +167,7 @@ fig_list_chelsa <-
           legend.text = element_text(size = 8),
           axis.title = element_blank(),
           axis.text.y = element_text(angle = 90, hjust = 0.5),
-          # panel.background = element_rect(fill = "lightblue"),
+          panel.background = element_rect(fill = "lightblue"),
           legend.title = element_blank()
         ) +
         labs(x = NULL, y = NULL, title = t)
@@ -186,6 +187,7 @@ ggsave(
   plot = plot_grid, filename = "figs/fig_chelsa_variograms.png",
   dpi = 300, width = 12, height = 6
 )
+dev.off()
 ```
 
 ![CHELSA rasters with study area outline, and associated semivariograms. Semivariograms are on a log-transformed y-axis.](figs/fig_chelsa_variograms.png)
@@ -212,7 +214,7 @@ res_final <- map(c(100, 250, 500, 1e3, 2.5e3), function(x) {
 for (i in 1:length(res_final)) {
   this_res <- res_final[[i]]
   this_res_char <- stringr::str_pad(this_res[1], 5, pad = "0")
-  gdalwarp(
+  gdalUtils::gdalwarp(
     srcfile = landcover,
     dstfile = as.character(glue("data/landUseClassification/lc_{this_res_char}m.tif")),
     tr = c(this_res), r = "mode", te = c(e)
@@ -254,7 +256,7 @@ chelsaData <- purrr::map(chelsaFiles, function(chr) {
 
 # stack chelsa data
 chelsaData <- raster::stack(chelsaData)
-names(chelsaData) <- c("chelsa_bio10_04", "chelsa_bio10_17", "chelsa_bio10_18", "chelsa_prec", "chelsa_temp")
+names(chelsaData) <- c("chelsa_bio10_01", "chelsa_bio10_12")
 ```
 
 ## Resample prepared rasters
@@ -271,24 +273,20 @@ resamp_data <- map(lc_data, function(this_scale) {
 # make a stars list
 resamp_data <- map2(resamp_data, lc_data, function(z1, z2) {
   z2[z2 == 0] <- NA
-  z2 <- append(z2, as.list(z1)) %>% map(st_as_stars)
+  z2 <- append(z2, as.list(z1)) %>% map(stars::st_as_stars)
 }) %>%
   flatten()
 ```
 
 ```{r plot_resampled_rasters, eval=FALSE, message=FALSE, echo=FALSE}
 # colour palettes
-pal <- c("batlow", "bilbao", "davos", "davos", "nuuk", "bilbao")
+pal <- c("batlow", "bilbao")
 title <- c(
-  "a landcover",
-  "b Temp. seasonality",
-  "c Ppt. driest qtr.",
-  "d Ppt. warmest qtr.",
-  "e Variation ppt.",
-  "f Variation temp."
+  "a Annual Mean Temperature",
+  "b Annual Precipitation"
 )
 title <- c(title, rep("", 24))
-direction <- c(1, 1, -1, -1, -1, 1)
+direction <- c(1, 1)
 
 scales <- c(
   c("1.0km", rep("", 5)), c("2.5km", rep("", 5)),

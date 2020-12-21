@@ -25,7 +25,7 @@ library(scales)
 
 ```{r load_data_s08, eval=FALSE}
 # load checklist covariates
-data <- fread("data/eBirdChecklistVars.csv")
+data <- fread("data/03_data-covars-perChklist.csv")
 
 effort_distance_summary <- data[, effort_distance_class :=
   cut(distance, breaks = c(
