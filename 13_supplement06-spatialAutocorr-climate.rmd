@@ -50,15 +50,14 @@ raster_to_df <- function(inp) {
 
 ```{r load_data_supp06, eval=FALSE, message=FALSE}
 # list landscape covariate stacks
-landscape_files <- "data/spatial/landscape_resamp01km.tif"
+landscape_files <- "data/spatial/landscape_resamp01_km.tif"
 landscape_data <- stack(landscape_files)
 
 # get proper names
-{
-  elev_names <- c("elev", "slope", "aspect")
-  chelsa_names <- c("bio_01", "bio_12")
-  names(landscape_data) <- as.character(glue('{c(elev_names, chelsa_names, "landcover")}'))
-}
+elev_names <- c("elev", "slope", "aspect")
+chelsa_names <- c("bio_01", "bio_12")
+names(landscape_data) <- c(elev_names, chelsa_names, "landcover")
+
 
 # get chelsa rasters
 chelsa <- landscape_data[[chelsa_names]]
@@ -124,7 +123,7 @@ fig_vgrams <- purrr::pmap(list(vgrams$data, yaxis, xaxis), function(df, ya, xa) 
       strip.text = element_blank()
     )
 })
-fig_vgrams <- purrr::map(fig_vgrams, as_grob)
+# fig_vgrams <- purrr::map(fig_vgrams, ggplot2::ggplotGrob)
 
 # make ggplot of chelsa data
 chelsa <- as.list(landscape_data[[chelsa_names]]) %>%
@@ -138,8 +137,8 @@ title <- c(
 )
 direction <- c(1, 1)
 lims <- list(
-  range(chelsa[[1]]$bio_01, na.rm = T),
-  range(chelsa[[2]]$bio_12, na.rm = T)
+  range(values(landscape_data$bio_01), na.rm = T),
+  range(values(landscape_data$bio_12), na.rm = T)
 )
 fig_list_chelsa <-
   purrr::pmap(
@@ -173,21 +172,29 @@ fig_list_chelsa <-
         labs(x = NULL, y = NULL, title = t)
     }
   )
-fig_list_chelsa <- purrr::map(fig_list_chelsa, as_grob)
+# fig_list_chelsa <- purrr::map(fig_list_chelsa, ggplotGrob)
 ```
 
 ```{r prep_figures_vgrams, eval=FALSE, message=FALSE}
-fig_list_chelsa <- append(fig_list_chelsa, fig_vgrams)
-lmatrix <- matrix(c(c(1, 2, 3, 4, 5), c(1, 2, 3, 4, 5), c(6, 7, 8, 9, 10)),
-  nrow = 3, byrow = T
-)
-plot_grid <- grid.arrange(grobs = fig_list_chelsa, layout_matrix = lmatrix)
+# fig_list_chelsa <- append(fig_list_chelsa, fig_vgrams)
+# lmatrix <- matrix(c(c(1, 2, 3, 4, 5), c(1, 2, 3, 4, 5), c(6, 7, 8, 9, 10)),
+#   nrow = 3, byrow = T
+# )
+# plot_grid <- grid.arrange(grobs = fig_list_chelsa, layout_matrix = lmatrix)
+#
+# ggsave(
+#   plot = plot_grid, filename = "figs/fig_chelsa_variograms.png",
+#   dpi = 300, width = 12, height = 6
+# )
+# dev.off()
 
-ggsave(
-  plot = plot_grid, filename = "figs/fig_chelsa_variograms.png",
-  dpi = 300, width = 12, height = 6
+library(patchwork)
+fig_variogram <- wrap_plots(append(fig_list_chelsa, fig_vgrams))
+ggsave(fig_variogram,
+  filename = "figs/fig_chelsa_variograms.png",
+  dpi = 300,
+  width = 6, height = 6
 )
-dev.off()
 ```
 
 ![CHELSA rasters with study area outline, and associated semivariograms. Semivariograms are on a log-transformed y-axis.](figs/fig_chelsa_variograms.png)
