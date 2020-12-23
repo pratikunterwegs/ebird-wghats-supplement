@@ -1,7 +1,7 @@
 ## ----load_libs_results02, eval=FALSE------------------------------------------
 ## # to load data
 ## library(readxl)
-##
+## 
 ## # to handle data
 ## library(dplyr)
 ## library(readr)
@@ -9,7 +9,7 @@
 ## library(tidyr)
 ## library(purrr)
 ## library(stringr)
-##
+## 
 ## # plotting
 ## library(ggplot2)
 ## library(patchwork)
@@ -64,3 +64,4 @@ cairo_pdf(
 )
 fig_occupancy
 dev.off()
+

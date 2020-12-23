@@ -4,17 +4,17 @@
 ## library(glue)
 ## library(readr)
 ## library(sf)
-##
+## 
 ## # plotting
 ## library(ggthemes)
 ## library(scico)
 ## library(scales)
-##
+## 
 ## # ci func
 ## ci <- function(x) {
 ##   qnorm(0.975) * sd(x, na.rm = T) / sqrt(length(x))
 ## }
-##
+## 
 ## # load python libs here
 ## library(reticulate)
 ## # set python path
@@ -25,28 +25,28 @@
 ## # load the shapefile of the study area
 ## wg <- st_read("data/spatial/hillsShapefile/Nil_Ana_Pal.shp") %>%
 ##   st_transform(32643)
-##
+## 
 ## # get scales
 ## # load checklist data and select one per rounded 500m coordinates
 ## {
-##   data <- read_csv("data/eBirdChecklistVars.csv") %>%
+##   data <- read_csv("data/03_data-covars-perChklist.csv") %>%
 ##     count(longitude, latitude, name = "tot_effort")
-##
-##
+## 
+## 
 ##   # how many unique points
 ##   n_all_points <- nrow(data)
 ##   d_all_effort <- sum(data$tot_effort)
-##
+## 
 ##   # round to different scales
 ##   scale <- c(100, 250, 500, 1000)
-##
+## 
 ##   # group data by scale
 ##   data <- crossing(scale, data) %>%
 ##     group_by(scale) %>%
 ##     nest() %>%
 ##     ungroup()
 ## }
-##
+## 
 ## # select one point per grid cell
 ## data <- mutate(data, data = map2(scale, data, function(sc, df) {
 ##   # transform the data
@@ -60,17 +60,17 @@
 ##       X_round = plyr::round_any(X, sc),
 ##       Y_round = plyr::round_any(Y, sc)
 ##     )
-##
+## 
 ##   # make a grid
 ##   grid <- st_make_grid(wg, cellsize = sc)
-##
+## 
 ##   # which cell contains which points
 ##   grid_contents <- st_contains(grid, df) %>%
 ##     as_tibble() %>%
 ##     rename(cell = row.id, coordId = col.id)
-##
+## 
 ##   rm(grid)
-##
+## 
 ##   # what's the max point in each grid
 ##   points_max <- left_join(df %>% st_drop_geometry(),
 ##     grid_contents,
@@ -78,7 +78,7 @@
 ##   ) %>%
 ##     group_by(cell) %>%
 ##     filter(tot_effort == max(tot_effort))
-##
+## 
 ##   # get summary for max
 ##   max_sites <- points_max %>%
 ##     ungroup() %>%
@@ -90,7 +90,7 @@
 ##       cols = everything(),
 ##       names_to = "variable"
 ##     )
-##
+## 
 ##   # select a random point in each grid
 ##   points_rand <- left_join(df %>% st_drop_geometry(),
 ##     grid_contents,
@@ -98,7 +98,7 @@
 ##   ) %>%
 ##     group_by(cell) %>%
 ##     sample_n(size = 1)
-##
+## 
 ##   # get summary for rand
 ##   rand_sites <- points_rand %>%
 ##     ungroup() %>%
@@ -110,16 +110,16 @@
 ##       cols = everything(),
 ##       names_to = "variable"
 ##     )
-##
+## 
 ##   df <- tibble(
 ##     grid_rand = list(rand_sites), grid_max = list(max_sites),
 ##     points_rand = list(points_rand), points_max = list(points_max)
 ##   )
 ## }))
-##
+## 
 ## # unnest data
 ## data <- unnest(data, cols = data)
-##
+## 
 ## # save summary as another object
 ## data_thin_trad <- data %>%
 ##   select(-contains("points")) %>%
@@ -128,11 +128,11 @@
 ##     names_to = "method", values_to = "somedata"
 ##   ) %>%
 ##   unnest(cols = somedata)
-##
+## 
 ## # save points for later comparison
 ## points_thin_trad <- data %>%
 ##   select(contains("points"), scale)
-##
+## 
 ## rm(data)
 
 
@@ -142,22 +142,22 @@
 
 ## import matplotlib.pyplot as plt
 
-##
+## 
 ## # libs for dataframes
 
 ## import pandas as pd
 
-##
+## 
 ## # network lib
 
 ## import networkx as nx
 
-##
+## 
 ## # import libs for geodata
 
 ## import geopandas as gpd
 
-##
+## 
 ## # import ckdtree
 
 ## from scipy.spatial import cKDTree
@@ -169,25 +169,25 @@
 
 ## # convert df to geo-df
 
-## chkCovars = pd.read_csv("data/eBirdChecklistVars.csv")
+## chkCovars = pd.read_csv("data/03_data-covars-perChklist.csv")
 
 ## ul = chkCovars[['longitude', 'latitude']].drop_duplicates(subset=['longitude', 'latitude'])
 
 ## ul['coordId'] = np.arange(0, ul.shape[0])
 
-##
+## 
 ## # get effort at each coordinate
 
 ## effort = chkCovars.groupby(['longitude', 'latitude']).size().to_frame('tot_effort')
 
 ## effort = effort.reset_index()
 
-##
+## 
 ## # merge effort on ul
 
 ## ul = pd.merge(ul, effort, on=['longitude', 'latitude'])
 
-##
+## 
 ## # make gpd and drop col from ul
 
 ## ulgpd = gpd.GeoDataFrame(ul, geometry=gpd.points_from_xy(ul.longitude, ul.latitude))
@@ -200,7 +200,7 @@
 
 ## ul = pd.DataFrame(ul.drop(columns="geometry"))
 
-##
+## 
 ## # function to use ckdtrees for nearest point finding
 
 ## def ckd_pairs(gdfA, dist_indep):
@@ -213,13 +213,13 @@
 
 ##     return dist
 
-##
+## 
 ## # define scales in metres
 
 ## scales = [100, 250, 500, 1000]
 
-##
-##
+## 
+## 
 ## # function to process ckd_pairs
 
 ## def make_modules(scale):
@@ -270,13 +270,13 @@
 
 ##     return [site_pairs, module_data]
 
-##
-##
+## 
+## 
 ## # run make modules on ulgpd at scales
 
 ## data = list(map(make_modules, scales))
 
-##
+## 
 ## # extract data for output
 
 ## tot_pair_data = []
@@ -289,12 +289,12 @@
 
 ##     tot_module_data.append(data[i][1])
 
-##
+## 
 ## tot_pair_data = pd.concat(tot_pair_data, ignore_index=True)
 
 ## tot_module_data = pd.concat(tot_module_data, ignore_index=True)
 
-##
+## 
 ## # make dict of positions and array of coordinates
 
 ## # site_id = np.concatenate((site_pairs.p1.unique(), site_pairs.p2.unique()))
@@ -305,14 +305,14 @@
 
 ## # pos_dict = dict(zip(site_id, locations_df))
 
-##
+## 
 ## # output data
 
 ## tot_module_data.to_csv(path_or_buf="data/site_modules.csv", index=False)
 
 ## tot_pair_data.to_csv(path_or_buf="data/site_pairs.csv", index=False)
 
-##
+## 
 ## # ends here
 
 
@@ -320,33 +320,33 @@
 ## # read in pair and module data
 ## pairs <- read_csv("data/site_pairs.csv")
 ## mods <- read_csv("data/site_modules.csv")
-##
+## 
 ## # count pairs at each scale
 ## count(pairs, scale)
 ## pairs %>%
 ##   group_by(scale) %>%
 ##   summarise(non_indep_pairs = length(unique(c(p1, p2))) / n_all_points)
 ## count(mods, scale)
-##
+## 
 ## # nest by scale and add module data
 ## data <- nest(pairs, data = c(p1, p2))
 ## modules <- group_by(mods, scale) %>%
 ##   nest() %>%
 ##   ungroup()
-##
+## 
 ## # add module data
 ## data <- mutate(data,
 ##   modules = modules$data,
 ##   data = map2(data, modules, function(df, m) {
 ##     df <- left_join(df, m, by = c("p1" = "coordId"))
 ##     df <- left_join(df, m, by = c("p2" = "coordId"))
-##
+## 
 ##     df <- filter(df, module.x == module.y)
 ##     return(df)
 ##   })
 ## ) %>%
 ##   select(-modules)
-##
+## 
 ## # split by module
 ## data$data <- map(data$data, function(df) {
 ##   df <- group_by(df, module.x, module.y) %>%
@@ -362,63 +362,63 @@
 ##   {
 ##     a <- pair_data %>%
 ##       select(p1, p2)
-##
+## 
 ##     nodes_a_init <- unique(c(a$p1, a$p2))
-##
+## 
 ##     i_n_d <- filter(mods, coordId %in% nodes_a_init) %>%
 ##       select(node = coordId, tot_effort) %>%
 ##       mutate(s_f_r = NA)
-##
+## 
 ##     nodes_keep <- c()
 ##     nodes_removed <- c()
 ##   }
-##
+## 
 ##   while (nrow(a) > 0) {
-##
+## 
 ##     # how many nodes in a
 ##     nodes_a <- unique(c(a$p1, a$p2))
-##
+## 
 ##     # get node or site efforts and arrange in ascending order
 ##     b <- i_n_d %>% filter(node %in% nodes_a)
-##
+## 
 ##     for (i in 1:nrow(b)) {
 ##       # which node to remove
 ##       node_out <- b$node[i]
 ##       # how much tot_effort lost
 ##       d_n_o <- b$tot_effort[i]
-##
+## 
 ##       # how many rows remain in a if node_out is removed?
 ##       a_n_o <- filter(a, p1 != node_out, p2 != node_out)
 ##       indep_nodes <- setdiff(nodes_a, unique(c(a_n_o$p1, a_n_o$p2, node_out)))
-##
+## 
 ##       # how much sampling effort made spatially independent
 ##       indep_sampling <- filter(b, node %in% indep_nodes) %>%
 ##         summarise(tot_effort = sum(tot_effort)) %>%
 ##         .$tot_effort
-##
+## 
 ##       # message(glue::glue('{node_out} removal frees {indep_sampling} m'))
 ##       # sampling freed by sampling lost
 ##       b$s_f_r[i] <- indep_sampling / d_n_o
 ##     }
-##
+## 
 ##     # arrange node data by decreasing sfr and increasing tot_effort
 ##     # highest tot_effort nodes are processed last
 ##     b <- arrange(b, -s_f_r, tot_effort)
-##
+## 
 ##     nodes_removed <- c(nodes_removed, b$node[1])
-##
+## 
 ##     # remove pairs of nodes containing the highest sfr node in b
 ##     a <- filter(a, p1 != b$node[1], p2 != b$node[1])
-##
+## 
 ##     nodes_keep <- c(nodes_keep, setdiff(nodes_a, unique(c(a$p1, a$p2, nodes_removed))))
 ##   }
-##
+## 
 ##   message(glue::glue("keeping {length(nodes_keep)} of {length(nodes_a_init)}"))
-##
+## 
 ##   # node_status <- tibble(nodes = c(nodes_keep, nodes_removed),
 ##   #                       status = c(rep(TRUE, length(nodes_keep)),
 ##   #                                  rep(FALSE, length(nodes_removed))))
-##
+## 
 ##   return(as.integer(nodes_removed))
 ## }
 
@@ -430,7 +430,7 @@
 ## sites_removed <- map(data$data, function(df) {
 ##   remove_sites <- unlist(purrr::map(df$data, remove_which_sites))
 ## })
-##
+## 
 ## # save as rdata
 ## save(sites_removed, file = "data/data_network_sites_removed.rdata")
 
@@ -438,16 +438,16 @@
 ## ----remove_network_thinned_sites, eval=FALSE, message=FALSE, warning=FALSE----
 ## # get python sites
 ## ul <- py$ul
-##
+## 
 ## load("data/data_network_sites_removed.rdata")
-##
+## 
 ## # subset sites
 ## data <- mutate(data,
 ##   data = map(sites_removed, function(site_id) {
 ##     as_tibble(filter(ul, !coordId %in% site_id))
 ##   })
 ## )
-##
+## 
 ## # which points are kept
 ## points_thin_net <- mutate(data,
 ##   data = map(data, function(df) {
@@ -460,7 +460,7 @@
 ##       st_drop_geometry()
 ##   })
 ## )
-##
+## 
 ## # get metrics for method
 ## data_thin_net <- unnest(data, cols = "data") %>%
 ##   group_by(scale) %>%
@@ -476,16 +476,16 @@
 
 
 ## ----compare_points_remaining, eval=FALSE, message=FALSE, warning=FALSE-------
-##
+## 
 ## # get points by each method
 ## points_list <- append(points_thin_net$data, values = append(
 ##   points_thin_trad$points_rand,
 ##   points_thin_trad$points_max
 ## ))
-##
+## 
 ## # get scales as list
 ## scales_list <- list(100, 250, 500, 1000, rep(c(100, 250, 500, 1000), 2)) %>% flatten()
-##
+## 
 ## # send to python
 ## py$points_list <- points_list
 ## py$scales_list <- scales_list
@@ -501,8 +501,8 @@
 
 ##     return df
 
-##
-##
+## 
+## 
 ## # function for mean nnd
 
 ## # function to use ckdtrees for nearest point finding
@@ -527,13 +527,13 @@
 
 ##     return mean_dist_diff
 
-##
-##
+## 
+## 
 ## # apply to all data
 
 ## points_list = list(map(make_gpd, points_list))
 
-##
+## 
 ## # get nnb all data
 
 ## mean_dist_diff = list(map(ckd_test, points_list, points_list, scales_list))
@@ -542,7 +542,7 @@
 ## ----compare_methods_plot, eval=FALSE, message=FALSE, warning=FALSE-----------
 ## # combine the thinning metrics data
 ## data_plot <- bind_rows(data_thin_net, data_thin_trad)
-##
+## 
 ## # get data for mean distance
 ## data_thin_compare <- tibble(
 ##   scale = unlist(scales_list),
@@ -557,10 +557,10 @@
 ##     cols = "mean NND - buffer (m)",
 ##     names_to = "variable"
 ##   )
-##
+## 
 ## # bind rows with other data
 ## data_plot <- bind_rows(data_plot, data_thin_compare)
-##
+## 
 ## # plot results
 ## fig_spatial_thinning <-
 ##   ggplot(data_plot) +
@@ -575,10 +575,11 @@
 ##   theme_few() +
 ##   theme(legend.position = "top") +
 ##   labs(x = "buffer distance (m)")
-##
+## 
 ## # save
 ## ggsave(fig_spatial_thinning,
 ##   filename = "figs/fig_spatial_thinning_02.png", width = 10, height = 4,
 ##   dpi = 300
 ## )
 ## dev.off()
+

@@ -10,7 +10,8 @@
 ## library(glue)
 ## library(scales)
 ## library(gdalUtils)
-##
+## library(sf)
+## 
 ## # plot libs
 ## library(ggplot2)
 ## library(ggthemes)
@@ -18,36 +19,35 @@
 ## library(gridExtra)
 ## library(cowplot)
 ## library(ggspatial)
-##
+## 
 ## #' make custom functiont to convert matrix to df
 ## raster_to_df <- function(inp) {
-##
+## 
 ##   # assert is a raster obj
 ##   assertthat::assert_that("RasterLayer" %in% class(inp),
 ##     msg = "input is not a raster"
 ##   )
-##
+## 
 ##   coords <- coordinates(inp)
 ##   vals <- getValues(inp)
-##
+## 
 ##   data <- tibble(x = coords[, 1], y = coords[, 2], value = vals)
-##
+## 
 ##   return(data)
 ## }
 
 
 ## ----load_data_supp06, eval=FALSE, message=FALSE------------------------------
 ## # list landscape covariate stacks
-## landscape_files <- "data/spatial/landscape_resamp01km.tif"
+## landscape_files <- "data/spatial/landscape_resamp01_km.tif"
 ## landscape_data <- stack(landscape_files)
-##
+## 
 ## # get proper names
-## {
-##   elev_names <- c("elev", "slope", "aspect")
-##   chelsa_names <- c("bio_01", "bio_12")
-##   names(landscape_data) <- as.character(glue('{c(elev_names, chelsa_names, "landcover")}'))
-## }
-##
+## elev_names <- c("elev", "slope", "aspect")
+## chelsa_names <- c("bio_01", "bio_12")
+## names(landscape_data) <- c(elev_names, chelsa_names, "landcover")
+## 
+## 
 ## # get chelsa rasters
 ## chelsa <- landscape_data[[chelsa_names]]
 ## chelsa <- purrr::map(as.list(chelsa), raster_to_df)
@@ -60,10 +60,10 @@
 ##   vgram <- gstat::variogram(value ~ 1, loc = ~ x + y, data = z)
 ##   return(vgram)
 ## })
-##
+## 
 ## # save temp
 ## save(vgrams, file = "data/chelsa/chelsaVariograms.rdata")
-##
+## 
 ## # get variogram data
 ## vgrams <- purrr::map(vgrams, function(df) {
 ##   df %>% select(dist, gamma)
@@ -78,7 +78,7 @@
 ## wg <- st_read("data/spatial/hillsShapefile/Nil_Ana_Pal.shp") %>%
 ##   st_transform(32643)
 ## bbox <- st_bbox(wg)
-##
+## 
 ## # add lamd
 ## library(rnaturalearth)
 ## land <- ne_countries(
@@ -86,7 +86,7 @@
 ##   country = "india",
 ##   returnclass = c("sf")
 ## )
-##
+## 
 ## # crop land
 ## land <- st_transform(land, 32643)
 
@@ -108,12 +108,12 @@
 ##       strip.text = element_blank()
 ##     )
 ## })
-## fig_vgrams <- purrr::map(fig_vgrams, as_grob)
-##
+## # fig_vgrams <- purrr::map(fig_vgrams, ggplot2::ggplotGrob)
+## 
 ## # make ggplot of chelsa data
 ## chelsa <- as.list(landscape_data[[chelsa_names]]) %>%
-##   purrr::map(st_as_stars)
-##
+##   purrr::map(stars::st_as_stars)
+## 
 ## # colour palettes
 ## pal <- c("bilbao", "davos")
 ## title <- c(
@@ -122,15 +122,15 @@
 ## )
 ## direction <- c(1, 1)
 ## lims <- list(
-##   range(chelsa[[1]]$bio_01, na.rm = T),
-##   range(chelsa[[2]]$bio_12, na.rm = T)
+##   range(values(landscape_data$bio_01), na.rm = T),
+##   range(values(landscape_data$bio_12), na.rm = T)
 ## )
 ## fig_list_chelsa <-
 ##   purrr::pmap(
 ##     list(chelsa, pal, title, direction, lims),
 ##     function(df, pal, t, d, l) {
 ##       ggplot() +
-##         geom_stars(data = df) +
+##         stars::geom_stars(data = df) +
 ##         geom_sf(data = land, fill = NA, colour = "black") +
 ##         geom_sf(data = wg, fill = NA, colour = "black", size = 0.3) +
 ##         scale_fill_scico(
@@ -141,7 +141,7 @@
 ##           xlim = bbox[c("xmin", "xmax")],
 ##           ylim = bbox[c("ymin", "ymax")]
 ##         ) +
-##         annotation_scale(location = "tr", width_hint = 0.4, text_cex = 1) +
+##         ggspatial::annotation_scale(location = "tr", width_hint = 0.4, text_cex = 1) +
 ##         theme_few() +
 ##         theme(
 ##           legend.position = "top",
@@ -151,47 +151,56 @@
 ##           legend.text = element_text(size = 8),
 ##           axis.title = element_blank(),
 ##           axis.text.y = element_text(angle = 90, hjust = 0.5),
-##           # panel.background = element_rect(fill = "lightblue"),
+##           panel.background = element_rect(fill = "lightblue"),
 ##           legend.title = element_blank()
 ##         ) +
 ##         labs(x = NULL, y = NULL, title = t)
 ##     }
 ##   )
-## fig_list_chelsa <- purrr::map(fig_list_chelsa, as_grob)
+## # fig_list_chelsa <- purrr::map(fig_list_chelsa, ggplotGrob)
 
 
 ## ----prep_figures_vgrams, eval=FALSE, message=FALSE---------------------------
-## fig_list_chelsa <- append(fig_list_chelsa, fig_vgrams)
-## lmatrix <- matrix(c(c(1, 2, 3, 4, 5), c(1, 2, 3, 4, 5), c(6, 7, 8, 9, 10)),
-##   nrow = 3, byrow = T
-## )
-## plot_grid <- grid.arrange(grobs = fig_list_chelsa, layout_matrix = lmatrix)
-##
-## ggsave(
-##   plot = plot_grid, filename = "figs/fig_chelsa_variograms.png",
-##   dpi = 300, width = 12, height = 6
+## # fig_list_chelsa <- append(fig_list_chelsa, fig_vgrams)
+## # lmatrix <- matrix(c(c(1, 2, 3, 4, 5), c(1, 2, 3, 4, 5), c(6, 7, 8, 9, 10)),
+## #   nrow = 3, byrow = T
+## # )
+## # plot_grid <- grid.arrange(grobs = fig_list_chelsa, layout_matrix = lmatrix)
+## #
+## # ggsave(
+## #   plot = plot_grid, filename = "figs/fig_chelsa_variograms.png",
+## #   dpi = 300, width = 12, height = 6
+## # )
+## # dev.off()
+## 
+## library(patchwork)
+## fig_variogram <- wrap_plots(append(fig_list_chelsa, fig_vgrams))
+## ggsave(fig_variogram,
+##   filename = "figs/fig_chelsa_variograms.png",
+##   dpi = 300,
+##   width = 6, height = 6
 ## )
 
 
 ## ----resample_landcover_mult, eval=FALSE, warning=FALSE, message=FALSE--------
 ## # read in landcover raster location
-## landcover <- "data/landUseClassification/Reprojected Image_26thJan2020_UTM_Ghats.tif"
+## landcover <- "data/landUseClassification/classifiedImage-UTM.tif"
 ## # get extent
 ## e <- bbox(raster(landcover))
-##
+## 
 ## # init resolution
 ## res_init <- res(raster(landcover))
 ## # res to transform to 1000m
 ## res_final <- map(c(100, 250, 500, 1e3, 2.5e3), function(x) {
 ##   x * res_init
 ## })
-##
+## 
 ## # use gdalutils gdalwarp for resampling transform
 ## # to 1km from 10m
 ## for (i in 1:length(res_final)) {
 ##   this_res <- res_final[[i]]
 ##   this_res_char <- stringr::str_pad(this_res[1], 5, pad = "0")
-##   gdalwarp(
+##   gdalUtils::gdalwarp(
 ##     srcfile = landcover,
 ##     dstfile = as.character(glue("data/landUseClassification/lc_{this_res_char}m.tif")),
 ##     tr = c(this_res), r = "mode", te = c(e)
@@ -218,7 +227,7 @@
 ## ----chelsa_rasters_s06, eval=FALSE, message=FALSE, warning=FALSE-------------
 ## # list chelsa files
 ## chelsaFiles <- list.files("data/chelsa/", full.names = TRUE, pattern = "*.tif")
-##
+## 
 ## # gather chelsa rasters
 ## chelsaData <- purrr::map(chelsaFiles, function(chr) {
 ##   a <- raster(chr)
@@ -226,10 +235,10 @@
 ##   a <- crop(a, as(buffer, "Spatial"))
 ##   return(a)
 ## })
-##
+## 
 ## # stack chelsa data
 ## chelsaData <- raster::stack(chelsaData)
-## names(chelsaData) <- c("chelsa_bio10_04", "chelsa_bio10_17", "chelsa_bio10_18", "chelsa_prec", "chelsa_temp")
+## names(chelsaData) <- c("chelsa_bio10_01", "chelsa_bio10_12")
 
 
 ## ----resample_clim_rasters, eval=FALSE, message=FALSE-------------------------
@@ -240,35 +249,31 @@
 ##     crs = crs(this_scale), res = res(this_scale)
 ##   )
 ## })
-##
+## 
 ## # make a stars list
 ## resamp_data <- map2(resamp_data, lc_data, function(z1, z2) {
 ##   z2[z2 == 0] <- NA
-##   z2 <- append(z2, as.list(z1)) %>% map(st_as_stars)
+##   z2 <- append(z2, as.list(z1)) %>% map(stars::st_as_stars)
 ## }) %>%
 ##   flatten()
 
 
 ## ----plot_resampled_rasters, eval=FALSE, message=FALSE, echo=FALSE------------
 ## # colour palettes
-## pal <- c("batlow", "bilbao", "davos", "davos", "nuuk", "bilbao")
+## pal <- c("batlow", "bilbao")
 ## title <- c(
-##   "a landcover",
-##   "b Temp. seasonality",
-##   "c Ppt. driest qtr.",
-##   "d Ppt. warmest qtr.",
-##   "e Variation ppt.",
-##   "f Variation temp."
+##   "a Annual Mean Temperature",
+##   "b Annual Precipitation"
 ## )
 ## title <- c(title, rep("", 24))
-## direction <- c(1, 1, -1, -1, -1, 1)
-##
+## direction <- c(1, 1)
+## 
 ## scales <- c(
 ##   c("1.0km", rep("", 5)), c("2.5km", rep("", 5)),
 ##   c("5.0km", rep("", 5)), c("10km", rep("", 5)),
 ##   c("25km", rep("", 5))
 ## )
-##
+## 
 ## # make figures across the list
 ## fig_list_chelsa_resamp <-
 ##   purrr::pmap(
@@ -301,10 +306,10 @@
 ##         labs(x = NULL, y = scale, title = t)
 ##     }
 ##   )
-##
+## 
 ## # convert to grob
 ## fig_list_chelsa_resamp <- purrr::map(fig_list_chelsa_resamp, as_grob)
-##
+## 
 ## fig_chelsa_resamp <- grid.arrange(grobs = fig_list_chelsa_resamp, ncol = 6)
 ## ggsave(
 ##   plot = fig_chelsa_resamp,
@@ -312,8 +317,9 @@
 ##   dpi = 100, width = 24,
 ##   height = 12, device = png(), units = "in"
 ## )
-##
+## 
 ## # use magick to convert
 ## library(magick)
 ## pl <- image_read_pdf("figs/fig_chelsa_resamp.pdf")
 ## image_write(pl, path = "figs/fig_chelsa_resamp.png", format = "png")
+
