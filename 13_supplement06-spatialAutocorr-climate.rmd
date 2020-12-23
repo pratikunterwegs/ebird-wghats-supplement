@@ -351,4 +351,9 @@ pl <- image_read_pdf("figs/fig_chelsa_resamp.pdf")
 image_write(pl, path = "figs/fig_chelsa_resamp.png", format = "png")
 ```
 
-![CHELSA rasters with study area outline, at different scales. Semivariograms are on a log-transformed y-axis.](figs/fig_chelsa_resamp.png)
+```{r}
+# ![CHELSA rasters with study area outline, at different scales. 
+# Semivariograms are on a log-transformed y-axis.](figs/fig_chelsa_resamp.png)
+```
+
+
