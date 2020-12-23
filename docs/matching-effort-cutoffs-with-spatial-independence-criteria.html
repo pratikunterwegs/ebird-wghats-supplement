@@ -211,57 +211,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>How many sites would be lost if effort distance was restricted based on spatial independence?</p>
 <div id="load-librarires" class="section level2">
 <h2><span class="header-section-number">8.1</span> Load librarires</h2>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="co"># load data packagaes</span></a>
-<a class="sourceLine" id="cb29-2" title="2"><span class="kw">library</span>(data.table)</a>
-<a class="sourceLine" id="cb29-3" title="3"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb29-4" title="4"></a>
-<a class="sourceLine" id="cb29-5" title="5"><span class="co"># load plotting packages</span></a>
-<a class="sourceLine" id="cb29-6" title="6"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb29-7" title="7"><span class="kw">library</span>(scico)</a>
-<a class="sourceLine" id="cb29-8" title="8"><span class="kw">library</span>(ggthemes)</a>
-<a class="sourceLine" id="cb29-9" title="9"><span class="kw">library</span>(scales)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="co"># load data packagaes</span></a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="kw">library</span>(data.table)</a>
+<a class="sourceLine" id="cb30-3" title="3"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb30-4" title="4"></a>
+<a class="sourceLine" id="cb30-5" title="5"><span class="co"># load plotting packages</span></a>
+<a class="sourceLine" id="cb30-6" title="6"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb30-7" title="7"><span class="kw">library</span>(scico)</a>
+<a class="sourceLine" id="cb30-8" title="8"><span class="kw">library</span>(ggthemes)</a>
+<a class="sourceLine" id="cb30-9" title="9"><span class="kw">library</span>(scales)</a></code></pre></div>
 </div>
 <div id="load-data" class="section level2">
 <h2><span class="header-section-number">8.2</span> Load data</h2>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="co"># load checklist covariates</span></a>
-<a class="sourceLine" id="cb30-2" title="2">data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;data/03_data-covars-perChklist.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb30-3" title="3"></a>
-<a class="sourceLine" id="cb30-4" title="4">effort_distance_summary &lt;-<span class="st"> </span>data[, effort_distance_class <span class="op">:</span><span class="er">=</span></a>
-<a class="sourceLine" id="cb30-5" title="5"><span class="st">  </span><span class="kw">cut</span>(distance, <span class="dt">breaks =</span> <span class="kw">c</span>(</a>
-<a class="sourceLine" id="cb30-6" title="6">    <span class="dv">-1</span>, <span class="fl">0.001</span>, <span class="fl">0.1</span>, <span class="fl">0.25</span>,</a>
-<a class="sourceLine" id="cb30-7" title="7">    <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">5</span>, <span class="ot">Inf</span></a>
-<a class="sourceLine" id="cb30-8" title="8">  ), <span class="dt">ordered_result =</span> T)][,</a>
-<a class="sourceLine" id="cb30-9" title="9">  .N,</a>
-<a class="sourceLine" id="cb30-10" title="10">  by =<span class="st"> </span>effort_distance_class</a>
-<a class="sourceLine" id="cb30-11" title="11">][</a>
-<a class="sourceLine" id="cb30-12" title="12">  <span class="kw">order</span>(effort_distance_class)</a>
-<a class="sourceLine" id="cb30-13" title="13">]</a>
-<a class="sourceLine" id="cb30-14" title="14"></a>
-<a class="sourceLine" id="cb30-15" title="15">effort_distance_summary[</a>
-<a class="sourceLine" id="cb30-16" title="16">  ,</a>
-<a class="sourceLine" id="cb30-17" title="17">  prop_effort <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">cumsum</span>(effort_distance_summary<span class="op">$</span>N) <span class="op">/</span><span class="st"> </span><span class="kw">nrow</span>(data)</a>
-<a class="sourceLine" id="cb30-18" title="18">]</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="co"># load checklist covariates</span></a>
+<a class="sourceLine" id="cb31-2" title="2">data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;data/03_data-covars-perChklist.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb31-3" title="3"></a>
+<a class="sourceLine" id="cb31-4" title="4">effort_distance_summary &lt;-<span class="st"> </span>data[, effort_distance_class <span class="op">:</span><span class="er">=</span></a>
+<a class="sourceLine" id="cb31-5" title="5"><span class="st">  </span><span class="kw">cut</span>(distance, <span class="dt">breaks =</span> <span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb31-6" title="6">    <span class="dv">-1</span>, <span class="fl">0.001</span>, <span class="fl">0.1</span>, <span class="fl">0.25</span>,</a>
+<a class="sourceLine" id="cb31-7" title="7">    <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">5</span>, <span class="ot">Inf</span></a>
+<a class="sourceLine" id="cb31-8" title="8">  ), <span class="dt">ordered_result =</span> T)][,</a>
+<a class="sourceLine" id="cb31-9" title="9">  .N,</a>
+<a class="sourceLine" id="cb31-10" title="10">  by =<span class="st"> </span>effort_distance_class</a>
+<a class="sourceLine" id="cb31-11" title="11">][</a>
+<a class="sourceLine" id="cb31-12" title="12">  <span class="kw">order</span>(effort_distance_class)</a>
+<a class="sourceLine" id="cb31-13" title="13">]</a>
+<a class="sourceLine" id="cb31-14" title="14"></a>
+<a class="sourceLine" id="cb31-15" title="15">effort_distance_summary[</a>
+<a class="sourceLine" id="cb31-16" title="16">  ,</a>
+<a class="sourceLine" id="cb31-17" title="17">  prop_effort <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">cumsum</span>(effort_distance_summary<span class="op">$</span>N) <span class="op">/</span><span class="st"> </span><span class="kw">nrow</span>(data)</a>
+<a class="sourceLine" id="cb31-18" title="18">]</a></code></pre></div>
 </div>
 <div id="visualise-limiting-effort-by-spatial-independence-limits" class="section level2">
 <h2><span class="header-section-number">8.3</span> Visualise limiting effort by spatial independence limits</h2>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="co"># plot effort distance class cumulative sum</span></a>
-<a class="sourceLine" id="cb31-2" title="2">fig_dist_exclusion &lt;-<span class="st"> </span><span class="kw">ggplot</span>(effort_distance_summary) <span class="op">+</span></a>
-<a class="sourceLine" id="cb31-3" title="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(effort_distance_class, prop_effort), <span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb31-4" title="4"><span class="st">  </span><span class="kw">geom_path</span>(<span class="kw">aes</span>(effort_distance_class, prop_effort, <span class="dt">group =</span> <span class="ot">NA</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb31-5" title="5"><span class="st">  </span><span class="co"># scale_y_continuous(label=label_number(scale=0.001, accuracy = 1, suffix = &quot;K&quot;))+</span></a>
-<a class="sourceLine" id="cb31-6" title="6"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">labels =</span> <span class="kw">c</span>(</a>
-<a class="sourceLine" id="cb31-7" title="7">    <span class="st">&quot;stationary&quot;</span>, <span class="st">&quot;100m&quot;</span>, <span class="st">&quot;250m&quot;</span>,</a>
-<a class="sourceLine" id="cb31-8" title="8">    <span class="st">&quot;500m&quot;</span>, <span class="st">&quot;1 km&quot;</span>, <span class="st">&quot;2.5 km&quot;</span>, <span class="st">&quot;5 km&quot;</span></a>
-<a class="sourceLine" id="cb31-9" title="9">  )) <span class="op">+</span></a>
-<a class="sourceLine" id="cb31-10" title="10"><span class="st">  </span><span class="kw">theme_few</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb31-11" title="11"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid =</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="fl">0.2</span>, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb31-12" title="12"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;effort distance cutoff&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;proportion of checklists&quot;</span>)</a>
-<a class="sourceLine" id="cb31-13" title="13"></a>
-<a class="sourceLine" id="cb31-14" title="14"><span class="kw">ggsave</span>(</a>
-<a class="sourceLine" id="cb31-15" title="15">  <span class="dt">plot =</span> fig_dist_exclusion, <span class="st">&quot;figs/fig_cutoff_effort.png&quot;</span>,</a>
-<a class="sourceLine" id="cb31-16" title="16">  <span class="dt">height =</span> <span class="dv">6</span>, <span class="dt">width =</span> <span class="dv">8</span>, <span class="dt">dpi =</span> <span class="dv">300</span></a>
-<a class="sourceLine" id="cb31-17" title="17">)</a>
-<a class="sourceLine" id="cb31-18" title="18"><span class="kw">dev.off</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="co"># plot effort distance class cumulative sum</span></a>
+<a class="sourceLine" id="cb32-2" title="2">fig_dist_exclusion &lt;-<span class="st"> </span><span class="kw">ggplot</span>(effort_distance_summary) <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-3" title="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(effort_distance_class, prop_effort), <span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-4" title="4"><span class="st">  </span><span class="kw">geom_path</span>(<span class="kw">aes</span>(effort_distance_class, prop_effort, <span class="dt">group =</span> <span class="ot">NA</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-5" title="5"><span class="st">  </span><span class="co"># scale_y_continuous(label=label_number(scale=0.001, accuracy = 1, suffix = &quot;K&quot;))+</span></a>
+<a class="sourceLine" id="cb32-6" title="6"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">labels =</span> <span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb32-7" title="7">    <span class="st">&quot;stationary&quot;</span>, <span class="st">&quot;100m&quot;</span>, <span class="st">&quot;250m&quot;</span>,</a>
+<a class="sourceLine" id="cb32-8" title="8">    <span class="st">&quot;500m&quot;</span>, <span class="st">&quot;1 km&quot;</span>, <span class="st">&quot;2.5 km&quot;</span>, <span class="st">&quot;5 km&quot;</span></a>
+<a class="sourceLine" id="cb32-9" title="9">  )) <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-10" title="10"><span class="st">  </span><span class="kw">theme_few</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-11" title="11"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid =</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="fl">0.2</span>, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-12" title="12"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;effort distance cutoff&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;proportion of checklists&quot;</span>)</a>
+<a class="sourceLine" id="cb32-13" title="13"></a>
+<a class="sourceLine" id="cb32-14" title="14"><span class="kw">ggsave</span>(</a>
+<a class="sourceLine" id="cb32-15" title="15">  <span class="dt">plot =</span> fig_dist_exclusion, <span class="st">&quot;figs/fig_cutoff_effort.png&quot;</span>,</a>
+<a class="sourceLine" id="cb32-16" title="16">  <span class="dt">height =</span> <span class="dv">6</span>, <span class="dt">width =</span> <span class="dv">8</span>, <span class="dt">dpi =</span> <span class="dv">300</span></a>
+<a class="sourceLine" id="cb32-17" title="17">)</a>
+<a class="sourceLine" id="cb32-18" title="18"><span class="kw">dev.off</span>()</a></code></pre></div>
 <p><img src="figs/fig_cutoff_effort.png" /></p>
 
 </div>
@@ -305,7 +305,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["ebird_occupancy_supplementary_material.pdf"],
+"download": null,
 "toc": {
 "collapse": "section"
 }

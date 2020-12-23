@@ -116,7 +116,7 @@
 
 \title{Supplementary material for \emph{Using citizen science to parse climatic and landcover influences on bird occupancy within a tropical biodiversity hotspot}}
 \author{Vijay Ramesh \and Pratik R. Gupte \and Morgan W. Tingley \and VV Robin \and Ruth DeFries}
-\date{2020-12-18}
+\date{2020-12-23}
 
 \begin{document}
 \maketitle
@@ -161,6 +161,8 @@ Please contact the following in case of interest in the project.
 
 \hypertarget{predicting-species-specific-occupancy}{%
 \section{Predicting Species-specific Occupancy}\label{predicting-species-specific-occupancy}}
+
+This supplement plots species-specific probabilities of occupancy as a function of significant environmental predictors.
 
 \hypertarget{prepare-libraries}{%
 \subsection{Prepare libraries}\label{prepare-libraries}}
@@ -216,6 +218,8 @@ Example output is shown below.
 
 This script shows the proportion of checklists that report a particular species across every 25km by 25km grid across the Nilgiris and the Anamalais. Using this analysis, we arrived at a final list of species for occupancy modeling.
 
+We derived this list from inclusion criteria adapted from the State of India's Birds 2020 (Viswanathan et al., 2020). Initially, we considered all 561 species in eBird that occurred within the outlines of our study area. We then considered only those species that had a minimum of 1000 detections each between 2013 and 2019 (reducing to 303 species). Next, the study area was divided into 25 x 25 km cells following (Viswanathan et al., 2020). We then kept only those species that occurred in at least 5\% of all checklists across 50\% of the 25 x 25 km cells from where they have been reported (reducing to 93 species). We used the above criteria to ensure as much uniform sampling of a species as possible across our study area and to reduce any erroneous associations between environmental drivers and species occupancy. Across our final list of 93 species, we analyzed a total of \textasciitilde{}3.2 million detections (presences) between 2013 and 2019.
+
 \hypertarget{prepare-libraries-1}{%
 \subsection{Prepare libraries}\label{prepare-libraries-1}}
 
@@ -263,7 +267,7 @@ This script shows the proportion of checklists that report a particular species 
 \NormalTok{box <-}\StringTok{ }\KeywordTok{st_bbox}\NormalTok{(wg)}
 
 \CommentTok{# read in data and subset}
-\NormalTok{ebd <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"data/eBirdDataWG_filtered.txt"}\NormalTok{)}
+\NormalTok{ebd <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"data/01_ebird-filtered-EBD-westernGhats.txt"}\NormalTok{)}
 \NormalTok{ebd <-}\StringTok{ }\NormalTok{ebd[}\KeywordTok{between}\NormalTok{(LONGITUDE, box[}\StringTok{"xmin"}\NormalTok{], box[}\StringTok{"xmax"}\NormalTok{]) }\OperatorTok{&}
 \StringTok{  }\KeywordTok{between}\NormalTok{(LATITUDE, box[}\StringTok{"ymin"}\NormalTok{], box[}\StringTok{"ymax"}\NormalTok{]), ]}
 \NormalTok{ebd <-}\StringTok{ }\NormalTok{ebd[}\KeywordTok{year}\NormalTok{(}\StringTok{`}\DataTypeTok{OBSERVATION DATE}\StringTok{`}\NormalTok{) }\OperatorTok{>=}\StringTok{ }\DecValTok{2013}\NormalTok{, ]}
@@ -276,13 +280,15 @@ This script shows the proportion of checklists that report a particular species 
 \CommentTok{# keep useful columns}
 \NormalTok{columnsOfInterest <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}
   \StringTok{"scientific_name"}\NormalTok{, }\StringTok{"observation_count"}\NormalTok{, }\StringTok{"locality"}\NormalTok{,}
-  \StringTok{"locality_id"}\NormalTok{, }\StringTok{"locality_type"}\NormalTok{, }\StringTok{"latitude"}\NormalTok{, }
+  \StringTok{"locality_id"}\NormalTok{, }\StringTok{"locality_type"}\NormalTok{, }\StringTok{"latitude"}\NormalTok{,}
   \StringTok{"longitude"}\NormalTok{, }\StringTok{"observation_date"}\NormalTok{, }\StringTok{"sampling_event_identifier"}
 \NormalTok{)}
 
 \NormalTok{ebd <-}\StringTok{ }\NormalTok{ebd[, ..columnsOfInterest]}
 \end{Highlighting}
 \end{Shaded}
+
+Add a spatial filter and assign grids of 25km x 25km.
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -306,7 +312,7 @@ This script shows the proportion of checklists that report a particular species 
 \StringTok{  }\KeywordTok{st_drop_geometry}\NormalTok{() }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{as.data.table}\NormalTok{()}
 
-\CommentTok{# remove unneeded objs}
+\CommentTok{# remove unneeded objects}
 \KeywordTok{rm}\NormalTok{(locs)}
 \KeywordTok{gc}\NormalTok{()}
 
@@ -314,8 +320,8 @@ This script shows the proportion of checklists that report a particular species 
 
 \NormalTok{ebd <-}\StringTok{ }\KeywordTok{merge}\NormalTok{(ebd, coords, }\DataTypeTok{all =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"longitude"}\NormalTok{, }\StringTok{"latitude"}\NormalTok{))}
 
-\NormalTok{ebd <-}\StringTok{ }\NormalTok{ebd[(longitude }\OperatorTok{%in%}\StringTok{ }\NormalTok{coords}\OperatorTok{$}\NormalTok{longitude) }\OperatorTok{&}\StringTok{ }
-\StringTok{            }\NormalTok{(latitude }\OperatorTok{%in%}\StringTok{ }\NormalTok{coords}\OperatorTok{$}\NormalTok{latitude), ]}
+\NormalTok{ebd <-}\StringTok{ }\NormalTok{ebd[(longitude }\OperatorTok{%in%}\StringTok{ }\NormalTok{coords}\OperatorTok{$}\NormalTok{longitude) }\OperatorTok{&}
+\StringTok{  }\NormalTok{(latitude }\OperatorTok{%in%}\StringTok{ }\NormalTok{coords}\OperatorTok{$}\NormalTok{latitude), ]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -328,13 +334,15 @@ This script shows the proportion of checklists that report a particular species 
 \NormalTok{ebd[, }\StringTok{`}\DataTypeTok{:=}\StringTok{`}\NormalTok{(}\DataTypeTok{X =} \KeywordTok{round_any}\NormalTok{(X), }\DataTypeTok{Y =} \KeywordTok{round_any}\NormalTok{(Y))]}
 
 \CommentTok{# count checklists in cell}
-\NormalTok{ebd_summary <-}\StringTok{ }\NormalTok{ebd[, nchk }\OperatorTok{:}\ErrorTok{=}\StringTok{ }\KeywordTok{length}\NormalTok{(}\KeywordTok{unique}\NormalTok{(sampling_event_identifier)), }
-\NormalTok{                    by =}\StringTok{ }\NormalTok{.(X, Y)]}
+\NormalTok{ebd_summary <-}\StringTok{ }\NormalTok{ebd[, nchk }\OperatorTok{:}\ErrorTok{=}\StringTok{ }\KeywordTok{length}\NormalTok{(}\KeywordTok{unique}\NormalTok{(sampling_event_identifier)),}
+\NormalTok{  by =}\StringTok{ }\NormalTok{.(X, Y)}
+\NormalTok{]}
 
 \CommentTok{# count checklists reporting each species in cell and get proportion}
 \NormalTok{ebd_summary <-}\StringTok{ }\NormalTok{ebd_summary[, .(}\DataTypeTok{nrep =} \KeywordTok{length}\NormalTok{(}\KeywordTok{unique}\NormalTok{(}
-\NormalTok{  sampling_event_identifier))),}
-\NormalTok{  by =}\StringTok{ }\NormalTok{.(X, Y, nchk, scientific_name)}
+\NormalTok{  sampling_event_identifier}
+\NormalTok{))),}
+\NormalTok{by =}\StringTok{ }\NormalTok{.(X, Y, nchk, scientific_name)}
 \NormalTok{]}
 
 \NormalTok{ebd_summary[, p_rep }\OperatorTok{:}\ErrorTok{=}\StringTok{ }\NormalTok{nrep }\OperatorTok{/}\StringTok{ }\NormalTok{nchk]}
@@ -381,7 +389,7 @@ This script shows the proportion of checklists that report a particular species 
 
 \CommentTok{# check the proportion of grids across which this cut-off is met for each species}
 \CommentTok{# Is it > 90% or 70%?}
-\CommentTok{# For example, with a 3% cut-off, ~100 species are occurring in >50% }
+\CommentTok{# For example, with a 3% cut-off, ~100 species are occurring in >50%}
 \CommentTok{# of the grids they have been reported in}
 
 \NormalTok{p_cutoff <-}\StringTok{ }\FloatTok{0.05} \CommentTok{# Proportion of checklists a species has been reported in}
@@ -397,7 +405,7 @@ This script shows the proportion of checklists that report a particular species 
 \NormalTok{)}
 
 \CommentTok{# Write the results}
-\KeywordTok{write_csv}\NormalTok{(grid_prop_cut, }\StringTok{"data/chk_3_percent.csv"}\NormalTok{)}
+\KeywordTok{write_csv}\NormalTok{(grid_prop_cut, }\StringTok{"data/chk_5_percent.csv"}\NormalTok{)}
 
 \CommentTok{# Identifying the number of species that occur in potentially <5% of all lists}
 \NormalTok{total_number_lists <-}\StringTok{ }\KeywordTok{sum}\NormalTok{(tot_n_chklist}\OperatorTok{$}\NormalTok{nchk)}
@@ -436,7 +444,7 @@ This script shows the proportion of checklists that report a particular species 
 \begin{figure}
 \centering
 \includegraphics{figs/fig_species_distributions.png}
-\caption{Proportion of checklists reporting a species in each grid cell (25km side) between 2013 and 2019. Checklists were filtered to be within the boundaries of the Nilgiris, Anamalais and the Palani hills (black outline), but rounding to 25km cells may place cells outside the boundary. Deeper shades of red indicate a higher proportion of checklists reporting a species.}
+\caption{Proportion of checklists reporting a species in each grid cell (25km side) between 2013 and 2019. Checklists were filtered to be within the boundaries of the Nilgiris and the Anamalai hills (black outline), but rounding to 25km cells may place cells outside the boundary. Deeper shades of red indicate a higher proportion of checklists reporting a species.}
 \end{figure}
 
 \hypertarget{prepare-the-species-list}{%
@@ -444,16 +452,18 @@ This script shows the proportion of checklists that report a particular species 
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\CommentTok{# write the new list of species that occur in at least 3% of checklists across a minimum of 50% of the grids they have been reported in}
+\CommentTok{# write the new list of species that occur in at least 5% of checklists across a minimum of 50% of the grids they have been reported in}
 
 \NormalTok{new_sp_list <-}\StringTok{ }\KeywordTok{semi_join}\NormalTok{(specieslist, grid_prop_cut, }\DataTypeTok{by =} \StringTok{"scientific_name"}\NormalTok{)}
 
-\KeywordTok{write_csv}\NormalTok{(new_sp_list, }\StringTok{"data/3_List_of_species_cutoff.csv"}\NormalTok{, }\DataTypeTok{row.names =}\NormalTok{ F)}
+\KeywordTok{write_csv}\NormalTok{(new_sp_list, }\StringTok{"data/03_list-of-species-cutoff.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \hypertarget{climate-in-relation-to-landcover}{%
 \section{Climate in Relation to Landcover}\label{climate-in-relation-to-landcover}}
+
+This script showcases how climate data varies as a function of land cover types across our study area.
 
 \hypertarget{prepare-libraries-2}{%
 \subsection{Prepare libraries}\label{prepare-libraries-2}}
@@ -534,8 +544,8 @@ Figure code is hidden in versions rendered as HTML and PDF.
 \hypertarget{distribution-of-observer-expertise}{%
 \section{Distribution of Observer Expertise}\label{distribution-of-observer-expertise}}
 
-\hypertarget{prepare-libraries-3}{%
-\subsection{Prepare libraries}\label{prepare-libraries-3}}
+This script plots observer expertise over time (2013-2019) as well as across land cover types.
+\#\# Prepare libraries
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -566,8 +576,8 @@ Figure code is hidden in versions rendered as HTML and PDF.
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \CommentTok{# read in scores and checklist data and link}
-\NormalTok{scores <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/dataObsExpScore.csv"}\NormalTok{)}
-\NormalTok{data <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/eBirdChecklistVars.csv"}\NormalTok{)}
+\NormalTok{scores <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/03_data-obsExpertise-score.csv"}\NormalTok{)}
+\NormalTok{data <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/03_data-covars-perChklist.csv"}\NormalTok{)}
 
 \NormalTok{data <-}\StringTok{ }\KeywordTok{left_join}\NormalTok{(data, scores, }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"observer"}\NormalTok{ =}\StringTok{ "observer"}\NormalTok{))}
 \NormalTok{data <-}\StringTok{ }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{select}\NormalTok{(data, score, nSp, nSoi, landcover, year) }\OperatorTok{%>%}
@@ -575,8 +585,8 @@ Figure code is hidden in versions rendered as HTML and PDF.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{species-observed-in-relation-to-osberver-expertise}{%
-\subsection{Species observed in relation to osberver expertise}\label{species-observed-in-relation-to-osberver-expertise}}
+\hypertarget{species-observed-in-relation-to-observer-expertise}{%
+\subsection{Species observed in relation to observer expertise}\label{species-observed-in-relation-to-observer-expertise}}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -655,6 +665,7 @@ Figure code is hidden in versions rendered as HTML or PDF.
 \KeywordTok{library}\NormalTok{(glue)}
 \KeywordTok{library}\NormalTok{(scales)}
 \KeywordTok{library}\NormalTok{(gdalUtils)}
+\KeywordTok{library}\NormalTok{(sf)}
 
 \CommentTok{# plot libs}
 \KeywordTok{library}\NormalTok{(ggplot2)}
@@ -688,15 +699,14 @@ Figure code is hidden in versions rendered as HTML or PDF.
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \CommentTok{# list landscape covariate stacks}
-\NormalTok{landscape_files <-}\StringTok{ "data/spatial/landscape_resamp01km.tif"}
+\NormalTok{landscape_files <-}\StringTok{ "data/spatial/landscape_resamp01_km.tif"}
 \NormalTok{landscape_data <-}\StringTok{ }\KeywordTok{stack}\NormalTok{(landscape_files)}
 
 \CommentTok{# get proper names}
-\NormalTok{\{}
-\NormalTok{  elev_names <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"elev"}\NormalTok{, }\StringTok{"slope"}\NormalTok{, }\StringTok{"aspect"}\NormalTok{)}
-\NormalTok{  chelsa_names <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"bio_01"}\NormalTok{, }\StringTok{"bio_12"}\NormalTok{)}
-  \KeywordTok{names}\NormalTok{(landscape_data) <-}\StringTok{ }\KeywordTok{as.character}\NormalTok{(}\KeywordTok{glue}\NormalTok{(}\StringTok{'\{c(elev_names, chelsa_names, "landcover")\}'}\NormalTok{))}
-\NormalTok{\}}
+\NormalTok{elev_names <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"elev"}\NormalTok{, }\StringTok{"slope"}\NormalTok{, }\StringTok{"aspect"}\NormalTok{)}
+\NormalTok{chelsa_names <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"bio_01"}\NormalTok{, }\StringTok{"bio_12"}\NormalTok{)}
+\KeywordTok{names}\NormalTok{(landscape_data) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(elev_names, chelsa_names, }\StringTok{"landcover"}\NormalTok{)}
+
 
 \CommentTok{# get chelsa rasters}
 \NormalTok{chelsa <-}\StringTok{ }\NormalTok{landscape_data[[chelsa_names]]}
@@ -770,11 +780,11 @@ Figure code is hidden in versions rendered as HTML or PDF.
       \DataTypeTok{strip.text =} \KeywordTok{element_blank}\NormalTok{()}
 \NormalTok{    )}
 \NormalTok{\})}
-\NormalTok{fig_vgrams <-}\StringTok{ }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(fig_vgrams, as_grob)}
+\CommentTok{# fig_vgrams <- purrr::map(fig_vgrams, ggplot2::ggplotGrob)}
 
 \CommentTok{# make ggplot of chelsa data}
 \NormalTok{chelsa <-}\StringTok{ }\KeywordTok{as.list}\NormalTok{(landscape_data[[chelsa_names]]) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(st_as_stars)}
+\StringTok{  }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(stars}\OperatorTok{::}\NormalTok{st_as_stars)}
 
 \CommentTok{# colour palettes}
 \NormalTok{pal <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"bilbao"}\NormalTok{, }\StringTok{"davos"}\NormalTok{)}
@@ -784,15 +794,15 @@ Figure code is hidden in versions rendered as HTML or PDF.
 \NormalTok{)}
 \NormalTok{direction <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
 \NormalTok{lims <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}
-  \KeywordTok{range}\NormalTok{(chelsa[[}\DecValTok{1}\NormalTok{]]}\OperatorTok{$}\NormalTok{bio_}\DecValTok{01}\NormalTok{, }\DataTypeTok{na.rm =}\NormalTok{ T),}
-  \KeywordTok{range}\NormalTok{(chelsa[[}\DecValTok{2}\NormalTok{]]}\OperatorTok{$}\NormalTok{bio_}\DecValTok{12}\NormalTok{, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+  \KeywordTok{range}\NormalTok{(}\KeywordTok{values}\NormalTok{(landscape_data}\OperatorTok{$}\NormalTok{bio_}\DecValTok{01}\NormalTok{), }\DataTypeTok{na.rm =}\NormalTok{ T),}
+  \KeywordTok{range}\NormalTok{(}\KeywordTok{values}\NormalTok{(landscape_data}\OperatorTok{$}\NormalTok{bio_}\DecValTok{12}\NormalTok{), }\DataTypeTok{na.rm =}\NormalTok{ T)}
 \NormalTok{)}
 \NormalTok{fig_list_chelsa <-}
 \StringTok{  }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{pmap}\NormalTok{(}
     \KeywordTok{list}\NormalTok{(chelsa, pal, title, direction, lims),}
     \ControlFlowTok{function}\NormalTok{(df, pal, t, d, l) \{}
       \KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
-\StringTok{        }\KeywordTok{geom_stars}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df) }\OperatorTok{+}
+\StringTok{        }\NormalTok{stars}\OperatorTok{::}\KeywordTok{geom_stars}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df) }\OperatorTok{+}
 \StringTok{        }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ land, }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{) }\OperatorTok{+}
 \StringTok{        }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ wg, }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{0.3}\NormalTok{) }\OperatorTok{+}
 \StringTok{        }\KeywordTok{scale_fill_scico}\NormalTok{(}
@@ -803,7 +813,7 @@ Figure code is hidden in versions rendered as HTML or PDF.
           \DataTypeTok{xlim =}\NormalTok{ bbox[}\KeywordTok{c}\NormalTok{(}\StringTok{"xmin"}\NormalTok{, }\StringTok{"xmax"}\NormalTok{)],}
           \DataTypeTok{ylim =}\NormalTok{ bbox[}\KeywordTok{c}\NormalTok{(}\StringTok{"ymin"}\NormalTok{, }\StringTok{"ymax"}\NormalTok{)]}
 \NormalTok{        ) }\OperatorTok{+}
-\StringTok{        }\KeywordTok{annotation_scale}\NormalTok{(}\DataTypeTok{location =} \StringTok{"tr"}\NormalTok{, }\DataTypeTok{width_hint =} \FloatTok{0.4}\NormalTok{, }\DataTypeTok{text_cex =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
+\StringTok{        }\NormalTok{ggspatial}\OperatorTok{::}\KeywordTok{annotation_scale}\NormalTok{(}\DataTypeTok{location =} \StringTok{"tr"}\NormalTok{, }\DataTypeTok{width_hint =} \FloatTok{0.4}\NormalTok{, }\DataTypeTok{text_cex =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
 \StringTok{        }\KeywordTok{theme_few}\NormalTok{() }\OperatorTok{+}
 \StringTok{        }\KeywordTok{theme}\NormalTok{(}
           \DataTypeTok{legend.position =} \StringTok{"top"}\NormalTok{,}
@@ -813,27 +823,36 @@ Figure code is hidden in versions rendered as HTML or PDF.
           \DataTypeTok{legend.text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{8}\NormalTok{),}
           \DataTypeTok{axis.title =} \KeywordTok{element_blank}\NormalTok{(),}
           \DataTypeTok{axis.text.y =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \FloatTok{0.5}\NormalTok{),}
-          \CommentTok{# panel.background = element_rect(fill = "lightblue"),}
+          \DataTypeTok{panel.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"lightblue"}\NormalTok{),}
           \DataTypeTok{legend.title =} \KeywordTok{element_blank}\NormalTok{()}
 \NormalTok{        ) }\OperatorTok{+}
 \StringTok{        }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{title =}\NormalTok{ t)}
 \NormalTok{    \}}
 \NormalTok{  )}
-\NormalTok{fig_list_chelsa <-}\StringTok{ }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(fig_list_chelsa, as_grob)}
+\CommentTok{# fig_list_chelsa <- purrr::map(fig_list_chelsa, ggplotGrob)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{fig_list_chelsa <-}\StringTok{ }\KeywordTok{append}\NormalTok{(fig_list_chelsa, fig_vgrams)}
-\NormalTok{lmatrix <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{)),}
-  \DataTypeTok{nrow =} \DecValTok{3}\NormalTok{, }\DataTypeTok{byrow =}\NormalTok{ T}
-\NormalTok{)}
-\NormalTok{plot_grid <-}\StringTok{ }\KeywordTok{grid.arrange}\NormalTok{(}\DataTypeTok{grobs =}\NormalTok{ fig_list_chelsa, }\DataTypeTok{layout_matrix =}\NormalTok{ lmatrix)}
+\CommentTok{# fig_list_chelsa <- append(fig_list_chelsa, fig_vgrams)}
+\CommentTok{# lmatrix <- matrix(c(c(1, 2, 3, 4, 5), c(1, 2, 3, 4, 5), c(6, 7, 8, 9, 10)),}
+\CommentTok{#   nrow = 3, byrow = T}
+\CommentTok{# )}
+\CommentTok{# plot_grid <- grid.arrange(grobs = fig_list_chelsa, layout_matrix = lmatrix)}
+\CommentTok{#}
+\CommentTok{# ggsave(}
+\CommentTok{#   plot = plot_grid, filename = "figs/fig_chelsa_variograms.png",}
+\CommentTok{#   dpi = 300, width = 12, height = 6}
+\CommentTok{# )}
+\CommentTok{# dev.off()}
 
-\KeywordTok{ggsave}\NormalTok{(}
-  \DataTypeTok{plot =}\NormalTok{ plot_grid, }\DataTypeTok{filename =} \StringTok{"figs/fig_chelsa_variograms.png"}\NormalTok{,}
-  \DataTypeTok{dpi =} \DecValTok{300}\NormalTok{, }\DataTypeTok{width =} \DecValTok{12}\NormalTok{, }\DataTypeTok{height =} \DecValTok{6}
+\KeywordTok{library}\NormalTok{(patchwork)}
+\NormalTok{fig_variogram <-}\StringTok{ }\KeywordTok{wrap_plots}\NormalTok{(}\KeywordTok{append}\NormalTok{(fig_list_chelsa, fig_vgrams))}
+\KeywordTok{ggsave}\NormalTok{(fig_variogram,}
+  \DataTypeTok{filename =} \StringTok{"figs/fig_chelsa_variograms.png"}\NormalTok{,}
+  \DataTypeTok{dpi =} \DecValTok{300}\NormalTok{,}
+  \DataTypeTok{width =} \DecValTok{6}\NormalTok{, }\DataTypeTok{height =} \DecValTok{6}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -853,7 +872,7 @@ Figure code is hidden in versions rendered as HTML or PDF.
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \CommentTok{# read in landcover raster location}
-\NormalTok{landcover <-}\StringTok{ "data/landUseClassification/Reprojected Image_26thJan2020_UTM_Ghats.tif"}
+\NormalTok{landcover <-}\StringTok{ "data/landUseClassification/classifiedImage-UTM.tif"}
 \CommentTok{# get extent}
 \NormalTok{e <-}\StringTok{ }\KeywordTok{bbox}\NormalTok{(}\KeywordTok{raster}\NormalTok{(landcover))}
 
@@ -869,7 +888,7 @@ Figure code is hidden in versions rendered as HTML or PDF.
 \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(res_final)) \{}
 \NormalTok{  this_res <-}\StringTok{ }\NormalTok{res_final[[i]]}
 \NormalTok{  this_res_char <-}\StringTok{ }\NormalTok{stringr}\OperatorTok{::}\KeywordTok{str_pad}\NormalTok{(this_res[}\DecValTok{1}\NormalTok{], }\DecValTok{5}\NormalTok{, }\DataTypeTok{pad =} \StringTok{"0"}\NormalTok{)}
-  \KeywordTok{gdalwarp}\NormalTok{(}
+\NormalTok{  gdalUtils}\OperatorTok{::}\KeywordTok{gdalwarp}\NormalTok{(}
     \DataTypeTok{srcfile =}\NormalTok{ landcover,}
     \DataTypeTok{dstfile =} \KeywordTok{as.character}\NormalTok{(}\KeywordTok{glue}\NormalTok{(}\StringTok{"data/landUseClassification/lc_\{this_res_char\}m.tif"}\NormalTok{)),}
     \DataTypeTok{tr =} \KeywordTok{c}\NormalTok{(this_res), }\DataTypeTok{r =} \StringTok{"mode"}\NormalTok{, }\DataTypeTok{te =} \KeywordTok{c}\NormalTok{(e)}
@@ -919,7 +938,7 @@ Figure code is hidden in versions rendered as HTML or PDF.
 
 \CommentTok{# stack chelsa data}
 \NormalTok{chelsaData <-}\StringTok{ }\NormalTok{raster}\OperatorTok{::}\KeywordTok{stack}\NormalTok{(chelsaData)}
-\KeywordTok{names}\NormalTok{(chelsaData) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"chelsa_bio10_04"}\NormalTok{, }\StringTok{"chelsa_bio10_17"}\NormalTok{, }\StringTok{"chelsa_bio10_18"}\NormalTok{, }\StringTok{"chelsa_prec"}\NormalTok{, }\StringTok{"chelsa_temp"}\NormalTok{)}
+\KeywordTok{names}\NormalTok{(chelsaData) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"chelsa_bio10_01"}\NormalTok{, }\StringTok{"chelsa_bio10_12"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -939,17 +958,18 @@ Figure code is hidden in versions rendered as HTML or PDF.
 \CommentTok{# make a stars list}
 \NormalTok{resamp_data <-}\StringTok{ }\KeywordTok{map2}\NormalTok{(resamp_data, lc_data, }\ControlFlowTok{function}\NormalTok{(z1, z2) \{}
 \NormalTok{  z2[z2 }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{] <-}\StringTok{ }\OtherTok{NA}
-\NormalTok{  z2 <-}\StringTok{ }\KeywordTok{append}\NormalTok{(z2, }\KeywordTok{as.list}\NormalTok{(z1)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{map}\NormalTok{(st_as_stars)}
+\NormalTok{  z2 <-}\StringTok{ }\KeywordTok{append}\NormalTok{(z2, }\KeywordTok{as.list}\NormalTok{(z1)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{map}\NormalTok{(stars}\OperatorTok{::}\NormalTok{st_as_stars)}
 \NormalTok{\}) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{flatten}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}
-\centering
-\includegraphics{figs/fig_chelsa_resamp.png}
-\caption{CHELSA rasters with study area outline, at different scales. Semivariograms are on a log-transformed y-axis.}
-\end{figure}
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{# ![CHELSA rasters with study area outline, at different scales. }
+\CommentTok{# Semivariograms are on a log-transformed y-axis.](figs/fig_chelsa_resamp.png)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{matching-effort-cutoffs-with-spatial-independence-criteria}{%
 \section{Matching Effort Cutoffs with Spatial Independence Criteria}\label{matching-effort-cutoffs-with-spatial-independence-criteria}}
@@ -979,7 +999,7 @@ How many sites would be lost if effort distance was restricted based on spatial 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \CommentTok{# load checklist covariates}
-\NormalTok{data <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"data/eBirdChecklistVars.csv"}\NormalTok{)}
+\NormalTok{data <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"data/03_data-covars-perChklist.csv"}\NormalTok{)}
 
 \NormalTok{effort_distance_summary <-}\StringTok{ }\NormalTok{data[, effort_distance_class }\OperatorTok{:}\ErrorTok{=}
 \StringTok{  }\KeywordTok{cut}\NormalTok{(distance, }\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}
@@ -1030,8 +1050,8 @@ How many sites would be lost if effort distance was restricted based on spatial 
 \hypertarget{spatial-thinning-a-brief-comparison-of-approaches}{%
 \section{Spatial Thinning: A Brief Comparison of Approaches}\label{spatial-thinning-a-brief-comparison-of-approaches}}
 
-\hypertarget{prepare-libraries-4}{%
-\subsection{Prepare libraries}\label{prepare-libraries-4}}
+\hypertarget{prepare-libraries-3}{%
+\subsection{Prepare libraries}\label{prepare-libraries-3}}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1070,7 +1090,7 @@ How many sites would be lost if effort distance was restricted based on spatial 
 \CommentTok{# get scales}
 \CommentTok{# load checklist data and select one per rounded 500m coordinates}
 \NormalTok{\{}
-\NormalTok{  data <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/eBirdChecklistVars.csv"}\NormalTok{) }\OperatorTok{%>%}
+\NormalTok{  data <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/03_data-covars-perChklist.csv"}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{    }\KeywordTok{count}\NormalTok{(longitude, latitude, }\DataTypeTok{name =} \StringTok{"tot_effort"}\NormalTok{)}
 
 
@@ -1211,7 +1231,7 @@ Load python libraries.
 \CommentTok{# read in checklist covariates for conversion to gpd}
 \CommentTok{# get unique coordinates, assign them to the df}
 \CommentTok{# convert df to geo-df}
-\NormalTok{chkCovars }\OperatorTok{=}\NormalTok{ pd.read_csv(}\StringTok{"data/eBirdChecklistVars.csv"}\NormalTok{)}
+\NormalTok{chkCovars }\OperatorTok{=}\NormalTok{ pd.read_csv(}\StringTok{"data/03_data-covars-perChklist.csv"}\NormalTok{)}
 \NormalTok{ul }\OperatorTok{=}\NormalTok{ chkCovars[[}\StringTok{'longitude'}\NormalTok{, }\StringTok{'latitude'}\NormalTok{]].drop_duplicates(subset}\OperatorTok{=}\NormalTok{[}\StringTok{'longitude'}\NormalTok{, }\StringTok{'latitude'}\NormalTok{])}
 \NormalTok{ul[}\StringTok{'coordId'}\NormalTok{] }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{0}\NormalTok{, ul.shape[}\DecValTok{0}\NormalTok{])}
 
@@ -1585,11 +1605,11 @@ How many points, at different spatial scales, remain after the application of ea
 \hypertarget{landcover-classification}{%
 \section{Landcover classification}\label{landcover-classification}}
 
-This script was used to classify a 2019 Sentinel composite image across the Nilgiris and the Anamalais into seven distinct land cover classes
+This script was used to classify a 2019 Sentinel composite image across the Nilgiris and the Anamalais into seven distinct land cover types.
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\CommentTok{// Data: Groundtruthed points from Arasumani }
+\CommentTok{// Data: Groundtruthed points from Arasumani et al 2019}
 
 \CommentTok{// Function to obtain a Cloud-Free Image // }
 
