@@ -28,7 +28,7 @@
 <meta name="author" content="Ruth DeFries" />
 
 
-<meta name="date" content="2020-12-18" />
+<meta name="date" content="2020-12-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -154,10 +154,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="climate-in-relation-to-landcover.html"><a href="climate-in-relation-to-landcover.html#climatic-variables-over-landcover"><i class="fa fa-check"></i><b>4.3</b> Climatic variables over landcover</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html"><i class="fa fa-check"></i><b>5</b> Distribution of Observer Expertise</a><ul>
-<li class="chapter" data-level="5.1" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#prepare-libraries-3"><i class="fa fa-check"></i><b>5.1</b> Prepare libraries</a></li>
-<li class="chapter" data-level="5.2" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#load-observer-expertise-scores-and-checklist-covariates"><i class="fa fa-check"></i><b>5.2</b> Load observer expertise scores and checklist covariates</a></li>
-<li class="chapter" data-level="5.3" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#species-observed-in-relation-to-osberver-expertise"><i class="fa fa-check"></i><b>5.3</b> Species observed in relation to osberver expertise</a></li>
-<li class="chapter" data-level="5.4" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#observer-expertise-in-relation-to-landcover"><i class="fa fa-check"></i><b>5.4</b> Observer expertise in relation to landcover</a></li>
+<li class="chapter" data-level="5.1" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#load-observer-expertise-scores-and-checklist-covariates"><i class="fa fa-check"></i><b>5.1</b> Load observer expertise scores and checklist covariates</a></li>
+<li class="chapter" data-level="5.2" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#species-observed-in-relation-to-observer-expertise"><i class="fa fa-check"></i><b>5.2</b> Species observed in relation to observer expertise</a></li>
+<li class="chapter" data-level="5.3" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#observer-expertise-in-relation-to-landcover"><i class="fa fa-check"></i><b>5.3</b> Observer expertise in relation to landcover</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="spatial-autocorrelation-of-climatic-predictors.html"><a href="spatial-autocorrelation-of-climatic-predictors.html"><i class="fa fa-check"></i><b>6</b> Spatial Autocorrelation of Climatic Predictors</a><ul>
 <li class="chapter" data-level="6.1" data-path="spatial-autocorrelation-of-climatic-predictors.html"><a href="spatial-autocorrelation-of-climatic-predictors.html#load-libraries"><i class="fa fa-check"></i><b>6.1</b> Load libraries</a></li>
@@ -177,7 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="matching-effort-cutoffs-with-spatial-independence-criteria.html"><a href="matching-effort-cutoffs-with-spatial-independence-criteria.html#visualise-limiting-effort-by-spatial-independence-limits"><i class="fa fa-check"></i><b>8.3</b> Visualise limiting effort by spatial independence limits</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="spatial-thinning-a-brief-comparison-of-approaches.html"><a href="spatial-thinning-a-brief-comparison-of-approaches.html"><i class="fa fa-check"></i><b>9</b> Spatial Thinning: A Brief Comparison of Approaches</a><ul>
-<li class="chapter" data-level="9.1" data-path="spatial-thinning-a-brief-comparison-of-approaches.html"><a href="spatial-thinning-a-brief-comparison-of-approaches.html#prepare-libraries-4"><i class="fa fa-check"></i><b>9.1</b> Prepare libraries</a></li>
+<li class="chapter" data-level="9.1" data-path="spatial-thinning-a-brief-comparison-of-approaches.html"><a href="spatial-thinning-a-brief-comparison-of-approaches.html#prepare-libraries-3"><i class="fa fa-check"></i><b>9.1</b> Prepare libraries</a></li>
 <li class="chapter" data-level="9.2" data-path="spatial-thinning-a-brief-comparison-of-approaches.html"><a href="spatial-thinning-a-brief-comparison-of-approaches.html#traditional-grid-based-thinning"><i class="fa fa-check"></i><b>9.2</b> Traditional grid-based thinning</a></li>
 <li class="chapter" data-level="9.3" data-path="spatial-thinning-a-brief-comparison-of-approaches.html"><a href="spatial-thinning-a-brief-comparison-of-approaches.html#network-based-thinning"><i class="fa fa-check"></i><b>9.3</b> Network-based thinning</a></li>
 <li class="chapter" data-level="9.4" data-path="spatial-thinning-a-brief-comparison-of-approaches.html"><a href="spatial-thinning-a-brief-comparison-of-approaches.html#finding-modularity-in-proximity-networks"><i class="fa fa-check"></i><b>9.4</b> Finding modularity in proximity networks</a></li>
@@ -209,8 +208,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="distribution-of-observer-expertise" class="section level1">
 <h1><span class="header-section-number">Section 5</span> Distribution of Observer Expertise</h1>
-<div id="prepare-libraries-3" class="section level2">
-<h2><span class="header-section-number">5.1</span> Prepare libraries</h2>
+<p>This script plots observer expertise over time (2013-2019) as well as across land cover types.
+## Prepare libraries</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># load libs</span></a>
 <a class="sourceLine" id="cb15-2" title="2"><span class="kw">library</span>(raster)</a>
 <a class="sourceLine" id="cb15-3" title="3"><span class="kw">library</span>(glue)</a>
@@ -229,19 +228,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb15-16" title="16">ci &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
 <a class="sourceLine" id="cb15-17" title="17">  <span class="kw">qnorm</span>(<span class="fl">0.975</span>) <span class="op">*</span><span class="st"> </span><span class="kw">sd</span>(x, <span class="dt">na.rm =</span> T) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">length</span>(x))</a>
 <a class="sourceLine" id="cb15-18" title="18">}</a></code></pre></div>
-</div>
 <div id="load-observer-expertise-scores-and-checklist-covariates" class="section level2">
-<h2><span class="header-section-number">5.2</span> Load observer expertise scores and checklist covariates</h2>
+<h2><span class="header-section-number">5.1</span> Load observer expertise scores and checklist covariates</h2>
 <div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="co"># read in scores and checklist data and link</span></a>
-<a class="sourceLine" id="cb16-2" title="2">scores &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/dataObsExpScore.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb16-3" title="3">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/eBirdChecklistVars.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb16-2" title="2">scores &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/03_data-obsExpertise-score.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb16-3" title="3">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/03_data-covars-perChklist.csv&quot;</span>)</a>
 <a class="sourceLine" id="cb16-4" title="4"></a>
 <a class="sourceLine" id="cb16-5" title="5">data &lt;-<span class="st"> </span><span class="kw">left_join</span>(data, scores, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;observer&quot;</span> =<span class="st"> &quot;observer&quot;</span>))</a>
 <a class="sourceLine" id="cb16-6" title="6">data &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(data, score, nSp, nSoi, landcover, year) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb16-7" title="7"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(score))</a></code></pre></div>
 </div>
-<div id="species-observed-in-relation-to-osberver-expertise" class="section level2">
-<h2><span class="header-section-number">5.3</span> Species observed in relation to osberver expertise</h2>
+<div id="species-observed-in-relation-to-observer-expertise" class="section level2">
+<h2><span class="header-section-number">5.2</span> Species observed in relation to observer expertise</h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="co"># summarise data by rounded score and year</span></a>
 <a class="sourceLine" id="cb17-2" title="2">data_summary01 &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb17-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">score =</span> plyr<span class="op">::</span><span class="kw">round_any</span>(score, <span class="fl">0.2</span>)) <span class="op">%&gt;%</span></a>
@@ -284,7 +282,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="observer-expertise-in-relation-to-landcover" class="section level2">
-<h2><span class="header-section-number">5.4</span> Observer expertise in relation to landcover</h2>
+<h2><span class="header-section-number">5.3</span> Observer expertise in relation to landcover</h2>
 <p>Figure code is hidden in versions rendered as HTML or PDF.</p>
 <div class="figure">
 <img src="figs/fig_exp_lc.png" alt="Distribution of expertise scores in the seven landcover classes present in the study site." />
