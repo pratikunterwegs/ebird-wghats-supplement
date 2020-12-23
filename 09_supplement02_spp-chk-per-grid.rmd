@@ -61,7 +61,7 @@ setnames(ebd, newNames)
 # keep useful columns
 columnsOfInterest <- c(
   "scientific_name", "observation_count", "locality",
-  "locality_id", "locality_type", "latitude", 
+  "locality_id", "locality_type", "latitude",
   "longitude", "observation_date", "sampling_event_identifier"
 )
 
@@ -99,8 +99,8 @@ coords <- coords[, .N, by = .(longitude, latitude, X, Y)]
 
 ebd <- merge(ebd, coords, all = FALSE, by = c("longitude", "latitude"))
 
-ebd <- ebd[(longitude %in% coords$longitude) & 
-            (latitude %in% coords$latitude), ]
+ebd <- ebd[(longitude %in% coords$longitude) &
+  (latitude %in% coords$latitude), ]
 ```
 
 ## Get proportional obs counts in 25km cells
@@ -110,13 +110,15 @@ ebd <- ebd[(longitude %in% coords$longitude) &
 ebd[, `:=`(X = round_any(X), Y = round_any(Y))]
 
 # count checklists in cell
-ebd_summary <- ebd[, nchk := length(unique(sampling_event_identifier)), 
-                    by = .(X, Y)]
+ebd_summary <- ebd[, nchk := length(unique(sampling_event_identifier)),
+  by = .(X, Y)
+]
 
 # count checklists reporting each species in cell and get proportion
 ebd_summary <- ebd_summary[, .(nrep = length(unique(
-  sampling_event_identifier))),
-  by = .(X, Y, nchk, scientific_name)
+  sampling_event_identifier
+))),
+by = .(X, Y, nchk, scientific_name)
 ]
 
 ebd_summary[, p_rep := nrep / nchk]
@@ -160,7 +162,7 @@ ebd_summary <- left_join(ebd_summary, spp_grids, by = "scientific_name")
 
 # check the proportion of grids across which this cut-off is met for each species
 # Is it > 90% or 70%?
-# For example, with a 3% cut-off, ~100 species are occurring in >50% 
+# For example, with a 3% cut-off, ~100 species are occurring in >50%
 # of the grids they have been reported in
 
 p_cutoff <- 0.05 # Proportion of checklists a species has been reported in

@@ -2,7 +2,7 @@
 ## # load data packagaes
 ## library(data.table)
 ## library(dplyr)
-## 
+##
 ## # load plotting packages
 ## library(ggplot2)
 ## library(scico)
@@ -13,7 +13,7 @@
 ## ----load_data_s08, eval=FALSE------------------------------------------------
 ## # load checklist covariates
 ## data <- fread("data/eBirdChecklistVars.csv")
-## 
+##
 ## effort_distance_summary <- data[, effort_distance_class :=
 ##   cut(distance, breaks = c(
 ##     -1, 0.001, 0.1, 0.25,
@@ -24,7 +24,7 @@
 ## ][
 ##   order(effort_distance_class)
 ## ]
-## 
+##
 ## effort_distance_summary[
 ##   ,
 ##   prop_effort := cumsum(effort_distance_summary$N) / nrow(data)
@@ -44,10 +44,9 @@
 ##   theme_few() +
 ##   theme(panel.grid = element_line(size = 0.2, color = "grey")) +
 ##   labs(x = "effort distance cutoff", y = "proportion of checklists")
-## 
+##
 ## ggsave(
 ##   plot = fig_dist_exclusion, "figs/fig_cutoff_effort.png",
 ##   height = 6, width = 8, dpi = 300
 ## )
 ## dev.off()
-

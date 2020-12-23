@@ -10,7 +10,7 @@
 ## library(glue)
 ## library(scales)
 ## library(gdalUtils)
-## 
+##
 ## # plot libs
 ## library(ggplot2)
 ## library(ggthemes)
@@ -18,20 +18,20 @@
 ## library(gridExtra)
 ## library(cowplot)
 ## library(ggspatial)
-## 
+##
 ## #' make custom functiont to convert matrix to df
 ## raster_to_df <- function(inp) {
-## 
+##
 ##   # assert is a raster obj
 ##   assertthat::assert_that("RasterLayer" %in% class(inp),
 ##     msg = "input is not a raster"
 ##   )
-## 
+##
 ##   coords <- coordinates(inp)
 ##   vals <- getValues(inp)
-## 
+##
 ##   data <- tibble(x = coords[, 1], y = coords[, 2], value = vals)
-## 
+##
 ##   return(data)
 ## }
 
@@ -40,14 +40,14 @@
 ## # list landscape covariate stacks
 ## landscape_files <- "data/spatial/landscape_resamp01km.tif"
 ## landscape_data <- stack(landscape_files)
-## 
+##
 ## # get proper names
 ## {
 ##   elev_names <- c("elev", "slope", "aspect")
 ##   chelsa_names <- c("bio_01", "bio_12")
 ##   names(landscape_data) <- as.character(glue('{c(elev_names, chelsa_names, "landcover")}'))
 ## }
-## 
+##
 ## # get chelsa rasters
 ## chelsa <- landscape_data[[chelsa_names]]
 ## chelsa <- purrr::map(as.list(chelsa), raster_to_df)
@@ -60,10 +60,10 @@
 ##   vgram <- gstat::variogram(value ~ 1, loc = ~ x + y, data = z)
 ##   return(vgram)
 ## })
-## 
+##
 ## # save temp
 ## save(vgrams, file = "data/chelsa/chelsaVariograms.rdata")
-## 
+##
 ## # get variogram data
 ## vgrams <- purrr::map(vgrams, function(df) {
 ##   df %>% select(dist, gamma)
@@ -78,7 +78,7 @@
 ## wg <- st_read("data/spatial/hillsShapefile/Nil_Ana_Pal.shp") %>%
 ##   st_transform(32643)
 ## bbox <- st_bbox(wg)
-## 
+##
 ## # add lamd
 ## library(rnaturalearth)
 ## land <- ne_countries(
@@ -86,7 +86,7 @@
 ##   country = "india",
 ##   returnclass = c("sf")
 ## )
-## 
+##
 ## # crop land
 ## land <- st_transform(land, 32643)
 
@@ -109,11 +109,11 @@
 ##     )
 ## })
 ## fig_vgrams <- purrr::map(fig_vgrams, as_grob)
-## 
+##
 ## # make ggplot of chelsa data
 ## chelsa <- as.list(landscape_data[[chelsa_names]]) %>%
 ##   purrr::map(st_as_stars)
-## 
+##
 ## # colour palettes
 ## pal <- c("bilbao", "davos")
 ## title <- c(
@@ -166,7 +166,7 @@
 ##   nrow = 3, byrow = T
 ## )
 ## plot_grid <- grid.arrange(grobs = fig_list_chelsa, layout_matrix = lmatrix)
-## 
+##
 ## ggsave(
 ##   plot = plot_grid, filename = "figs/fig_chelsa_variograms.png",
 ##   dpi = 300, width = 12, height = 6
@@ -178,14 +178,14 @@
 ## landcover <- "data/landUseClassification/Reprojected Image_26thJan2020_UTM_Ghats.tif"
 ## # get extent
 ## e <- bbox(raster(landcover))
-## 
+##
 ## # init resolution
 ## res_init <- res(raster(landcover))
 ## # res to transform to 1000m
 ## res_final <- map(c(100, 250, 500, 1e3, 2.5e3), function(x) {
 ##   x * res_init
 ## })
-## 
+##
 ## # use gdalutils gdalwarp for resampling transform
 ## # to 1km from 10m
 ## for (i in 1:length(res_final)) {
@@ -218,7 +218,7 @@
 ## ----chelsa_rasters_s06, eval=FALSE, message=FALSE, warning=FALSE-------------
 ## # list chelsa files
 ## chelsaFiles <- list.files("data/chelsa/", full.names = TRUE, pattern = "*.tif")
-## 
+##
 ## # gather chelsa rasters
 ## chelsaData <- purrr::map(chelsaFiles, function(chr) {
 ##   a <- raster(chr)
@@ -226,7 +226,7 @@
 ##   a <- crop(a, as(buffer, "Spatial"))
 ##   return(a)
 ## })
-## 
+##
 ## # stack chelsa data
 ## chelsaData <- raster::stack(chelsaData)
 ## names(chelsaData) <- c("chelsa_bio10_04", "chelsa_bio10_17", "chelsa_bio10_18", "chelsa_prec", "chelsa_temp")
@@ -240,7 +240,7 @@
 ##     crs = crs(this_scale), res = res(this_scale)
 ##   )
 ## })
-## 
+##
 ## # make a stars list
 ## resamp_data <- map2(resamp_data, lc_data, function(z1, z2) {
 ##   z2[z2 == 0] <- NA
@@ -262,13 +262,13 @@
 ## )
 ## title <- c(title, rep("", 24))
 ## direction <- c(1, 1, -1, -1, -1, 1)
-## 
+##
 ## scales <- c(
 ##   c("1.0km", rep("", 5)), c("2.5km", rep("", 5)),
 ##   c("5.0km", rep("", 5)), c("10km", rep("", 5)),
 ##   c("25km", rep("", 5))
 ## )
-## 
+##
 ## # make figures across the list
 ## fig_list_chelsa_resamp <-
 ##   purrr::pmap(
@@ -301,10 +301,10 @@
 ##         labs(x = NULL, y = scale, title = t)
 ##     }
 ##   )
-## 
+##
 ## # convert to grob
 ## fig_list_chelsa_resamp <- purrr::map(fig_list_chelsa_resamp, as_grob)
-## 
+##
 ## fig_chelsa_resamp <- grid.arrange(grobs = fig_list_chelsa_resamp, ncol = 6)
 ## ggsave(
 ##   plot = fig_chelsa_resamp,
@@ -312,9 +312,8 @@
 ##   dpi = 100, width = 24,
 ##   height = 12, device = png(), units = "in"
 ## )
-## 
+##
 ## # use magick to convert
 ## library(magick)
 ## pl <- image_read_pdf("figs/fig_chelsa_resamp.pdf")
 ## image_write(pl, path = "figs/fig_chelsa_resamp.png", format = "png")
-

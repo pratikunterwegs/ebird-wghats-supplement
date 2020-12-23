@@ -5,12 +5,12 @@
 ## library(purrr)
 ## library(dplyr)
 ## library(tidyr)
-## 
+##
 ## # plotting options
 ## library(ggplot2)
 ## library(ggthemes)
 ## library(scico)
-## 
+##
 ## # get ci func
 ## ci <- function(x) {
 ##   qnorm(0.975) * sd(x, na.rm = T) / sqrt(length(x))
@@ -20,25 +20,25 @@
 ## ----load_rasters_supp4, eval=FALSE-------------------------------------------
 ## # read landscape prepare for plotting
 ## landscape <- stack("data/spatial/landscape_resamp01km.tif")
-## 
+##
 ## # get proper names
 ## elev_names <- c("elev", "slope", "aspect")
 ## chelsa_names <- c("bio_01", "bio_12")
-## 
+##
 ## names(landscape) <- as.character(glue('{c(elev_names, chelsa_names, "landcover")}'))
 
 
 ## ----get_data_at_lc, eval=FALSE-----------------------------------------------
 ## # make duplicate stack
 ## land_data <- landscape[[c("landcover", chelsa_names)]]
-## 
+##
 ## # convert to list
 ## land_data <- as.list(land_data)
-## 
+##
 ## # map get values over the stack
 ## land_data <- purrr::map(land_data, raster::getValues)
 ## names(land_data) <- c("landcover", chelsa_names)
-## 
+##
 ## # conver to dataframe and round to 100m
 ## land_data <- bind_cols(land_data)
 ## land_data <- drop_na(land_data) %>%
@@ -72,11 +72,10 @@
 ##   theme_few() +
 ##   theme(legend.position = "none") +
 ##   labs(x = "landcover class", y = "CHELSA variable value")
-## 
+##
 ## # save as png
 ## ggsave(fig_climate_lc,
 ##   filename = "figs/fig_climate_landcover.png",
 ##   height = 5, width = 8, device = png(), dpi = 300
 ## )
 ## dev.off()
-

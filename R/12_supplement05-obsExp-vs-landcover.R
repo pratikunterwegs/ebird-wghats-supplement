@@ -7,12 +7,12 @@
 ## library(tidyr)
 ## library(readr)
 ## library(scales)
-## 
+##
 ## # plotting libs
 ## library(ggplot2)
 ## library(ggthemes)
 ## library(scico)
-## 
+##
 ## # get ci func
 ## ci <- function(x) {
 ##   qnorm(0.975) * sd(x, na.rm = T) / sqrt(length(x))
@@ -23,7 +23,7 @@
 ## # read in scores and checklist data and link
 ## scores <- read_csv("data/dataObsExpScore.csv")
 ## data <- read_csv("data/eBirdChecklistVars.csv")
-## 
+##
 ## data <- left_join(data, scores, by = c("observer" = "observer"))
 ## data <- dplyr::select(data, score, nSp, nSoi, landcover, year) %>%
 ##   filter(!is.na(score))
@@ -40,7 +40,7 @@
 ##   ) %>%
 ##   group_by(score, year, variable) %>%
 ##   summarise_at(vars(value), list(~ mean(.), ~ ci(.)))
-## 
+##
 ## # make plot and export
 ## fig_nsp_score <-
 ##   ggplot(data_summary01) +
@@ -62,7 +62,7 @@
 ##   labs(x = "CCI", y = "Number of Species Reported") +
 ##   theme_few() +
 ##   theme(legend.position = "none")
-## 
+##
 ## # export figure
 ## ggsave(filename = "figs/fig_nsp_score.png", width = 12, height = 7, device = png(), dpi = 300)
 ## dev.off()
@@ -71,7 +71,7 @@
 ## ----exp_landcover, eval=FALSE, message=FALSE, echo=FALSE---------------------
 ## # plot histograms of expertise scores in different landcover classes
 ## data <- filter(data, !is.na(landcover))
-## 
+##
 ## # make plot
 ## fig_exp_lc <- ggplot(data) +
 ##   geom_histogram(aes(x = score), fill = "steelblue", bins = 20) +
@@ -80,9 +80,8 @@
 ##   theme_few() +
 ##   theme(legend.position = "none") +
 ##   labs(x = "expertise score", y = "count")
-## 
+##
 ## # export figure
-## 
+##
 ## ggsave(filename = "figs/fig_exp_lc.png", width = 8, height = 4, device = png(), dpi = 300)
 ## dev.off()
-
