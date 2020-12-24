@@ -50,7 +50,7 @@ raster_to_df <- function(inp) {
 
 ```{r load_data_supp06, eval=FALSE, message=FALSE}
 # list landscape covariate stacks
-landscape_files <- "data/spatial/landscape_resamp01_km.tif"
+landscape_files <- "data/spatial/landscape_resamp01km.tif"
 landscape_data <- stack(landscape_files)
 
 # get proper names
@@ -172,7 +172,7 @@ fig_list_chelsa <-
         labs(x = NULL, y = NULL, title = t)
     }
   )
-# fig_list_chelsa <- purrr::map(fig_list_chelsa, ggplotGrob)
+#fig_list_chelsa <- purrr::map(fig_list_chelsa, ggplotGrob)
 ```
 
 ```{r prep_figures_vgrams, eval=FALSE, message=FALSE}
@@ -197,7 +197,7 @@ ggsave(fig_variogram,
 )
 ```
 
-![CHELSA rasters with study area outline, and associated semivariograms. Semivariograms are on a log-transformed y-axis.](figs/fig_chelsa_variograms.png)
+[CHELSA rasters with study area outline, and associated semivariograms. Semivariograms are on a log-transformed y-axis.](figs/fig_chelsa_variograms.png)
 
 # Climatic raster resampling
 
@@ -284,76 +284,3 @@ resamp_data <- map2(resamp_data, lc_data, function(z1, z2) {
 }) %>%
   flatten()
 ```
-
-```{r plot_resampled_rasters, eval=FALSE, message=FALSE, echo=FALSE}
-# colour palettes
-pal <- c("batlow", "bilbao")
-title <- c(
-  "a Annual Mean Temperature",
-  "b Annual Precipitation"
-)
-title <- c(title, rep("", 24))
-direction <- c(1, 1)
-
-scales <- c(
-  c("1.0km", rep("", 5)), c("2.5km", rep("", 5)),
-  c("5.0km", rep("", 5)), c("10km", rep("", 5)),
-  c("25km", rep("", 5))
-)
-
-# make figures across the list
-fig_list_chelsa_resamp <-
-  purrr::pmap(
-    list(resamp_data, scales, rep(pal, 5), title, rep(direction, 5)),
-    function(df, scale, pal, t, d) {
-      ggplot() +
-        geom_stars(data = df) +
-        geom_sf(data = hills, fill = NA, colour = "black", size = 0.3) +
-        scale_fill_scico(
-          palette = pal, direction = d,
-          label = comma, na.value = NA
-        ) +
-        coord_sf(
-          xlim = bbox[c("xmin", "xmax")],
-          ylim = bbox[c("ymin", "ymax")]
-        ) +
-        theme_void() +
-        theme( # legend.position = "top",
-          panel.border = element_rect(),
-          title = element_text(face = "bold", size = 8),
-          # legend.key.height = unit(0.1, "cm"),
-          # legend.key.width = unit(0.6, "cm"),
-          # legend.text = element_text(size = 8),
-          axis.title = element_text(),
-          axis.title.y = element_text(angle = 90),
-          # axis.text.y = element_text(angle = 90, hjust = 0.5),
-          # panel.background = element_rect(fill = "lightblue"),
-          legend.title = element_blank()
-        ) +
-        labs(x = NULL, y = scale, title = t)
-    }
-  )
-
-# convert to grob
-fig_list_chelsa_resamp <- purrr::map(fig_list_chelsa_resamp, as_grob)
-
-fig_chelsa_resamp <- grid.arrange(grobs = fig_list_chelsa_resamp, ncol = 6)
-ggsave(
-  plot = fig_chelsa_resamp,
-  filename = "figs/fig_chelsa_resamp.png",
-  dpi = 100, width = 24,
-  height = 12, device = png(), units = "in"
-)
-
-# use magick to convert
-library(magick)
-pl <- image_read_pdf("figs/fig_chelsa_resamp.pdf")
-image_write(pl, path = "figs/fig_chelsa_resamp.png", format = "png")
-```
-
-```{r}
-# ![CHELSA rasters with study area outline, at different scales. 
-# Semivariograms are on a log-transformed y-axis.](figs/fig_chelsa_resamp.png)
-```
-
-
