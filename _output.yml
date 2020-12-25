@@ -10,10 +10,12 @@ bookdown::gitbook:
   includes:
 #    in_header: ga.html
 bookdown::pdf_document2:
-  keep_tex: yes
-  documentclass: scrreprt
+  keep_tex: true
+  fontsize: 10pt
+  toc-depth: 1
   papersize: a4
   latex_engine: xelatex
+  highlight: haddock
   includes:
     in_header: latex/preamble.tex
     before_body: latex/before-body.tex
