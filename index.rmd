@@ -22,7 +22,8 @@ github-repo: pratikunterwegs/ebird-wghats-supplement
 
 # Introduction
 
-This is supplementary material for a project in preparation that models occupancy for birds in the southern Western Ghats, India. 
+This is supplementary material for a manuscript that uses citizen science data to model the occupancy of birds in the southern Western Ghats, India. 
+
 The main project can be found here: [https://github.com/pratikunterwegs/eBirdOccupancy](https://github.com/pratikunterwegs/eBirdOccupancy).
 
 ## Attribution

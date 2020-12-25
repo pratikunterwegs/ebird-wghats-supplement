@@ -58,7 +58,6 @@ elev_names <- c("elev", "slope", "aspect")
 chelsa_names <- c("bio_01", "bio_12")
 names(landscape_data) <- c(elev_names, chelsa_names, "landcover")
 
-
 # get chelsa rasters
 chelsa <- landscape_data[[chelsa_names]]
 chelsa <- purrr::map(as.list(chelsa), raster_to_df)
@@ -92,7 +91,7 @@ wg <- st_read("data/spatial/hillsShapefile/Nil_Ana_Pal.shp") %>%
   st_transform(32643)
 bbox <- st_bbox(wg)
 
-# add lamd
+# Plot
 library(rnaturalearth)
 land <- ne_countries(
   scale = 50, type = "countries", continent = "asia",
@@ -203,6 +202,7 @@ ggsave(fig_variogram,
 
 ## Prepare landcover
 
+To access the classified Sentinel image, please visit: https://code.earthengine.google.com/ec69fc4ffad32a532b25202009243d42
 ```{r resample_landcover_mult, eval=FALSE, warning=FALSE, message=FALSE}
 # read in landcover raster location
 landcover <- "data/landUseClassification/classifiedImage-UTM.tif"
@@ -249,6 +249,7 @@ bbox <- st_bbox(hills)
 
 ## Prepare CHELSA rasters
 
+Please download the CHELSA rasters from https://chelsa-climate.org/bioclim/ 
 ```{r chelsa_rasters_s06, eval=FALSE, message=FALSE, warning=FALSE}
 # list chelsa files
 chelsaFiles <- list.files("data/chelsa/", full.names = TRUE, pattern = "*.tif")

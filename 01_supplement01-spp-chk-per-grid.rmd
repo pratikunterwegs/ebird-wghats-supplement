@@ -33,9 +33,10 @@ round_any <- function(x, accuracy = 25000) {
 
 ## Read species of interest
 
+We initally considered all species that 
 ```{r soi_supplement, eval=FALSE, message=FALSE, warning=FALSE}
 # add species of interest
-specieslist <- read.csv("data/species_list.csv")
+specieslist <- read.csv("data/01_list-all-spp-byCount.csv")
 speciesOfInterest <- specieslist$scientific_name
 ```
 
@@ -48,7 +49,8 @@ wg <- st_read("data/spatial/hillsShapefile/Nil_Ana_Pal.shp")
 box <- st_bbox(wg)
 
 # read in data and subset
-ebd <- fread("data/01_ebird-filtered-EBD-westernGhats.txt")
+# To access the latest dataset, please visit: https://ebird.org/data/download and set the file path accordingly.
+ebd <- fread("data/ebd_IN_relApr-2020.txt")
 ebd <- ebd[between(LONGITUDE, box["xmin"], box["xmax"]) &
   between(LATITUDE, box["ymin"], box["ymax"]), ]
 ebd <- ebd[year(`OBSERVATION DATE`) >= 2013, ]
