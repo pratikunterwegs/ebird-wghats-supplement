@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Section 10 Landcover classification | Supplementary material for Using citizen science to parse climatic and landcover influences on bird occupancy within a tropical biodiversity hotspot</title>
-  <meta name="description" content="Section 10 Landcover classification | Supplementary material for Using citizen science to parse climatic and landcover influences on bird occupancy within a tropical biodiversity hotspot" />
+  <title>Section 3 Landcover classification | Supplementary material for Using citizen science to parse climatic and landcover influences on bird occupancy within a tropical biodiversity hotspot</title>
+  <meta name="description" content="Section 3 Landcover classification | Supplementary material for Using citizen science to parse climatic and landcover influences on bird occupancy within a tropical biodiversity hotspot" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Section 10 Landcover classification | Supplementary material for Using citizen science to parse climatic and landcover influences on bird occupancy within a tropical biodiversity hotspot" />
+  <meta property="og:title" content="Section 3 Landcover classification | Supplementary material for Using citizen science to parse climatic and landcover influences on bird occupancy within a tropical biodiversity hotspot" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="pratikunterwegs/ebird-wghats-supplement" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Section 10 Landcover classification | Supplementary material for Using citizen science to parse climatic and landcover influences on bird occupancy within a tropical biodiversity hotspot" />
+  <meta name="twitter:title" content="Section 3 Landcover classification | Supplementary material for Using citizen science to parse climatic and landcover influences on bird occupancy within a tropical biodiversity hotspot" />
   
   
   
@@ -28,15 +28,15 @@
 <meta name="author" content="Ruth DeFries" />
 
 
-<meta name="date" content="2020-12-23" />
+<meta name="date" content="2020-12-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="spatial-thinning-a-brief-comparison-of-approaches.html"/>
-
+<link rel="prev" href="selecting-species-of-interest.html"/>
+<link rel="next" href="spatial-autocorrelation-of-climatic-predictors.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -135,40 +135,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#attribution"><i class="fa fa-check"></i><b>1.1</b> Attribution</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="predicting-species-specific-occupancy.html"><a href="predicting-species-specific-occupancy.html"><i class="fa fa-check"></i><b>2</b> Predicting Species-specific Occupancy</a><ul>
-<li class="chapter" data-level="2.1" data-path="predicting-species-specific-occupancy.html"><a href="predicting-species-specific-occupancy.html#prepare-libraries"><i class="fa fa-check"></i><b>2.1</b> Prepare libraries</a></li>
-<li class="chapter" data-level="2.2" data-path="predicting-species-specific-occupancy.html"><a href="predicting-species-specific-occupancy.html#read-data"><i class="fa fa-check"></i><b>2.2</b> Read data</a></li>
+<li class="chapter" data-level="2" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html"><i class="fa fa-check"></i><b>2</b> Selecting species of interest</a><ul>
+<li class="chapter" data-level="2.1" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#prepare-libraries"><i class="fa fa-check"></i><b>2.1</b> Prepare libraries</a></li>
+<li class="chapter" data-level="2.2" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#read-species-of-interest"><i class="fa fa-check"></i><b>2.2</b> Read species of interest</a></li>
+<li class="chapter" data-level="2.3" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#load-raw-data-for-locations"><i class="fa fa-check"></i><b>2.3</b> Load raw data for locations</a></li>
+<li class="chapter" data-level="2.4" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#get-proportional-obs-counts-in-25km-cells"><i class="fa fa-check"></i><b>2.4</b> Get proportional obs counts in 25km cells</a></li>
+<li class="chapter" data-level="2.5" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#which-species-are-reported-sufficiently-in-checklists"><i class="fa fa-check"></i><b>2.5</b> Which species are reported sufficiently in checklists?</a></li>
+<li class="chapter" data-level="2.6" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#figure-checklist-distribution"><i class="fa fa-check"></i><b>2.6</b> Figure: Checklist distribution</a></li>
+<li class="chapter" data-level="2.7" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#prepare-the-species-list"><i class="fa fa-check"></i><b>2.7</b> Prepare the species list</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html"><i class="fa fa-check"></i><b>3</b> Selecting species of interest</a><ul>
-<li class="chapter" data-level="3.1" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#prepare-libraries-1"><i class="fa fa-check"></i><b>3.1</b> Prepare libraries</a></li>
-<li class="chapter" data-level="3.2" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#read-species-of-interest"><i class="fa fa-check"></i><b>3.2</b> Read species of interest</a></li>
-<li class="chapter" data-level="3.3" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#load-raw-data-for-locations"><i class="fa fa-check"></i><b>3.3</b> Load raw data for locations</a></li>
-<li class="chapter" data-level="3.4" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#get-proportional-obs-counts-in-25km-cells"><i class="fa fa-check"></i><b>3.4</b> Get proportional obs counts in 25km cells</a></li>
-<li class="chapter" data-level="3.5" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#which-species-are-reported-sufficiently-in-checklists"><i class="fa fa-check"></i><b>3.5</b> Which species are reported sufficiently in checklists?</a></li>
-<li class="chapter" data-level="3.6" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#figure-checklist-distribution"><i class="fa fa-check"></i><b>3.6</b> Figure: Checklist distribution</a></li>
-<li class="chapter" data-level="3.7" data-path="selecting-species-of-interest.html"><a href="selecting-species-of-interest.html#prepare-the-species-list"><i class="fa fa-check"></i><b>3.7</b> Prepare the species list</a></li>
+<li class="chapter" data-level="3" data-path="landcover-classification.html"><a href="landcover-classification.html"><i class="fa fa-check"></i><b>3</b> Landcover classification</a></li>
+<li class="chapter" data-level="4" data-path="spatial-autocorrelation-of-climatic-predictors.html"><a href="spatial-autocorrelation-of-climatic-predictors.html"><i class="fa fa-check"></i><b>4</b> Spatial Autocorrelation of Climatic Predictors</a><ul>
+<li class="chapter" data-level="4.1" data-path="spatial-autocorrelation-of-climatic-predictors.html"><a href="spatial-autocorrelation-of-climatic-predictors.html#load-libraries"><i class="fa fa-check"></i><b>4.1</b> Load libraries</a></li>
+<li class="chapter" data-level="4.2" data-path="spatial-autocorrelation-of-climatic-predictors.html"><a href="spatial-autocorrelation-of-climatic-predictors.html#prepare-data"><i class="fa fa-check"></i><b>4.2</b> Prepare data</a></li>
+<li class="chapter" data-level="4.3" data-path="spatial-autocorrelation-of-climatic-predictors.html"><a href="spatial-autocorrelation-of-climatic-predictors.html#calculate-variograms-of-environmental-layers"><i class="fa fa-check"></i><b>4.3</b> Calculate variograms of environmental layers</a></li>
+<li class="chapter" data-level="4.4" data-path="spatial-autocorrelation-of-climatic-predictors.html"><a href="spatial-autocorrelation-of-climatic-predictors.html#visualise-variograms-of-environmental-data"><i class="fa fa-check"></i><b>4.4</b> Visualise variograms of environmental data</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="climate-in-relation-to-landcover.html"><a href="climate-in-relation-to-landcover.html"><i class="fa fa-check"></i><b>4</b> Climate in Relation to Landcover</a><ul>
-<li class="chapter" data-level="4.1" data-path="climate-in-relation-to-landcover.html"><a href="climate-in-relation-to-landcover.html#prepare-libraries-2"><i class="fa fa-check"></i><b>4.1</b> Prepare libraries</a></li>
-<li class="chapter" data-level="4.2" data-path="climate-in-relation-to-landcover.html"><a href="climate-in-relation-to-landcover.html#prepare-environmental-data"><i class="fa fa-check"></i><b>4.2</b> Prepare environmental data</a></li>
-<li class="chapter" data-level="4.3" data-path="climate-in-relation-to-landcover.html"><a href="climate-in-relation-to-landcover.html#climatic-variables-over-landcover"><i class="fa fa-check"></i><b>4.3</b> Climatic variables over landcover</a></li>
+<li class="chapter" data-level="5" data-path="climatic-raster-resampling.html"><a href="climatic-raster-resampling.html"><i class="fa fa-check"></i><b>5</b> Climatic raster resampling</a><ul>
+<li class="chapter" data-level="5.1" data-path="climatic-raster-resampling.html"><a href="climatic-raster-resampling.html#prepare-landcover"><i class="fa fa-check"></i><b>5.1</b> Prepare landcover</a></li>
+<li class="chapter" data-level="5.2" data-path="climatic-raster-resampling.html"><a href="climatic-raster-resampling.html#prepare-spatial-extent"><i class="fa fa-check"></i><b>5.2</b> Prepare spatial extent</a></li>
+<li class="chapter" data-level="5.3" data-path="climatic-raster-resampling.html"><a href="climatic-raster-resampling.html#prepare-chelsa-rasters"><i class="fa fa-check"></i><b>5.3</b> Prepare CHELSA rasters</a></li>
+<li class="chapter" data-level="5.4" data-path="climatic-raster-resampling.html"><a href="climatic-raster-resampling.html#resample-prepared-rasters"><i class="fa fa-check"></i><b>5.4</b> Resample prepared rasters</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html"><i class="fa fa-check"></i><b>5</b> Distribution of Observer Expertise</a><ul>
-<li class="chapter" data-level="5.1" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#load-observer-expertise-scores-and-checklist-covariates"><i class="fa fa-check"></i><b>5.1</b> Load observer expertise scores and checklist covariates</a></li>
-<li class="chapter" data-level="5.2" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#species-observed-in-relation-to-observer-expertise"><i class="fa fa-check"></i><b>5.2</b> Species observed in relation to observer expertise</a></li>
-<li class="chapter" data-level="5.3" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#observer-expertise-in-relation-to-landcover"><i class="fa fa-check"></i><b>5.3</b> Observer expertise in relation to landcover</a></li>
+<li class="chapter" data-level="6" data-path="climate-in-relation-to-landcover.html"><a href="climate-in-relation-to-landcover.html"><i class="fa fa-check"></i><b>6</b> Climate in Relation to Landcover</a><ul>
+<li class="chapter" data-level="6.1" data-path="climate-in-relation-to-landcover.html"><a href="climate-in-relation-to-landcover.html#prepare-libraries-1"><i class="fa fa-check"></i><b>6.1</b> Prepare libraries</a></li>
+<li class="chapter" data-level="6.2" data-path="climate-in-relation-to-landcover.html"><a href="climate-in-relation-to-landcover.html#prepare-environmental-data"><i class="fa fa-check"></i><b>6.2</b> Prepare environmental data</a></li>
+<li class="chapter" data-level="6.3" data-path="climate-in-relation-to-landcover.html"><a href="climate-in-relation-to-landcover.html#climatic-variables-over-landcover"><i class="fa fa-check"></i><b>6.3</b> Climatic variables over landcover</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="spatial-autocorrelation-of-climatic-predictors.html"><a href="spatial-autocorrelation-of-climatic-predictors.html"><i class="fa fa-check"></i><b>6</b> Spatial Autocorrelation of Climatic Predictors</a><ul>
-<li class="chapter" data-level="6.1" data-path="spatial-autocorrelation-of-climatic-predictors.html"><a href="spatial-autocorrelation-of-climatic-predictors.html#load-libraries"><i class="fa fa-check"></i><b>6.1</b> Load libraries</a></li>
-<li class="chapter" data-level="6.2" data-path="spatial-autocorrelation-of-climatic-predictors.html"><a href="spatial-autocorrelation-of-climatic-predictors.html#prepare-data"><i class="fa fa-check"></i><b>6.2</b> Prepare data</a></li>
-<li class="chapter" data-level="6.3" data-path="spatial-autocorrelation-of-climatic-predictors.html"><a href="spatial-autocorrelation-of-climatic-predictors.html#calculate-variograms-of-environmental-layers"><i class="fa fa-check"></i><b>6.3</b> Calculate variograms of environmental layers</a></li>
-<li class="chapter" data-level="6.4" data-path="spatial-autocorrelation-of-climatic-predictors.html"><a href="spatial-autocorrelation-of-climatic-predictors.html#visualise-variograms-of-environmental-data"><i class="fa fa-check"></i><b>6.4</b> Visualise variograms of environmental data</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="climatic-raster-resampling.html"><a href="climatic-raster-resampling.html"><i class="fa fa-check"></i><b>7</b> Climatic raster resampling</a><ul>
-<li class="chapter" data-level="7.1" data-path="climatic-raster-resampling.html"><a href="climatic-raster-resampling.html#prepare-landcover"><i class="fa fa-check"></i><b>7.1</b> Prepare landcover</a></li>
-<li class="chapter" data-level="7.2" data-path="climatic-raster-resampling.html"><a href="climatic-raster-resampling.html#prepare-spatial-extent"><i class="fa fa-check"></i><b>7.2</b> Prepare spatial extent</a></li>
-<li class="chapter" data-level="7.3" data-path="climatic-raster-resampling.html"><a href="climatic-raster-resampling.html#prepare-chelsa-rasters"><i class="fa fa-check"></i><b>7.3</b> Prepare CHELSA rasters</a></li>
-<li class="chapter" data-level="7.4" data-path="climatic-raster-resampling.html"><a href="climatic-raster-resampling.html#resample-prepared-rasters"><i class="fa fa-check"></i><b>7.4</b> Resample prepared rasters</a></li>
+<li class="chapter" data-level="7" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html"><i class="fa fa-check"></i><b>7</b> Distribution of Observer Expertise</a><ul>
+<li class="chapter" data-level="7.1" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#prepare-libraries-2"><i class="fa fa-check"></i><b>7.1</b> Prepare libraries</a></li>
+<li class="chapter" data-level="7.2" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#load-observer-expertise-scores-and-checklist-covariates"><i class="fa fa-check"></i><b>7.2</b> Load observer expertise scores and checklist covariates</a></li>
+<li class="chapter" data-level="7.3" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#species-observed-in-relation-to-observer-expertise"><i class="fa fa-check"></i><b>7.3</b> Species observed in relation to observer expertise</a></li>
+<li class="chapter" data-level="7.4" data-path="distribution-of-observer-expertise.html"><a href="distribution-of-observer-expertise.html#observer-expertise-in-relation-to-landcover"><i class="fa fa-check"></i><b>7.4</b> Observer expertise in relation to landcover</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="matching-effort-cutoffs-with-spatial-independence-criteria.html"><a href="matching-effort-cutoffs-with-spatial-independence-criteria.html"><i class="fa fa-check"></i><b>8</b> Matching Effort Cutoffs with Spatial Independence Criteria</a><ul>
 <li class="chapter" data-level="8.1" data-path="matching-effort-cutoffs-with-spatial-independence-criteria.html"><a href="matching-effort-cutoffs-with-spatial-independence-criteria.html#load-librarires"><i class="fa fa-check"></i><b>8.1</b> Load librarires</a></li>
@@ -188,7 +186,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.10" data-path="spatial-thinning-a-brief-comparison-of-approaches.html"><a href="spatial-thinning-a-brief-comparison-of-approaches.html#count-props-under-threshold-in-python"><i class="fa fa-check"></i><b>9.10</b> Count props under threshold in Python</a></li>
 <li class="chapter" data-level="9.11" data-path="spatial-thinning-a-brief-comparison-of-approaches.html"><a href="spatial-thinning-a-brief-comparison-of-approaches.html#plot-metrics-for-different-methods"><i class="fa fa-check"></i><b>9.11</b> Plot metrics for different methods</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="landcover-classification.html"><a href="landcover-classification.html"><i class="fa fa-check"></i><b>10</b> Landcover classification</a></li>
+<li class="chapter" data-level="10" data-path="predicting-species-specific-occupancy.html"><a href="predicting-species-specific-occupancy.html"><i class="fa fa-check"></i><b>10</b> Predicting Species-specific Occupancy</a><ul>
+<li class="chapter" data-level="10.1" data-path="predicting-species-specific-occupancy.html"><a href="predicting-species-specific-occupancy.html#prepare-libraries-4"><i class="fa fa-check"></i><b>10.1</b> Prepare libraries</a></li>
+<li class="chapter" data-level="10.2" data-path="predicting-species-specific-occupancy.html"><a href="predicting-species-specific-occupancy.html#read-data"><i class="fa fa-check"></i><b>10.2</b> Read data</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -207,179 +208,179 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="landcover-classification" class="section level1">
-<h1><span class="header-section-number">Section 10</span> Landcover classification</h1>
-<p>This script was used to classify a 2019 Sentinel composite image across the Nilgiris and the Anamalais into seven distinct land cover types.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource js numberLines"><code class="sourceCode javascript"><a class="sourceLine" id="cb44-1" title="1"><span class="co">// Data: Groundtruthed points from Arasumani et al 2019</span></a>
-<a class="sourceLine" id="cb44-2" title="2"></a>
-<a class="sourceLine" id="cb44-3" title="3"><span class="co">// Function to obtain a Cloud-Free Image // </span></a>
-<a class="sourceLine" id="cb44-4" title="4"></a>
-<a class="sourceLine" id="cb44-5" title="5"><span class="co">/**</span></a>
-<a class="sourceLine" id="cb44-6" title="6"><span class="co"> * Function to mask clouds using the Sentinel-2 QA band</span></a>
-<a class="sourceLine" id="cb44-7" title="7"><span class="co"> * </span><span class="an">@param</span><span class="co"> </span><span class="cv">{ee.Image}</span><span class="co"> image Sentinel-2 image</span></a>
-<a class="sourceLine" id="cb44-8" title="8"><span class="co"> * </span><span class="an">@return</span><span class="co"> {ee.Image} cloud masked Sentinel-2 image</span></a>
-<a class="sourceLine" id="cb44-9" title="9"><span class="co"> */</span></a>
-<a class="sourceLine" id="cb44-10" title="10"> </a>
-<a class="sourceLine" id="cb44-11" title="11"><span class="kw">function</span> <span class="at">maskS2clouds</span>(image) <span class="op">{</span></a>
-<a class="sourceLine" id="cb44-12" title="12">  <span class="kw">var</span> qa <span class="op">=</span> <span class="va">image</span>.<span class="at">select</span>(<span class="st">&#39;QA60&#39;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-13" title="13"></a>
-<a class="sourceLine" id="cb44-14" title="14">  <span class="co">// Bits 10 and 11 are clouds and cirrus, respectively.</span></a>
-<a class="sourceLine" id="cb44-15" title="15">  <span class="kw">var</span> cloudBitMask <span class="op">=</span> <span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">10</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb44-16" title="16">  <span class="kw">var</span> cirrusBitMask <span class="op">=</span> <span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">11</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb44-17" title="17"></a>
-<a class="sourceLine" id="cb44-18" title="18">  <span class="co">// Both flags should be set to zero, indicating clear conditions.</span></a>
-<a class="sourceLine" id="cb44-19" title="19">  <span class="kw">var</span> mask <span class="op">=</span> <span class="va">qa</span>.<span class="at">bitwiseAnd</span>(cloudBitMask).<span class="at">eq</span>(<span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb44-20" title="20">      .<span class="at">and</span>(<span class="va">qa</span>.<span class="at">bitwiseAnd</span>(cirrusBitMask).<span class="at">eq</span>(<span class="dv">0</span>))<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-21" title="21"></a>
-<a class="sourceLine" id="cb44-22" title="22">  <span class="cf">return</span> <span class="va">image</span>.<span class="at">updateMask</span>(mask).<span class="at">divide</span>(<span class="dv">10000</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-23" title="23"><span class="op">}</span></a>
-<a class="sourceLine" id="cb44-24" title="24"></a>
-<a class="sourceLine" id="cb44-25" title="25"><span class="co">// Importing shapefile needed for classification</span></a>
-<a class="sourceLine" id="cb44-26" title="26"><span class="kw">var</span> clipper <span class="op">=</span> <span class="kw">function</span>(image)<span class="op">{</span></a>
-<a class="sourceLine" id="cb44-27" title="27">  <span class="cf">return</span> <span class="va">image</span>.<span class="at">clip</span>(WG_Buffer)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-28" title="28"><span class="op">};</span></a>
-<a class="sourceLine" id="cb44-29" title="29"></a>
-<a class="sourceLine" id="cb44-30" title="30"></a>
-<a class="sourceLine" id="cb44-31" title="31"><span class="co">// Import raw Sentinel scenes and clip them over your study area</span></a>
-<a class="sourceLine" id="cb44-32" title="32"><span class="kw">var</span> filtered <span class="op">=</span> <span class="va">sentinel</span>.<span class="at">filterDate</span>(<span class="st">&#39;2018-01-01&#39;</span><span class="op">,</span><span class="st">&#39;2018-12-01&#39;</span>).<span class="at">map</span>(clipper)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-33" title="33"></a>
-<a class="sourceLine" id="cb44-34" title="34"><span class="co">// Load Sentinel-2 TOA reflectance data.</span></a>
-<a class="sourceLine" id="cb44-35" title="35"><span class="co">// Pre-filter to get less cloudy granules.</span></a>
-<a class="sourceLine" id="cb44-36" title="36"></a>
-<a class="sourceLine" id="cb44-37" title="37"><span class="kw">var</span> dataset <span class="op">=</span> <span class="va">filtered</span>.<span class="at">filter</span>(<span class="va">ee</span>.<span class="va">Filter</span>.<span class="at">lt</span>(<span class="st">&#39;CLOUDY_PIXEL_PERCENTAGE&#39;</span><span class="op">,</span> <span class="dv">20</span>))</a>
-<a class="sourceLine" id="cb44-38" title="38">                  .<span class="at">map</span>(maskS2clouds)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-39" title="39"><span class="kw">var</span> scene <span class="op">=</span> <span class="va">dataset</span>.<span class="at">reduce</span>(<span class="va">ee</span>.<span class="va">Reducer</span>.<span class="at">median</span>())<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-40" title="40"></a>
-<a class="sourceLine" id="cb44-41" title="41"><span class="va">Map</span>.<span class="at">addLayer</span>(WG_Buffer<span class="op">,</span> <span class="op">{},</span> <span class="st">&#39;Buffer Outline for Nil/Ana/Pal&#39;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-42" title="42"><span class="co">// Map.addLayer(scene,{},&#39;Image for Classification&#39;);</span></a>
-<a class="sourceLine" id="cb44-43" title="43"><span class="co">// Map.addLayer(WG, {},&#39;Outline for Nilgiris/Anaimalais/Palanis&#39;);</span></a>
-<a class="sourceLine" id="cb44-44" title="44"></a>
-<a class="sourceLine" id="cb44-45" title="45"></a>
-<a class="sourceLine" id="cb44-46" title="46"><span class="co">// Step 2: Creating training data manually</span></a>
-<a class="sourceLine" id="cb44-47" title="47"><span class="co">// Added a new shapefile field manually in ArcMap so that GEE can take a float field for classification</span></a>
-<a class="sourceLine" id="cb44-48" title="48"><span class="co">// Field: landcover</span></a>
-<a class="sourceLine" id="cb44-49" title="49"><span class="co">// Values: agriculture (1), forest (2), grassland (3), plantation (4), settlements (5), tea (6), waterbodies (7)</span></a>
-<a class="sourceLine" id="cb44-50" title="50"><span class="co">// Note - Arasu has classified plantation as Acacia, Pine et al sub classes (for future analysis)</span></a>
-<a class="sourceLine" id="cb44-51" title="51"></a>
-<a class="sourceLine" id="cb44-52" title="52"><span class="co">// Merging the featureCollections to obtain a single featureCollection</span></a>
-<a class="sourceLine" id="cb44-53" title="53"></a>
-<a class="sourceLine" id="cb44-54" title="54"><span class="kw">var</span> trainingFeatures <span class="op">=</span> <span class="va">agriculture</span>.<span class="at">merge</span>(forests).<span class="at">merge</span>(forests2).<span class="at">merge</span>(grasslands).<span class="at">merge</span>(grasslands2)</a>
-<a class="sourceLine" id="cb44-55" title="55">                               .<span class="at">merge</span>(settlements).<span class="at">merge</span>(plantations)</a>
-<a class="sourceLine" id="cb44-56" title="56">                            .<span class="at">merge</span>(waterbodies).<span class="at">merge</span>(tea).<span class="at">merge</span>(tea2).<span class="at">merge</span>(tea3).<span class="at">merge</span>(forests3)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-57" title="57"></a>
-<a class="sourceLine" id="cb44-58" title="58"><span class="co">// // Specify the bands of the sentinel image to be used as predictors (p)</span></a>
-<a class="sourceLine" id="cb44-59" title="59"><span class="kw">var</span> predictionBands <span class="op">=</span> [<span class="st">&#39;B2_median&#39;</span><span class="op">,</span><span class="st">&#39;B3_median&#39;</span><span class="op">,</span><span class="st">&#39;B4_median&#39;</span><span class="op">,</span><span class="st">&#39;B8_median&#39;</span>]<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-60" title="60"></a>
-<a class="sourceLine" id="cb44-61" title="61"></a>
-<a class="sourceLine" id="cb44-62" title="62"><span class="co">// // Now a random forest is a collection of random trees. It&#39;s predictions are used to compute an</span></a>
-<a class="sourceLine" id="cb44-63" title="63"><span class="co">// // average (regression) or vote on a label (classification)</span></a>
-<a class="sourceLine" id="cb44-64" title="64"></a>
-<a class="sourceLine" id="cb44-65" title="65"><span class="kw">var</span> sample <span class="op">=</span> <span class="va">scene</span>.<span class="at">select</span>(predictionBands)</a>
-<a class="sourceLine" id="cb44-66" title="66">                      .<span class="at">sampleRegions</span>(<span class="op">{</span></a>
-<a class="sourceLine" id="cb44-67" title="67">                        <span class="dt">collection</span><span class="op">:</span> trainingFeatures<span class="op">,</span></a>
-<a class="sourceLine" id="cb44-68" title="68">                        <span class="dt">properties </span><span class="op">:</span> [<span class="st">&#39;landcover&#39;</span>]<span class="op">,</span></a>
-<a class="sourceLine" id="cb44-69" title="69">                        <span class="dt">scale</span><span class="op">:</span> <span class="dv">10</span></a>
-<a class="sourceLine" id="cb44-70" title="70">                              <span class="op">}</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-71" title="71"></a>
-<a class="sourceLine" id="cb44-72" title="72"><span class="co">// Let&#39;s run a classifier for randomForest</span></a>
-<a class="sourceLine" id="cb44-73" title="73"><span class="kw">var</span> classifier <span class="op">=</span> <span class="va">ee</span>.<span class="va">Classifier</span>.<span class="at">randomForest</span>(<span class="dv">10</span>).<span class="at">train</span>(<span class="op">{</span></a>
-<a class="sourceLine" id="cb44-74" title="74">                            <span class="dt">features</span><span class="op">:</span> sample<span class="op">,</span></a>
-<a class="sourceLine" id="cb44-75" title="75">                            <span class="dt">classProperty</span><span class="op">:</span> <span class="st">&#39;landcover&#39;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb44-76" title="76">                            <span class="dt">inputProperties</span><span class="op">:</span> predictionBands</a>
-<a class="sourceLine" id="cb44-77" title="77"><span class="op">}</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-78" title="78"></a>
-<a class="sourceLine" id="cb44-79" title="79"></a>
-<a class="sourceLine" id="cb44-80" title="80"><span class="kw">var</span> classified <span class="op">=</span> <span class="va">scene</span>.<span class="at">select</span>(predictionBands).<span class="at">classify</span>(classifier)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-81" title="81"><span class="va">Map</span>.<span class="at">addLayer</span>(classified<span class="op">,</span> <span class="op">{</span><span class="dt">min</span><span class="op">:</span><span class="dv">1</span><span class="op">,</span> <span class="dt">max</span><span class="op">:</span><span class="dv">7</span><span class="op">,</span><span class="dt">palette</span><span class="op">:</span>[</a>
-<a class="sourceLine" id="cb44-82" title="82">  <span class="st">&#39;be4fc4&#39;</span><span class="op">,</span> <span class="co">// agriculture, violetish</span></a>
-<a class="sourceLine" id="cb44-83" title="83">  <span class="st">&#39;04a310&#39;</span><span class="op">,</span> <span class="co">// forests, lighter green</span></a>
-<a class="sourceLine" id="cb44-84" title="84">  <span class="st">&#39;cbb315&#39;</span><span class="op">,</span> <span class="co">// grasslands, yellowish</span></a>
-<a class="sourceLine" id="cb44-85" title="85">  <span class="st">&#39;c17111&#39;</span><span class="op">,</span> <span class="co">// plantations, brownish</span></a>
-<a class="sourceLine" id="cb44-86" title="86">  <span class="st">&#39;b0a69d&#39;</span><span class="op">,</span> <span class="co">// settlements, grayish</span></a>
-<a class="sourceLine" id="cb44-87" title="87">  <span class="st">&#39;025a05&#39;</span><span class="op">,</span> <span class="co">// tea, dark greenish</span></a>
-<a class="sourceLine" id="cb44-88" title="88">  <span class="st">&#39;2035df&#39;</span><span class="op">,</span> <span class="co">// waterbodies, royal blue </span></a>
-<a class="sourceLine" id="cb44-89" title="89">  ]<span class="op">},</span> <span class="st">&#39;classified&#39;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-90" title="90"></a>
-<a class="sourceLine" id="cb44-91" title="91"><span class="co">// Partitioning training data to run an accuracy assessment</span></a>
-<a class="sourceLine" id="cb44-92" title="92"><span class="co">// Adding a randomColumn of values ranging from 0 to 1</span></a>
-<a class="sourceLine" id="cb44-93" title="93"><span class="kw">var</span> trainingTesting <span class="op">=</span> <span class="va">sample</span>.<span class="at">randomColumn</span>()<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-94" title="94"></a>
-<a class="sourceLine" id="cb44-95" title="95"><span class="kw">var</span> trainingSet <span class="op">=</span> <span class="va">trainingTesting</span>.<span class="at">filter</span>(<span class="va">ee</span>.<span class="va">Filter</span>.<span class="at">lt</span>(<span class="st">&#39;random&#39;</span><span class="op">,</span><span class="fl">0.8</span>))<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-96" title="96"><span class="kw">var</span> testingSet <span class="op">=</span> <span class="va">trainingTesting</span>.<span class="at">filter</span>(<span class="va">ee</span>.<span class="va">Filter</span>.<span class="at">gte</span>(<span class="st">&#39;random&#39;</span><span class="op">,</span><span class="fl">0.2</span>))<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-97" title="97"></a>
-<a class="sourceLine" id="cb44-98" title="98"><span class="co">// Now run the classifier only with the trainingSet</span></a>
-<a class="sourceLine" id="cb44-99" title="99"><span class="kw">var</span> trained <span class="op">=</span> <span class="va">ee</span>.<span class="va">Classifier</span>.<span class="at">randomForest</span>(<span class="dv">10</span>).<span class="at">train</span>(<span class="op">{</span></a>
-<a class="sourceLine" id="cb44-100" title="100">  <span class="dt">features</span><span class="op">:</span> trainingSet<span class="op">,</span></a>
-<a class="sourceLine" id="cb44-101" title="101">  <span class="dt">classProperty</span><span class="op">:</span> <span class="st">&#39;landcover&#39;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb44-102" title="102">  <span class="dt">inputProperties</span><span class="op">:</span> predictionBands</a>
-<a class="sourceLine" id="cb44-103" title="103"><span class="op">}</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-104" title="104"></a>
-<a class="sourceLine" id="cb44-105" title="105"><span class="co">// Now classify the testData and obtain a Confusion matrix</span></a>
-<a class="sourceLine" id="cb44-106" title="106"><span class="kw">var</span> confusionMatrix <span class="op">=</span> <span class="va">ee</span>.<span class="at">ConfusionMatrix</span>(<span class="va">testingSet</span>.<span class="at">classify</span>(trained)</a>
-<a class="sourceLine" id="cb44-107" title="107">                                                  .<span class="at">errorMatrix</span>(<span class="op">{</span></a>
-<a class="sourceLine" id="cb44-108" title="108">                                                    <span class="dt">actual</span><span class="op">:</span> <span class="st">&#39;landcover&#39;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb44-109" title="109">                                                    <span class="dt">predicted</span><span class="op">:</span> <span class="st">&#39;classification&#39;</span></a>
-<a class="sourceLine" id="cb44-110" title="110">                                                  <span class="op">}</span>))<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-111" title="111"></a>
-<a class="sourceLine" id="cb44-112" title="112"><span class="co">// Now print the ConfusionMatrix and expand the object to inspect the matrix()</span></a>
-<a class="sourceLine" id="cb44-113" title="113"><span class="co">// The entries represent the number of pixels and the items on the diagonal represent</span></a>
-<a class="sourceLine" id="cb44-114" title="114"><span class="co">// correct classification. Items off the diagonal are misclassifications, where class in row i</span></a>
-<a class="sourceLine" id="cb44-115" title="115"><span class="co">// is classified as column j</span></a>
-<a class="sourceLine" id="cb44-116" title="116"></a>
-<a class="sourceLine" id="cb44-117" title="117"><span class="co">// One can also obtain basic descriptive statistics from the confusionMatrix</span></a>
-<a class="sourceLine" id="cb44-118" title="118"><span class="co">// Note this won&#39;t work as the number of pixels is too high (Export as .csv to obtain result)</span></a>
-<a class="sourceLine" id="cb44-119" title="119"></a>
-<a class="sourceLine" id="cb44-120" title="120"><span class="co">// print(&#39;Confusion matrix:&#39;, confusionMatrix);</span></a>
-<a class="sourceLine" id="cb44-121" title="121"><span class="co">// print(&#39;Overall Accuracy:&#39;, confusionMatrix.accuracy());</span></a>
-<a class="sourceLine" id="cb44-122" title="122"><span class="co">// print(&#39;Producers Accuracy:&#39;, confusionMatrix.producersAccuracy());</span></a>
-<a class="sourceLine" id="cb44-123" title="123"><span class="co">// print(&#39;Consumers Accuracy:&#39;, confusionMatrix.consumersAccuracy());</span></a>
-<a class="sourceLine" id="cb44-124" title="124"></a>
-<a class="sourceLine" id="cb44-125" title="125"><span class="co">// Since printing the above is gives you a computation timed out error</span></a>
-<a class="sourceLine" id="cb44-126" title="126"><span class="kw">var</span> exportconfusionMatrix <span class="op">=</span> <span class="va">ee</span>.<span class="at">Feature</span>(<span class="kw">null</span><span class="op">,</span> <span class="op">{</span><span class="dt">matrix</span><span class="op">:</span> <span class="va">confusionMatrix</span>.<span class="at">array</span>()<span class="op">}</span>)<span class="op">;</span> </a>
-<a class="sourceLine" id="cb44-127" title="127"><span class="kw">var</span> exportAccuracy <span class="op">=</span> <span class="va">ee</span>.<span class="at">Feature</span>(<span class="kw">null</span><span class="op">,</span> <span class="op">{</span><span class="dt">matrix</span><span class="op">:</span> <span class="va">confusionMatrix</span>.<span class="at">accuracy</span>()<span class="op">}</span>)<span class="op">;</span> </a>
-<a class="sourceLine" id="cb44-128" title="128"></a>
-<a class="sourceLine" id="cb44-129" title="129"><span class="va">Export</span>.<span class="va">table</span>.<span class="at">toDrive</span>(<span class="op">{</span></a>
-<a class="sourceLine" id="cb44-130" title="130">  <span class="dt">collection</span><span class="op">:</span> <span class="va">ee</span>.<span class="at">FeatureCollection</span>(exportconfusionMatrix)<span class="op">,</span></a>
-<a class="sourceLine" id="cb44-131" title="131">  <span class="dt">description</span><span class="op">:</span> <span class="st">&#39;confusionMatrix&#39;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb44-132" title="132">  <span class="dt">fileFormat</span><span class="op">:</span> <span class="st">&#39;CSV&#39;</span></a>
-<a class="sourceLine" id="cb44-133" title="133"><span class="op">}</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-134" title="134"></a>
-<a class="sourceLine" id="cb44-135" title="135"><span class="va">Export</span>.<span class="va">table</span>.<span class="at">toDrive</span>(<span class="op">{</span></a>
-<a class="sourceLine" id="cb44-136" title="136">  <span class="dt">collection</span><span class="op">:</span> <span class="va">ee</span>.<span class="at">FeatureCollection</span>(exportAccuracy)<span class="op">,</span></a>
-<a class="sourceLine" id="cb44-137" title="137">  <span class="dt">description</span><span class="op">:</span> <span class="st">&#39;Accuracy&#39;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb44-138" title="138">  <span class="dt">fileFormat</span><span class="op">:</span> <span class="st">&#39;CSV&#39;</span></a>
-<a class="sourceLine" id="cb44-139" title="139"><span class="op">}</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-140" title="140"></a>
-<a class="sourceLine" id="cb44-141" title="141"><span class="co">// Below code suggests that the current projection system is WGS84</span></a>
-<a class="sourceLine" id="cb44-142" title="142"><span class="co">// print(classified.projection());</span></a>
-<a class="sourceLine" id="cb44-143" title="143"></a>
-<a class="sourceLine" id="cb44-144" title="144"><span class="co">// To project it to UTM</span></a>
-<a class="sourceLine" id="cb44-145" title="145"><span class="kw">var</span> reprojected <span class="op">=</span> <span class="va">classified</span>.<span class="at">reproject</span>(<span class="st">&#39;EPSG:32643&#39;</span><span class="op">,</span><span class="kw">null</span><span class="op">,</span><span class="dv">10</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-146" title="146"></a>
-<a class="sourceLine" id="cb44-147" title="147"><span class="co">// Export classified image</span></a>
-<a class="sourceLine" id="cb44-148" title="148"><span class="va">Export</span>.<span class="va">image</span>.<span class="at">toDrive</span>(<span class="op">{</span></a>
-<a class="sourceLine" id="cb44-149" title="149">  <span class="dt">image</span><span class="op">:</span> classified<span class="op">,</span></a>
-<a class="sourceLine" id="cb44-150" title="150">  <span class="dt">description</span><span class="op">:</span> <span class="st">&#39;Classified Image&#39;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb44-151" title="151">  <span class="dt">scale</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb44-152" title="152">  <span class="dt">region</span><span class="op">:</span> WG_Buffer<span class="op">,</span>      <span class="co">//.geometry().bounds(),</span></a>
-<a class="sourceLine" id="cb44-153" title="153">  <span class="dt">fileFormat</span><span class="op">:</span> <span class="st">&#39;GeoTIFF&#39;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb44-154" title="154">  <span class="dt">formatOptions</span><span class="op">:</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb44-155" title="155">    <span class="dt">cloudOptimized</span><span class="op">:</span> <span class="kw">true</span></a>
-<a class="sourceLine" id="cb44-156" title="156">  <span class="op">},</span></a>
-<a class="sourceLine" id="cb44-157" title="157">  <span class="dt">maxPixels</span><span class="op">:</span> <span class="dv">618539476</span></a>
-<a class="sourceLine" id="cb44-158" title="158"><span class="op">}</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb44-159" title="159"></a>
-<a class="sourceLine" id="cb44-160" title="160"><span class="co">// Export projected image</span></a>
-<a class="sourceLine" id="cb44-161" title="161"><span class="va">Export</span>.<span class="va">image</span>.<span class="at">toDrive</span>(<span class="op">{</span></a>
-<a class="sourceLine" id="cb44-162" title="162">  <span class="dt">image</span><span class="op">:</span> reprojected<span class="op">,</span></a>
-<a class="sourceLine" id="cb44-163" title="163">  <span class="dt">description</span><span class="op">:</span> <span class="st">&#39;Reprojected Image&#39;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb44-164" title="164">  <span class="dt">scale</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb44-165" title="165">  <span class="dt">region</span><span class="op">:</span> WG_Buffer<span class="op">,</span>         <span class="co">//.geometry().bounds(),</span></a>
-<a class="sourceLine" id="cb44-166" title="166">  <span class="dt">fileFormat</span><span class="op">:</span> <span class="st">&#39;GeoTIFF&#39;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb44-167" title="167">  <span class="dt">formatOptions</span><span class="op">:</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb44-168" title="168">    <span class="dt">cloudOptimized</span><span class="op">:</span> <span class="kw">true</span></a>
-<a class="sourceLine" id="cb44-169" title="169">  <span class="op">},</span></a>
-<a class="sourceLine" id="cb44-170" title="170">  <span class="dt">maxPixels</span><span class="op">:</span> <span class="dv">618539476</span></a>
-<a class="sourceLine" id="cb44-171" title="171"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h1><span class="header-section-number">Section 3</span> Landcover classification</h1>
+<p>This script was used to classify a 2019 Sentinel composite image across the Nilgiris and the Anamalais into seven distinct land cover types. The same code can be viewed on GEE here: <a href="https://code.earthengine.google.com/ec69fc4ffad32a532b25202009243d42" class="uri">https://code.earthengine.google.com/ec69fc4ffad32a532b25202009243d42</a>.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource js numberLines"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="co">// Data: Groundtruthed points from Arasumani et al 2019</span></a>
+<a class="sourceLine" id="cb9-2" title="2"></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="co">// Function to obtain a Cloud-Free Image // </span></a>
+<a class="sourceLine" id="cb9-4" title="4"></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co">/**</span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="co"> * Function to mask clouds using the Sentinel-2 QA band</span></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="co"> * </span><span class="an">@param</span><span class="co"> </span><span class="cv">{ee.Image}</span><span class="co"> image Sentinel-2 image</span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="co"> * </span><span class="an">@return</span><span class="co"> {ee.Image} cloud masked Sentinel-2 image</span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="co"> */</span></a>
+<a class="sourceLine" id="cb9-10" title="10"> </a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="kw">function</span> <span class="at">maskS2clouds</span>(image) <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-12" title="12">  <span class="kw">var</span> qa <span class="op">=</span> <span class="va">image</span>.<span class="at">select</span>(<span class="st">&#39;QA60&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-13" title="13"></a>
+<a class="sourceLine" id="cb9-14" title="14">  <span class="co">// Bits 10 and 11 are clouds and cirrus, respectively.</span></a>
+<a class="sourceLine" id="cb9-15" title="15">  <span class="kw">var</span> cloudBitMask <span class="op">=</span> <span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">10</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-16" title="16">  <span class="kw">var</span> cirrusBitMask <span class="op">=</span> <span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">11</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-17" title="17"></a>
+<a class="sourceLine" id="cb9-18" title="18">  <span class="co">// Both flags should be set to zero, indicating clear conditions.</span></a>
+<a class="sourceLine" id="cb9-19" title="19">  <span class="kw">var</span> mask <span class="op">=</span> <span class="va">qa</span>.<span class="at">bitwiseAnd</span>(cloudBitMask).<span class="at">eq</span>(<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb9-20" title="20">      .<span class="at">and</span>(<span class="va">qa</span>.<span class="at">bitwiseAnd</span>(cirrusBitMask).<span class="at">eq</span>(<span class="dv">0</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-21" title="21"></a>
+<a class="sourceLine" id="cb9-22" title="22">  <span class="cf">return</span> <span class="va">image</span>.<span class="at">updateMask</span>(mask).<span class="at">divide</span>(<span class="dv">10000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-23" title="23"><span class="op">}</span></a>
+<a class="sourceLine" id="cb9-24" title="24"></a>
+<a class="sourceLine" id="cb9-25" title="25"><span class="co">// Importing shapefile needed for classification</span></a>
+<a class="sourceLine" id="cb9-26" title="26"><span class="kw">var</span> clipper <span class="op">=</span> <span class="kw">function</span>(image)<span class="op">{</span></a>
+<a class="sourceLine" id="cb9-27" title="27">  <span class="cf">return</span> <span class="va">image</span>.<span class="at">clip</span>(WG_Buffer)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-28" title="28"><span class="op">};</span></a>
+<a class="sourceLine" id="cb9-29" title="29"></a>
+<a class="sourceLine" id="cb9-30" title="30"></a>
+<a class="sourceLine" id="cb9-31" title="31"><span class="co">// Import raw Sentinel scenes and clip them over your study area</span></a>
+<a class="sourceLine" id="cb9-32" title="32"><span class="kw">var</span> filtered <span class="op">=</span> <span class="va">sentinel</span>.<span class="at">filterDate</span>(<span class="st">&#39;2018-01-01&#39;</span><span class="op">,</span><span class="st">&#39;2018-12-01&#39;</span>).<span class="at">map</span>(clipper)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-33" title="33"></a>
+<a class="sourceLine" id="cb9-34" title="34"><span class="co">// Load Sentinel-2 TOA reflectance data.</span></a>
+<a class="sourceLine" id="cb9-35" title="35"><span class="co">// Pre-filter to get less cloudy granules.</span></a>
+<a class="sourceLine" id="cb9-36" title="36"></a>
+<a class="sourceLine" id="cb9-37" title="37"><span class="kw">var</span> dataset <span class="op">=</span> <span class="va">filtered</span>.<span class="at">filter</span>(<span class="va">ee</span>.<span class="va">Filter</span>.<span class="at">lt</span>(<span class="st">&#39;CLOUDY_PIXEL_PERCENTAGE&#39;</span><span class="op">,</span> <span class="dv">20</span>))</a>
+<a class="sourceLine" id="cb9-38" title="38">                  .<span class="at">map</span>(maskS2clouds)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-39" title="39"><span class="kw">var</span> scene <span class="op">=</span> <span class="va">dataset</span>.<span class="at">reduce</span>(<span class="va">ee</span>.<span class="va">Reducer</span>.<span class="at">median</span>())<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-40" title="40"></a>
+<a class="sourceLine" id="cb9-41" title="41"><span class="va">Map</span>.<span class="at">addLayer</span>(WG_Buffer<span class="op">,</span> <span class="op">{},</span> <span class="st">&#39;Buffer Outline for Nil/Ana/Pal&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-42" title="42"><span class="co">// Map.addLayer(scene,{},&#39;Image for Classification&#39;);</span></a>
+<a class="sourceLine" id="cb9-43" title="43"><span class="co">// Map.addLayer(WG, {},&#39;Outline for Nilgiris/Anaimalais/Palanis&#39;);</span></a>
+<a class="sourceLine" id="cb9-44" title="44"></a>
+<a class="sourceLine" id="cb9-45" title="45"></a>
+<a class="sourceLine" id="cb9-46" title="46"><span class="co">// Step 2: Creating training data manually</span></a>
+<a class="sourceLine" id="cb9-47" title="47"><span class="co">// Added a new shapefile field manually in ArcMap so that GEE can take a float field for classification</span></a>
+<a class="sourceLine" id="cb9-48" title="48"><span class="co">// Field: landcover</span></a>
+<a class="sourceLine" id="cb9-49" title="49"><span class="co">// Values: agriculture (1), forest (2), grassland (3), plantation (4), settlements (5), tea (6), waterbodies (7)</span></a>
+<a class="sourceLine" id="cb9-50" title="50"><span class="co">// Note - Arasu has classified plantation as Acacia, Pine et al sub classes (for future analysis)</span></a>
+<a class="sourceLine" id="cb9-51" title="51"></a>
+<a class="sourceLine" id="cb9-52" title="52"><span class="co">// Merging the featureCollections to obtain a single featureCollection</span></a>
+<a class="sourceLine" id="cb9-53" title="53"></a>
+<a class="sourceLine" id="cb9-54" title="54"><span class="kw">var</span> trainingFeatures <span class="op">=</span> <span class="va">agriculture</span>.<span class="at">merge</span>(forests).<span class="at">merge</span>(forests2).<span class="at">merge</span>(grasslands).<span class="at">merge</span>(grasslands2)</a>
+<a class="sourceLine" id="cb9-55" title="55">                               .<span class="at">merge</span>(settlements).<span class="at">merge</span>(plantations)</a>
+<a class="sourceLine" id="cb9-56" title="56">                            .<span class="at">merge</span>(waterbodies).<span class="at">merge</span>(tea).<span class="at">merge</span>(tea2).<span class="at">merge</span>(tea3).<span class="at">merge</span>(forests3)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-57" title="57"></a>
+<a class="sourceLine" id="cb9-58" title="58"><span class="co">// // Specify the bands of the sentinel image to be used as predictors (p)</span></a>
+<a class="sourceLine" id="cb9-59" title="59"><span class="kw">var</span> predictionBands <span class="op">=</span> [<span class="st">&#39;B2_median&#39;</span><span class="op">,</span><span class="st">&#39;B3_median&#39;</span><span class="op">,</span><span class="st">&#39;B4_median&#39;</span><span class="op">,</span><span class="st">&#39;B8_median&#39;</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-60" title="60"></a>
+<a class="sourceLine" id="cb9-61" title="61"></a>
+<a class="sourceLine" id="cb9-62" title="62"><span class="co">// // Now a random forest is a collection of random trees. It&#39;s predictions are used to compute an</span></a>
+<a class="sourceLine" id="cb9-63" title="63"><span class="co">// // average (regression) or vote on a label (classification)</span></a>
+<a class="sourceLine" id="cb9-64" title="64"></a>
+<a class="sourceLine" id="cb9-65" title="65"><span class="kw">var</span> sample <span class="op">=</span> <span class="va">scene</span>.<span class="at">select</span>(predictionBands)</a>
+<a class="sourceLine" id="cb9-66" title="66">                      .<span class="at">sampleRegions</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb9-67" title="67">                        <span class="dt">collection</span><span class="op">:</span> trainingFeatures<span class="op">,</span></a>
+<a class="sourceLine" id="cb9-68" title="68">                        <span class="dt">properties </span><span class="op">:</span> [<span class="st">&#39;landcover&#39;</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb9-69" title="69">                        <span class="dt">scale</span><span class="op">:</span> <span class="dv">10</span></a>
+<a class="sourceLine" id="cb9-70" title="70">                              <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-71" title="71"></a>
+<a class="sourceLine" id="cb9-72" title="72"><span class="co">// Let&#39;s run a classifier for randomForest</span></a>
+<a class="sourceLine" id="cb9-73" title="73"><span class="kw">var</span> classifier <span class="op">=</span> <span class="va">ee</span>.<span class="va">Classifier</span>.<span class="at">randomForest</span>(<span class="dv">10</span>).<span class="at">train</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb9-74" title="74">                            <span class="dt">features</span><span class="op">:</span> sample<span class="op">,</span></a>
+<a class="sourceLine" id="cb9-75" title="75">                            <span class="dt">classProperty</span><span class="op">:</span> <span class="st">&#39;landcover&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-76" title="76">                            <span class="dt">inputProperties</span><span class="op">:</span> predictionBands</a>
+<a class="sourceLine" id="cb9-77" title="77"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-78" title="78"></a>
+<a class="sourceLine" id="cb9-79" title="79"></a>
+<a class="sourceLine" id="cb9-80" title="80"><span class="kw">var</span> classified <span class="op">=</span> <span class="va">scene</span>.<span class="at">select</span>(predictionBands).<span class="at">classify</span>(classifier)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-81" title="81"><span class="va">Map</span>.<span class="at">addLayer</span>(classified<span class="op">,</span> <span class="op">{</span><span class="dt">min</span><span class="op">:</span><span class="dv">1</span><span class="op">,</span> <span class="dt">max</span><span class="op">:</span><span class="dv">7</span><span class="op">,</span><span class="dt">palette</span><span class="op">:</span>[</a>
+<a class="sourceLine" id="cb9-82" title="82">  <span class="st">&#39;be4fc4&#39;</span><span class="op">,</span> <span class="co">// agriculture, violetish</span></a>
+<a class="sourceLine" id="cb9-83" title="83">  <span class="st">&#39;04a310&#39;</span><span class="op">,</span> <span class="co">// forests, lighter green</span></a>
+<a class="sourceLine" id="cb9-84" title="84">  <span class="st">&#39;cbb315&#39;</span><span class="op">,</span> <span class="co">// grasslands, yellowish</span></a>
+<a class="sourceLine" id="cb9-85" title="85">  <span class="st">&#39;c17111&#39;</span><span class="op">,</span> <span class="co">// plantations, brownish</span></a>
+<a class="sourceLine" id="cb9-86" title="86">  <span class="st">&#39;b0a69d&#39;</span><span class="op">,</span> <span class="co">// settlements, grayish</span></a>
+<a class="sourceLine" id="cb9-87" title="87">  <span class="st">&#39;025a05&#39;</span><span class="op">,</span> <span class="co">// tea, dark greenish</span></a>
+<a class="sourceLine" id="cb9-88" title="88">  <span class="st">&#39;2035df&#39;</span><span class="op">,</span> <span class="co">// waterbodies, royal blue </span></a>
+<a class="sourceLine" id="cb9-89" title="89">  ]<span class="op">},</span> <span class="st">&#39;classified&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-90" title="90"></a>
+<a class="sourceLine" id="cb9-91" title="91"><span class="co">// Partitioning training data to run an accuracy assessment</span></a>
+<a class="sourceLine" id="cb9-92" title="92"><span class="co">// Adding a randomColumn of values ranging from 0 to 1</span></a>
+<a class="sourceLine" id="cb9-93" title="93"><span class="kw">var</span> trainingTesting <span class="op">=</span> <span class="va">sample</span>.<span class="at">randomColumn</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-94" title="94"></a>
+<a class="sourceLine" id="cb9-95" title="95"><span class="kw">var</span> trainingSet <span class="op">=</span> <span class="va">trainingTesting</span>.<span class="at">filter</span>(<span class="va">ee</span>.<span class="va">Filter</span>.<span class="at">lt</span>(<span class="st">&#39;random&#39;</span><span class="op">,</span><span class="fl">0.8</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-96" title="96"><span class="kw">var</span> testingSet <span class="op">=</span> <span class="va">trainingTesting</span>.<span class="at">filter</span>(<span class="va">ee</span>.<span class="va">Filter</span>.<span class="at">gte</span>(<span class="st">&#39;random&#39;</span><span class="op">,</span><span class="fl">0.2</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-97" title="97"></a>
+<a class="sourceLine" id="cb9-98" title="98"><span class="co">// Now run the classifier only with the trainingSet</span></a>
+<a class="sourceLine" id="cb9-99" title="99"><span class="kw">var</span> trained <span class="op">=</span> <span class="va">ee</span>.<span class="va">Classifier</span>.<span class="at">randomForest</span>(<span class="dv">10</span>).<span class="at">train</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb9-100" title="100">  <span class="dt">features</span><span class="op">:</span> trainingSet<span class="op">,</span></a>
+<a class="sourceLine" id="cb9-101" title="101">  <span class="dt">classProperty</span><span class="op">:</span> <span class="st">&#39;landcover&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-102" title="102">  <span class="dt">inputProperties</span><span class="op">:</span> predictionBands</a>
+<a class="sourceLine" id="cb9-103" title="103"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-104" title="104"></a>
+<a class="sourceLine" id="cb9-105" title="105"><span class="co">// Now classify the testData and obtain a Confusion matrix</span></a>
+<a class="sourceLine" id="cb9-106" title="106"><span class="kw">var</span> confusionMatrix <span class="op">=</span> <span class="va">ee</span>.<span class="at">ConfusionMatrix</span>(<span class="va">testingSet</span>.<span class="at">classify</span>(trained)</a>
+<a class="sourceLine" id="cb9-107" title="107">                                                  .<span class="at">errorMatrix</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb9-108" title="108">                                                    <span class="dt">actual</span><span class="op">:</span> <span class="st">&#39;landcover&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-109" title="109">                                                    <span class="dt">predicted</span><span class="op">:</span> <span class="st">&#39;classification&#39;</span></a>
+<a class="sourceLine" id="cb9-110" title="110">                                                  <span class="op">}</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-111" title="111"></a>
+<a class="sourceLine" id="cb9-112" title="112"><span class="co">// Now print the ConfusionMatrix and expand the object to inspect the matrix()</span></a>
+<a class="sourceLine" id="cb9-113" title="113"><span class="co">// The entries represent the number of pixels and the items on the diagonal represent</span></a>
+<a class="sourceLine" id="cb9-114" title="114"><span class="co">// correct classification. Items off the diagonal are misclassifications, where class in row i</span></a>
+<a class="sourceLine" id="cb9-115" title="115"><span class="co">// is classified as column j</span></a>
+<a class="sourceLine" id="cb9-116" title="116"></a>
+<a class="sourceLine" id="cb9-117" title="117"><span class="co">// One can also obtain basic descriptive statistics from the confusionMatrix</span></a>
+<a class="sourceLine" id="cb9-118" title="118"><span class="co">// Note this won&#39;t work as the number of pixels is too high (Export as .csv to obtain result)</span></a>
+<a class="sourceLine" id="cb9-119" title="119"></a>
+<a class="sourceLine" id="cb9-120" title="120"><span class="co">// print(&#39;Confusion matrix:&#39;, confusionMatrix);</span></a>
+<a class="sourceLine" id="cb9-121" title="121"><span class="co">// print(&#39;Overall Accuracy:&#39;, confusionMatrix.accuracy());</span></a>
+<a class="sourceLine" id="cb9-122" title="122"><span class="co">// print(&#39;Producers Accuracy:&#39;, confusionMatrix.producersAccuracy());</span></a>
+<a class="sourceLine" id="cb9-123" title="123"><span class="co">// print(&#39;Consumers Accuracy:&#39;, confusionMatrix.consumersAccuracy());</span></a>
+<a class="sourceLine" id="cb9-124" title="124"></a>
+<a class="sourceLine" id="cb9-125" title="125"><span class="co">// Since printing the above is gives you a computation timed out error</span></a>
+<a class="sourceLine" id="cb9-126" title="126"><span class="kw">var</span> exportconfusionMatrix <span class="op">=</span> <span class="va">ee</span>.<span class="at">Feature</span>(<span class="kw">null</span><span class="op">,</span> <span class="op">{</span><span class="dt">matrix</span><span class="op">:</span> <span class="va">confusionMatrix</span>.<span class="at">array</span>()<span class="op">}</span>)<span class="op">;</span> </a>
+<a class="sourceLine" id="cb9-127" title="127"><span class="kw">var</span> exportAccuracy <span class="op">=</span> <span class="va">ee</span>.<span class="at">Feature</span>(<span class="kw">null</span><span class="op">,</span> <span class="op">{</span><span class="dt">matrix</span><span class="op">:</span> <span class="va">confusionMatrix</span>.<span class="at">accuracy</span>()<span class="op">}</span>)<span class="op">;</span> </a>
+<a class="sourceLine" id="cb9-128" title="128"></a>
+<a class="sourceLine" id="cb9-129" title="129"><span class="va">Export</span>.<span class="va">table</span>.<span class="at">toDrive</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb9-130" title="130">  <span class="dt">collection</span><span class="op">:</span> <span class="va">ee</span>.<span class="at">FeatureCollection</span>(exportconfusionMatrix)<span class="op">,</span></a>
+<a class="sourceLine" id="cb9-131" title="131">  <span class="dt">description</span><span class="op">:</span> <span class="st">&#39;confusionMatrix&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-132" title="132">  <span class="dt">fileFormat</span><span class="op">:</span> <span class="st">&#39;CSV&#39;</span></a>
+<a class="sourceLine" id="cb9-133" title="133"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-134" title="134"></a>
+<a class="sourceLine" id="cb9-135" title="135"><span class="va">Export</span>.<span class="va">table</span>.<span class="at">toDrive</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb9-136" title="136">  <span class="dt">collection</span><span class="op">:</span> <span class="va">ee</span>.<span class="at">FeatureCollection</span>(exportAccuracy)<span class="op">,</span></a>
+<a class="sourceLine" id="cb9-137" title="137">  <span class="dt">description</span><span class="op">:</span> <span class="st">&#39;Accuracy&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-138" title="138">  <span class="dt">fileFormat</span><span class="op">:</span> <span class="st">&#39;CSV&#39;</span></a>
+<a class="sourceLine" id="cb9-139" title="139"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-140" title="140"></a>
+<a class="sourceLine" id="cb9-141" title="141"><span class="co">// Below code suggests that the current projection system is WGS84</span></a>
+<a class="sourceLine" id="cb9-142" title="142"><span class="co">// print(classified.projection());</span></a>
+<a class="sourceLine" id="cb9-143" title="143"></a>
+<a class="sourceLine" id="cb9-144" title="144"><span class="co">// To project it to UTM</span></a>
+<a class="sourceLine" id="cb9-145" title="145"><span class="kw">var</span> reprojected <span class="op">=</span> <span class="va">classified</span>.<span class="at">reproject</span>(<span class="st">&#39;EPSG:32643&#39;</span><span class="op">,</span><span class="kw">null</span><span class="op">,</span><span class="dv">10</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-146" title="146"></a>
+<a class="sourceLine" id="cb9-147" title="147"><span class="co">// Export classified image</span></a>
+<a class="sourceLine" id="cb9-148" title="148"><span class="va">Export</span>.<span class="va">image</span>.<span class="at">toDrive</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb9-149" title="149">  <span class="dt">image</span><span class="op">:</span> classified<span class="op">,</span></a>
+<a class="sourceLine" id="cb9-150" title="150">  <span class="dt">description</span><span class="op">:</span> <span class="st">&#39;Classified Image&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-151" title="151">  <span class="dt">scale</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-152" title="152">  <span class="dt">region</span><span class="op">:</span> WG_Buffer<span class="op">,</span>      <span class="co">//.geometry().bounds(),</span></a>
+<a class="sourceLine" id="cb9-153" title="153">  <span class="dt">fileFormat</span><span class="op">:</span> <span class="st">&#39;GeoTIFF&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-154" title="154">  <span class="dt">formatOptions</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-155" title="155">    <span class="dt">cloudOptimized</span><span class="op">:</span> <span class="kw">true</span></a>
+<a class="sourceLine" id="cb9-156" title="156">  <span class="op">},</span></a>
+<a class="sourceLine" id="cb9-157" title="157">  <span class="dt">maxPixels</span><span class="op">:</span> <span class="dv">618539476</span></a>
+<a class="sourceLine" id="cb9-158" title="158"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-159" title="159"></a>
+<a class="sourceLine" id="cb9-160" title="160"><span class="co">// Export projected image</span></a>
+<a class="sourceLine" id="cb9-161" title="161"><span class="va">Export</span>.<span class="va">image</span>.<span class="at">toDrive</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb9-162" title="162">  <span class="dt">image</span><span class="op">:</span> reprojected<span class="op">,</span></a>
+<a class="sourceLine" id="cb9-163" title="163">  <span class="dt">description</span><span class="op">:</span> <span class="st">&#39;Reprojected Image&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-164" title="164">  <span class="dt">scale</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-165" title="165">  <span class="dt">region</span><span class="op">:</span> WG_Buffer<span class="op">,</span>         <span class="co">//.geometry().bounds(),</span></a>
+<a class="sourceLine" id="cb9-166" title="166">  <span class="dt">fileFormat</span><span class="op">:</span> <span class="st">&#39;GeoTIFF&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-167" title="167">  <span class="dt">formatOptions</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-168" title="168">    <span class="dt">cloudOptimized</span><span class="op">:</span> <span class="kw">true</span></a>
+<a class="sourceLine" id="cb9-169" title="169">  <span class="op">},</span></a>
+<a class="sourceLine" id="cb9-170" title="170">  <span class="dt">maxPixels</span><span class="op">:</span> <span class="dv">618539476</span></a>
+<a class="sourceLine" id="cb9-171" title="171"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
 
 </div>
             </section>
@@ -387,8 +388,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="spatial-thinning-a-brief-comparison-of-approaches.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="selecting-species-of-interest.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="spatial-autocorrelation-of-climatic-predictors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -421,7 +422,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["ebird_occupancy_supplementary_material.pdf"],
 "toc": {
 "collapse": "section"
 }

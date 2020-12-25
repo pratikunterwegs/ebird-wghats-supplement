@@ -41,40 +41,38 @@
 \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
 % Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{#1}
+\newcommand{\BaseNTok}[1]{#1}
 \newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.00,0.50,0.50}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{#1}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.00,1.00}{#1}}
+\newcommand{\DataTypeTok}[1]{#1}
+\newcommand{\DecValTok}[1]{#1}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FloatTok}[1]{#1}
+\newcommand{\FunctionTok}[1]{#1}
 \newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.00,1.00}{#1}}
 \newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\OperatorTok}[1]{#1}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{1.00,0.25,0.00}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.25,0.00}{#1}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.50,0.50}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.00,0.50,0.50}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.00,0.50,0.50}{#1}}
+\newcommand{\VariableTok}[1]{#1}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.00,0.50,0.50}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
 \usepackage{longtable,booktabs}
 % Fix footnotes in tables (requires footnote package)
 \IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
@@ -116,7 +114,7 @@
 
 \title{Supplementary material for \emph{Using citizen science to parse climatic and landcover influences on bird occupancy within a tropical biodiversity hotspot}}
 \author{Vijay Ramesh \and Pratik R. Gupte \and Morgan W. Tingley \and VV Robin \and Ruth DeFries}
-\date{2020-12-23}
+\date{2020-12-25}
 
 \begin{document}
 \maketitle
@@ -131,7 +129,8 @@
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-This is supplementary material for a project in preparation that models occupancy for birds in the southern Western Ghats, India.
+This is supplementary material for a manuscript that uses citizen science data to model the occupancy of birds in the southern Western Ghats, India.
+
 The main project can be found here: \url{https://github.com/pratikunterwegs/eBirdOccupancy}.
 
 \hypertarget{attribution}{%
@@ -159,60 +158,6 @@ Please contact the following in case of interest in the project.
   \end{itemize}
 \end{itemize}
 
-\hypertarget{predicting-species-specific-occupancy}{%
-\section{Predicting Species-specific Occupancy}\label{predicting-species-specific-occupancy}}
-
-This supplement plots species-specific probabilities of occupancy as a function of significant environmental predictors.
-
-\hypertarget{prepare-libraries}{%
-\subsection{Prepare libraries}\label{prepare-libraries}}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# to load data}
-\KeywordTok{library}\NormalTok{(readxl)}
-
-\CommentTok{# to handle data}
-\KeywordTok{library}\NormalTok{(dplyr)}
-\KeywordTok{library}\NormalTok{(readr)}
-\KeywordTok{library}\NormalTok{(forcats)}
-\KeywordTok{library}\NormalTok{(tidyr)}
-\KeywordTok{library}\NormalTok{(purrr)}
-\KeywordTok{library}\NormalTok{(stringr)}
-
-\CommentTok{# plotting}
-\KeywordTok{library}\NormalTok{(ggplot2)}
-\KeywordTok{library}\NormalTok{(patchwork)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{read-data}{%
-\subsection{Read data}\label{read-data}}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# read data}
-\NormalTok{data <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/results/data_occupancy_predictors.csv"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# drop na}
-\NormalTok{data <-}\StringTok{ }\KeywordTok{select}\NormalTok{(}
-\NormalTok{  data,}
-  \OperatorTok{-}\NormalTok{ci}
-\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{drop_na}\NormalTok{() }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{nest}\NormalTok{(}\DataTypeTok{data =} \KeywordTok{c}\NormalTok{(predictor, m_group, seq_x, mean, scale))}
-\end{Highlighting}
-\end{Shaded}
-
-Figure code is hidden in versions rendered as HTML and PDF.
-Example output is shown below.
-
-\textbf{Figure here}
-
 \hypertarget{selecting-species-of-interest}{%
 \section{Selecting species of interest}\label{selecting-species-of-interest}}
 
@@ -220,8 +165,8 @@ This script shows the proportion of checklists that report a particular species 
 
 We derived this list from inclusion criteria adapted from the State of India's Birds 2020 (Viswanathan et al., 2020). Initially, we considered all 561 species in eBird that occurred within the outlines of our study area. We then considered only those species that had a minimum of 1000 detections each between 2013 and 2019 (reducing to 303 species). Next, the study area was divided into 25 x 25 km cells following (Viswanathan et al., 2020). We then kept only those species that occurred in at least 5\% of all checklists across 50\% of the 25 x 25 km cells from where they have been reported (reducing to 93 species). We used the above criteria to ensure as much uniform sampling of a species as possible across our study area and to reduce any erroneous associations between environmental drivers and species occupancy. Across our final list of 93 species, we analyzed a total of \textasciitilde{}3.2 million detections (presences) between 2013 and 2019.
 
-\hypertarget{prepare-libraries-1}{%
-\subsection{Prepare libraries}\label{prepare-libraries-1}}
+\hypertarget{prepare-libraries}{%
+\subsection{Prepare libraries}\label{prepare-libraries}}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -248,10 +193,12 @@ We derived this list from inclusion criteria adapted from the State of India's B
 \hypertarget{read-species-of-interest}{%
 \subsection{Read species of interest}\label{read-species-of-interest}}
 
+We initally considered all species that
+
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \CommentTok{# add species of interest}
-\NormalTok{specieslist <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/species_list.csv"}\NormalTok{)}
+\NormalTok{specieslist <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/01_list-all-spp-byCount.csv"}\NormalTok{)}
 \NormalTok{speciesOfInterest <-}\StringTok{ }\NormalTok{specieslist}\OperatorTok{$}\NormalTok{scientific_name}
 \end{Highlighting}
 \end{Shaded}
@@ -267,7 +214,8 @@ We derived this list from inclusion criteria adapted from the State of India's B
 \NormalTok{box <-}\StringTok{ }\KeywordTok{st_bbox}\NormalTok{(wg)}
 
 \CommentTok{# read in data and subset}
-\NormalTok{ebd <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"data/01_ebird-filtered-EBD-westernGhats.txt"}\NormalTok{)}
+\CommentTok{# To access the latest dataset, please visit: https://ebird.org/data/download and set the file path accordingly.}
+\NormalTok{ebd <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"data/ebd_IN_relApr-2020.txt"}\NormalTok{)}
 \NormalTok{ebd <-}\StringTok{ }\NormalTok{ebd[}\KeywordTok{between}\NormalTok{(LONGITUDE, box[}\StringTok{"xmin"}\NormalTok{], box[}\StringTok{"xmax"}\NormalTok{]) }\OperatorTok{&}
 \StringTok{  }\KeywordTok{between}\NormalTok{(LATITUDE, box[}\StringTok{"ymin"}\NormalTok{], box[}\StringTok{"ymax"}\NormalTok{]), ]}
 \NormalTok{ebd <-}\StringTok{ }\NormalTok{ebd[}\KeywordTok{year}\NormalTok{(}\StringTok{`}\DataTypeTok{OBSERVATION DATE}\StringTok{`}\NormalTok{) }\OperatorTok{>=}\StringTok{ }\DecValTok{2013}\NormalTok{, ]}
@@ -460,13 +408,511 @@ Add a spatial filter and assign grids of 25km x 25km.
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{landcover-classification}{%
+\section{Landcover classification}\label{landcover-classification}}
+
+This script was used to classify a 2019 Sentinel composite image across the Nilgiris and the Anamalais into seven distinct land cover types. The same code can be viewed on GEE here: \url{https://code.earthengine.google.com/ec69fc4ffad32a532b25202009243d42}.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{// Data: Groundtruthed points from Arasumani et al 2019}
+
+\CommentTok{// Function to obtain a Cloud-Free Image // }
+
+\CommentTok{/**}
+\CommentTok{ * Function to mask clouds using the Sentinel-2 QA band}
+\CommentTok{ * }\AnnotationTok{@param}\CommentTok{ }\CommentVarTok{\{ee.Image\}}\CommentTok{ image Sentinel-2 image}
+\CommentTok{ * }\AnnotationTok{@return}\CommentTok{ \{ee.Image\} cloud masked Sentinel-2 image}
+\CommentTok{ */}
+ 
+\KeywordTok{function} \AttributeTok{maskS2clouds}\NormalTok{(image) }\OperatorTok{\{}
+  \KeywordTok{var}\NormalTok{ qa }\OperatorTok{=} \VariableTok{image}\NormalTok{.}\AttributeTok{select}\NormalTok{(}\StringTok{'QA60'}\NormalTok{)}\OperatorTok{;}
+
+  \CommentTok{// Bits 10 and 11 are clouds and cirrus, respectively.}
+  \KeywordTok{var}\NormalTok{ cloudBitMask }\OperatorTok{=} \DecValTok{1} \OperatorTok{<<} \DecValTok{10}\OperatorTok{;}
+  \KeywordTok{var}\NormalTok{ cirrusBitMask }\OperatorTok{=} \DecValTok{1} \OperatorTok{<<} \DecValTok{11}\OperatorTok{;}
+
+  \CommentTok{// Both flags should be set to zero, indicating clear conditions.}
+  \KeywordTok{var}\NormalTok{ mask }\OperatorTok{=} \VariableTok{qa}\NormalTok{.}\AttributeTok{bitwiseAnd}\NormalTok{(cloudBitMask).}\AttributeTok{eq}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+\NormalTok{      .}\AttributeTok{and}\NormalTok{(}\VariableTok{qa}\NormalTok{.}\AttributeTok{bitwiseAnd}\NormalTok{(cirrusBitMask).}\AttributeTok{eq}\NormalTok{(}\DecValTok{0}\NormalTok{))}\OperatorTok{;}
+
+  \ControlFlowTok{return} \VariableTok{image}\NormalTok{.}\AttributeTok{updateMask}\NormalTok{(mask).}\AttributeTok{divide}\NormalTok{(}\DecValTok{10000}\NormalTok{)}\OperatorTok{;}
+\OperatorTok{\}}
+
+\CommentTok{// Importing shapefile needed for classification}
+\KeywordTok{var}\NormalTok{ clipper }\OperatorTok{=} \KeywordTok{function}\NormalTok{(image)}\OperatorTok{\{}
+  \ControlFlowTok{return} \VariableTok{image}\NormalTok{.}\AttributeTok{clip}\NormalTok{(WG_Buffer)}\OperatorTok{;}
+\OperatorTok{\};}
+
+
+\CommentTok{// Import raw Sentinel scenes and clip them over your study area}
+\KeywordTok{var}\NormalTok{ filtered }\OperatorTok{=} \VariableTok{sentinel}\NormalTok{.}\AttributeTok{filterDate}\NormalTok{(}\StringTok{'2018-01-01'}\OperatorTok{,}\StringTok{'2018-12-01'}\NormalTok{).}\AttributeTok{map}\NormalTok{(clipper)}\OperatorTok{;}
+
+\CommentTok{// Load Sentinel-2 TOA reflectance data.}
+\CommentTok{// Pre-filter to get less cloudy granules.}
+
+\KeywordTok{var}\NormalTok{ dataset }\OperatorTok{=} \VariableTok{filtered}\NormalTok{.}\AttributeTok{filter}\NormalTok{(}\VariableTok{ee}\NormalTok{.}\VariableTok{Filter}\NormalTok{.}\AttributeTok{lt}\NormalTok{(}\StringTok{'CLOUDY_PIXEL_PERCENTAGE'}\OperatorTok{,} \DecValTok{20}\NormalTok{))}
+\NormalTok{                  .}\AttributeTok{map}\NormalTok{(maskS2clouds)}\OperatorTok{;}
+\KeywordTok{var}\NormalTok{ scene }\OperatorTok{=} \VariableTok{dataset}\NormalTok{.}\AttributeTok{reduce}\NormalTok{(}\VariableTok{ee}\NormalTok{.}\VariableTok{Reducer}\NormalTok{.}\AttributeTok{median}\NormalTok{())}\OperatorTok{;}
+
+\VariableTok{Map}\NormalTok{.}\AttributeTok{addLayer}\NormalTok{(WG_Buffer}\OperatorTok{,} \OperatorTok{\{\},} \StringTok{'Buffer Outline for Nil/Ana/Pal'}\NormalTok{)}\OperatorTok{;}
+\CommentTok{// Map.addLayer(scene,\{\},'Image for Classification');}
+\CommentTok{// Map.addLayer(WG, \{\},'Outline for Nilgiris/Anaimalais/Palanis');}
+
+
+\CommentTok{// Step 2: Creating training data manually}
+\CommentTok{// Added a new shapefile field manually in ArcMap so that GEE can take a float field for classification}
+\CommentTok{// Field: landcover}
+\CommentTok{// Values: agriculture (1), forest (2), grassland (3), plantation (4), settlements (5), tea (6), waterbodies (7)}
+\CommentTok{// Note - Arasu has classified plantation as Acacia, Pine et al sub classes (for future analysis)}
+
+\CommentTok{// Merging the featureCollections to obtain a single featureCollection}
+
+\KeywordTok{var}\NormalTok{ trainingFeatures }\OperatorTok{=} \VariableTok{agriculture}\NormalTok{.}\AttributeTok{merge}\NormalTok{(forests).}\AttributeTok{merge}\NormalTok{(forests2).}\AttributeTok{merge}\NormalTok{(grasslands).}\AttributeTok{merge}\NormalTok{(grasslands2)}
+\NormalTok{                               .}\AttributeTok{merge}\NormalTok{(settlements).}\AttributeTok{merge}\NormalTok{(plantations)}
+\NormalTok{                            .}\AttributeTok{merge}\NormalTok{(waterbodies).}\AttributeTok{merge}\NormalTok{(tea).}\AttributeTok{merge}\NormalTok{(tea2).}\AttributeTok{merge}\NormalTok{(tea3).}\AttributeTok{merge}\NormalTok{(forests3)}\OperatorTok{;}
+
+\CommentTok{// // Specify the bands of the sentinel image to be used as predictors (p)}
+\KeywordTok{var}\NormalTok{ predictionBands }\OperatorTok{=}\NormalTok{ [}\StringTok{'B2_median'}\OperatorTok{,}\StringTok{'B3_median'}\OperatorTok{,}\StringTok{'B4_median'}\OperatorTok{,}\StringTok{'B8_median'}\NormalTok{]}\OperatorTok{;}
+
+
+\CommentTok{// // Now a random forest is a collection of random trees. It's predictions are used to compute an}
+\CommentTok{// // average (regression) or vote on a label (classification)}
+
+\KeywordTok{var}\NormalTok{ sample }\OperatorTok{=} \VariableTok{scene}\NormalTok{.}\AttributeTok{select}\NormalTok{(predictionBands)}
+\NormalTok{                      .}\AttributeTok{sampleRegions}\NormalTok{(}\OperatorTok{\{}
+                        \DataTypeTok{collection}\OperatorTok{:}\NormalTok{ trainingFeatures}\OperatorTok{,}
+                        \DataTypeTok{properties }\OperatorTok{:}\NormalTok{ [}\StringTok{'landcover'}\NormalTok{]}\OperatorTok{,}
+                        \DataTypeTok{scale}\OperatorTok{:} \DecValTok{10}
+                              \OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
+
+\CommentTok{// Let's run a classifier for randomForest}
+\KeywordTok{var}\NormalTok{ classifier }\OperatorTok{=} \VariableTok{ee}\NormalTok{.}\VariableTok{Classifier}\NormalTok{.}\AttributeTok{randomForest}\NormalTok{(}\DecValTok{10}\NormalTok{).}\AttributeTok{train}\NormalTok{(}\OperatorTok{\{}
+                            \DataTypeTok{features}\OperatorTok{:}\NormalTok{ sample}\OperatorTok{,}
+                            \DataTypeTok{classProperty}\OperatorTok{:} \StringTok{'landcover'}\OperatorTok{,}
+                            \DataTypeTok{inputProperties}\OperatorTok{:}\NormalTok{ predictionBands}
+\OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
+
+
+\KeywordTok{var}\NormalTok{ classified }\OperatorTok{=} \VariableTok{scene}\NormalTok{.}\AttributeTok{select}\NormalTok{(predictionBands).}\AttributeTok{classify}\NormalTok{(classifier)}\OperatorTok{;}
+\VariableTok{Map}\NormalTok{.}\AttributeTok{addLayer}\NormalTok{(classified}\OperatorTok{,} \OperatorTok{\{}\DataTypeTok{min}\OperatorTok{:}\DecValTok{1}\OperatorTok{,} \DataTypeTok{max}\OperatorTok{:}\DecValTok{7}\OperatorTok{,}\DataTypeTok{palette}\OperatorTok{:}\NormalTok{[}
+  \StringTok{'be4fc4'}\OperatorTok{,} \CommentTok{// agriculture, violetish}
+  \StringTok{'04a310'}\OperatorTok{,} \CommentTok{// forests, lighter green}
+  \StringTok{'cbb315'}\OperatorTok{,} \CommentTok{// grasslands, yellowish}
+  \StringTok{'c17111'}\OperatorTok{,} \CommentTok{// plantations, brownish}
+  \StringTok{'b0a69d'}\OperatorTok{,} \CommentTok{// settlements, grayish}
+  \StringTok{'025a05'}\OperatorTok{,} \CommentTok{// tea, dark greenish}
+  \StringTok{'2035df'}\OperatorTok{,} \CommentTok{// waterbodies, royal blue }
+\NormalTok{  ]}\OperatorTok{\},} \StringTok{'classified'}\NormalTok{)}\OperatorTok{;}
+
+\CommentTok{// Partitioning training data to run an accuracy assessment}
+\CommentTok{// Adding a randomColumn of values ranging from 0 to 1}
+\KeywordTok{var}\NormalTok{ trainingTesting }\OperatorTok{=} \VariableTok{sample}\NormalTok{.}\AttributeTok{randomColumn}\NormalTok{()}\OperatorTok{;}
+
+\KeywordTok{var}\NormalTok{ trainingSet }\OperatorTok{=} \VariableTok{trainingTesting}\NormalTok{.}\AttributeTok{filter}\NormalTok{(}\VariableTok{ee}\NormalTok{.}\VariableTok{Filter}\NormalTok{.}\AttributeTok{lt}\NormalTok{(}\StringTok{'random'}\OperatorTok{,}\FloatTok{0.8}\NormalTok{))}\OperatorTok{;}
+\KeywordTok{var}\NormalTok{ testingSet }\OperatorTok{=} \VariableTok{trainingTesting}\NormalTok{.}\AttributeTok{filter}\NormalTok{(}\VariableTok{ee}\NormalTok{.}\VariableTok{Filter}\NormalTok{.}\AttributeTok{gte}\NormalTok{(}\StringTok{'random'}\OperatorTok{,}\FloatTok{0.2}\NormalTok{))}\OperatorTok{;}
+
+\CommentTok{// Now run the classifier only with the trainingSet}
+\KeywordTok{var}\NormalTok{ trained }\OperatorTok{=} \VariableTok{ee}\NormalTok{.}\VariableTok{Classifier}\NormalTok{.}\AttributeTok{randomForest}\NormalTok{(}\DecValTok{10}\NormalTok{).}\AttributeTok{train}\NormalTok{(}\OperatorTok{\{}
+  \DataTypeTok{features}\OperatorTok{:}\NormalTok{ trainingSet}\OperatorTok{,}
+  \DataTypeTok{classProperty}\OperatorTok{:} \StringTok{'landcover'}\OperatorTok{,}
+  \DataTypeTok{inputProperties}\OperatorTok{:}\NormalTok{ predictionBands}
+\OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
+
+\CommentTok{// Now classify the testData and obtain a Confusion matrix}
+\KeywordTok{var}\NormalTok{ confusionMatrix }\OperatorTok{=} \VariableTok{ee}\NormalTok{.}\AttributeTok{ConfusionMatrix}\NormalTok{(}\VariableTok{testingSet}\NormalTok{.}\AttributeTok{classify}\NormalTok{(trained)}
+\NormalTok{                                                  .}\AttributeTok{errorMatrix}\NormalTok{(}\OperatorTok{\{}
+                                                    \DataTypeTok{actual}\OperatorTok{:} \StringTok{'landcover'}\OperatorTok{,}
+                                                    \DataTypeTok{predicted}\OperatorTok{:} \StringTok{'classification'}
+                                                  \OperatorTok{\}}\NormalTok{))}\OperatorTok{;}
+
+\CommentTok{// Now print the ConfusionMatrix and expand the object to inspect the matrix()}
+\CommentTok{// The entries represent the number of pixels and the items on the diagonal represent}
+\CommentTok{// correct classification. Items off the diagonal are misclassifications, where class in row i}
+\CommentTok{// is classified as column j}
+
+\CommentTok{// One can also obtain basic descriptive statistics from the confusionMatrix}
+\CommentTok{// Note this won't work as the number of pixels is too high (Export as .csv to obtain result)}
+
+\CommentTok{// print('Confusion matrix:', confusionMatrix);}
+\CommentTok{// print('Overall Accuracy:', confusionMatrix.accuracy());}
+\CommentTok{// print('Producers Accuracy:', confusionMatrix.producersAccuracy());}
+\CommentTok{// print('Consumers Accuracy:', confusionMatrix.consumersAccuracy());}
+
+\CommentTok{// Since printing the above is gives you a computation timed out error}
+\KeywordTok{var}\NormalTok{ exportconfusionMatrix }\OperatorTok{=} \VariableTok{ee}\NormalTok{.}\AttributeTok{Feature}\NormalTok{(}\KeywordTok{null}\OperatorTok{,} \OperatorTok{\{}\DataTypeTok{matrix}\OperatorTok{:} \VariableTok{confusionMatrix}\NormalTok{.}\AttributeTok{array}\NormalTok{()}\OperatorTok{\}}\NormalTok{)}\OperatorTok{;} 
+\KeywordTok{var}\NormalTok{ exportAccuracy }\OperatorTok{=} \VariableTok{ee}\NormalTok{.}\AttributeTok{Feature}\NormalTok{(}\KeywordTok{null}\OperatorTok{,} \OperatorTok{\{}\DataTypeTok{matrix}\OperatorTok{:} \VariableTok{confusionMatrix}\NormalTok{.}\AttributeTok{accuracy}\NormalTok{()}\OperatorTok{\}}\NormalTok{)}\OperatorTok{;} 
+
+\VariableTok{Export}\NormalTok{.}\VariableTok{table}\NormalTok{.}\AttributeTok{toDrive}\NormalTok{(}\OperatorTok{\{}
+  \DataTypeTok{collection}\OperatorTok{:} \VariableTok{ee}\NormalTok{.}\AttributeTok{FeatureCollection}\NormalTok{(exportconfusionMatrix)}\OperatorTok{,}
+  \DataTypeTok{description}\OperatorTok{:} \StringTok{'confusionMatrix'}\OperatorTok{,}
+  \DataTypeTok{fileFormat}\OperatorTok{:} \StringTok{'CSV'}
+\OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
+
+\VariableTok{Export}\NormalTok{.}\VariableTok{table}\NormalTok{.}\AttributeTok{toDrive}\NormalTok{(}\OperatorTok{\{}
+  \DataTypeTok{collection}\OperatorTok{:} \VariableTok{ee}\NormalTok{.}\AttributeTok{FeatureCollection}\NormalTok{(exportAccuracy)}\OperatorTok{,}
+  \DataTypeTok{description}\OperatorTok{:} \StringTok{'Accuracy'}\OperatorTok{,}
+  \DataTypeTok{fileFormat}\OperatorTok{:} \StringTok{'CSV'}
+\OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
+
+\CommentTok{// Below code suggests that the current projection system is WGS84}
+\CommentTok{// print(classified.projection());}
+
+\CommentTok{// To project it to UTM}
+\KeywordTok{var}\NormalTok{ reprojected }\OperatorTok{=} \VariableTok{classified}\NormalTok{.}\AttributeTok{reproject}\NormalTok{(}\StringTok{'EPSG:32643'}\OperatorTok{,}\KeywordTok{null}\OperatorTok{,}\DecValTok{10}\NormalTok{)}\OperatorTok{;}
+
+\CommentTok{// Export classified image}
+\VariableTok{Export}\NormalTok{.}\VariableTok{image}\NormalTok{.}\AttributeTok{toDrive}\NormalTok{(}\OperatorTok{\{}
+  \DataTypeTok{image}\OperatorTok{:}\NormalTok{ classified}\OperatorTok{,}
+  \DataTypeTok{description}\OperatorTok{:} \StringTok{'Classified Image'}\OperatorTok{,}
+  \DataTypeTok{scale}\OperatorTok{:} \DecValTok{10}\OperatorTok{,}
+  \DataTypeTok{region}\OperatorTok{:}\NormalTok{ WG_Buffer}\OperatorTok{,}      \CommentTok{//.geometry().bounds(),}
+  \DataTypeTok{fileFormat}\OperatorTok{:} \StringTok{'GeoTIFF'}\OperatorTok{,}
+  \DataTypeTok{formatOptions}\OperatorTok{:} \OperatorTok{\{}
+    \DataTypeTok{cloudOptimized}\OperatorTok{:} \KeywordTok{true}
+  \OperatorTok{\},}
+  \DataTypeTok{maxPixels}\OperatorTok{:} \DecValTok{618539476}
+\OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
+
+\CommentTok{// Export projected image}
+\VariableTok{Export}\NormalTok{.}\VariableTok{image}\NormalTok{.}\AttributeTok{toDrive}\NormalTok{(}\OperatorTok{\{}
+  \DataTypeTok{image}\OperatorTok{:}\NormalTok{ reprojected}\OperatorTok{,}
+  \DataTypeTok{description}\OperatorTok{:} \StringTok{'Reprojected Image'}\OperatorTok{,}
+  \DataTypeTok{scale}\OperatorTok{:} \DecValTok{10}\OperatorTok{,}
+  \DataTypeTok{region}\OperatorTok{:}\NormalTok{ WG_Buffer}\OperatorTok{,}         \CommentTok{//.geometry().bounds(),}
+  \DataTypeTok{fileFormat}\OperatorTok{:} \StringTok{'GeoTIFF'}\OperatorTok{,}
+  \DataTypeTok{formatOptions}\OperatorTok{:} \OperatorTok{\{}
+    \DataTypeTok{cloudOptimized}\OperatorTok{:} \KeywordTok{true}
+  \OperatorTok{\},}
+  \DataTypeTok{maxPixels}\OperatorTok{:} \DecValTok{618539476}
+\OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{spatial-autocorrelation-of-climatic-predictors}{%
+\section{Spatial Autocorrelation of Climatic Predictors}\label{spatial-autocorrelation-of-climatic-predictors}}
+
+\hypertarget{load-libraries}{%
+\subsection{Load libraries}\label{load-libraries}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{# load libs}
+\KeywordTok{library}\NormalTok{(raster)}
+\KeywordTok{library}\NormalTok{(gstat)}
+\KeywordTok{library}\NormalTok{(stars)}
+\KeywordTok{library}\NormalTok{(purrr)}
+\KeywordTok{library}\NormalTok{(tibble)}
+\KeywordTok{library}\NormalTok{(dplyr)}
+\KeywordTok{library}\NormalTok{(tidyr)}
+\KeywordTok{library}\NormalTok{(glue)}
+\KeywordTok{library}\NormalTok{(scales)}
+\KeywordTok{library}\NormalTok{(gdalUtils)}
+\KeywordTok{library}\NormalTok{(sf)}
+
+\CommentTok{# plot libs}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{library}\NormalTok{(ggthemes)}
+\KeywordTok{library}\NormalTok{(scico)}
+\KeywordTok{library}\NormalTok{(gridExtra)}
+\KeywordTok{library}\NormalTok{(cowplot)}
+\KeywordTok{library}\NormalTok{(ggspatial)}
+
+\CommentTok{#' make custom functiont to convert matrix to df}
+\NormalTok{raster_to_df <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(inp) \{}
+
+  \CommentTok{# assert is a raster obj}
+\NormalTok{  assertthat}\OperatorTok{::}\KeywordTok{assert_that}\NormalTok{(}\StringTok{"RasterLayer"} \OperatorTok{%in%}\StringTok{ }\KeywordTok{class}\NormalTok{(inp),}
+    \DataTypeTok{msg =} \StringTok{"input is not a raster"}
+\NormalTok{  )}
+
+\NormalTok{  coords <-}\StringTok{ }\KeywordTok{coordinates}\NormalTok{(inp)}
+\NormalTok{  vals <-}\StringTok{ }\KeywordTok{getValues}\NormalTok{(inp)}
+
+\NormalTok{  data <-}\StringTok{ }\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ coords[, }\DecValTok{1}\NormalTok{], }\DataTypeTok{y =}\NormalTok{ coords[, }\DecValTok{2}\NormalTok{], }\DataTypeTok{value =}\NormalTok{ vals)}
+
+  \KeywordTok{return}\NormalTok{(data)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{prepare-data}{%
+\subsection{Prepare data}\label{prepare-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{# list landscape covariate stacks}
+\NormalTok{landscape_files <-}\StringTok{ "data/spatial/landscape_resamp01km.tif"}
+\NormalTok{landscape_data <-}\StringTok{ }\KeywordTok{stack}\NormalTok{(landscape_files)}
+
+\CommentTok{# get proper names}
+\NormalTok{elev_names <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"elev"}\NormalTok{, }\StringTok{"slope"}\NormalTok{, }\StringTok{"aspect"}\NormalTok{)}
+\NormalTok{chelsa_names <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"bio_01"}\NormalTok{, }\StringTok{"bio_12"}\NormalTok{)}
+\KeywordTok{names}\NormalTok{(landscape_data) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(elev_names, chelsa_names, }\StringTok{"landcover"}\NormalTok{)}
+
+\CommentTok{# get chelsa rasters}
+\NormalTok{chelsa <-}\StringTok{ }\NormalTok{landscape_data[[chelsa_names]]}
+\NormalTok{chelsa <-}\StringTok{ }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(}\KeywordTok{as.list}\NormalTok{(chelsa), raster_to_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{calculate-variograms-of-environmental-layers}{%
+\subsection{Calculate variograms of environmental layers}\label{calculate-variograms-of-environmental-layers}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{# prep variograms}
+\NormalTok{vgrams <-}\StringTok{ }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(chelsa, }\ControlFlowTok{function}\NormalTok{(z) \{}
+\NormalTok{  z <-}\StringTok{ }\KeywordTok{drop_na}\NormalTok{(z)}
+\NormalTok{  vgram <-}\StringTok{ }\NormalTok{gstat}\OperatorTok{::}\KeywordTok{variogram}\NormalTok{(value }\OperatorTok{~}\StringTok{ }\DecValTok{1}\NormalTok{, }\DataTypeTok{loc =} \OperatorTok{~}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y, }\DataTypeTok{data =}\NormalTok{ z)}
+  \KeywordTok{return}\NormalTok{(vgram)}
+\NormalTok{\})}
+
+\CommentTok{# save temp}
+\KeywordTok{save}\NormalTok{(vgrams, }\DataTypeTok{file =} \StringTok{"data/chelsa/chelsaVariograms.rdata"}\NormalTok{)}
+
+\CommentTok{# get variogram data}
+\NormalTok{vgrams <-}\StringTok{ }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(vgrams, }\ControlFlowTok{function}\NormalTok{(df) \{}
+\NormalTok{  df }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(dist, gamma)}
+\NormalTok{\})}
+\NormalTok{vgrams <-}\StringTok{ }\KeywordTok{tibble}\NormalTok{(}
+  \DataTypeTok{variable =}\NormalTok{ chelsa_names,}
+  \DataTypeTok{data =}\NormalTok{ vgrams}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{wg <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"data/spatial/hillsShapefile/Nil_Ana_Pal.shp"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{st_transform}\NormalTok{(}\DecValTok{32643}\NormalTok{)}
+\NormalTok{bbox <-}\StringTok{ }\KeywordTok{st_bbox}\NormalTok{(wg)}
+
+\CommentTok{# Plot}
+\KeywordTok{library}\NormalTok{(rnaturalearth)}
+\NormalTok{land <-}\StringTok{ }\KeywordTok{ne_countries}\NormalTok{(}
+  \DataTypeTok{scale =} \DecValTok{50}\NormalTok{, }\DataTypeTok{type =} \StringTok{"countries"}\NormalTok{, }\DataTypeTok{continent =} \StringTok{"asia"}\NormalTok{,}
+  \DataTypeTok{country =} \StringTok{"india"}\NormalTok{,}
+  \DataTypeTok{returnclass =} \KeywordTok{c}\NormalTok{(}\StringTok{"sf"}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{# crop land}
+\NormalTok{land <-}\StringTok{ }\KeywordTok{st_transform}\NormalTok{(land, }\DecValTok{32643}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{visualise-variograms-of-environmental-data}{%
+\subsection{Visualise variograms of environmental data}\label{visualise-variograms-of-environmental-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{# make ggplot of variograms}
+\NormalTok{yaxis <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"semivariance"}\NormalTok{, }\StringTok{""}\NormalTok{)}
+\NormalTok{xaxis <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\StringTok{"distance (km)"}\NormalTok{)}
+\NormalTok{fig_vgrams <-}\StringTok{ }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{pmap}\NormalTok{(}\KeywordTok{list}\NormalTok{(vgrams}\OperatorTok{$}\NormalTok{data, yaxis, xaxis), }\ControlFlowTok{function}\NormalTok{(df, ya, xa) \{}
+  \KeywordTok{ggplot}\NormalTok{(df) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ dist }\OperatorTok{/}\StringTok{ }\DecValTok{1000}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ gamma), }\DataTypeTok{size =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ dist }\OperatorTok{/}\StringTok{ }\DecValTok{1000}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ gamma), }\DataTypeTok{col =} \StringTok{"black"}\NormalTok{) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{labels =}\NormalTok{ comma, }\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{25}\NormalTok{))) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{scale_y_log10}\NormalTok{(}\DataTypeTok{labels =}\NormalTok{ comma) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ xa, }\DataTypeTok{y =}\NormalTok{ ya) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{theme_few}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\KeywordTok{theme}\NormalTok{(}
+      \DataTypeTok{axis.text.y =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{size =} \DecValTok{8}\NormalTok{),}
+      \DataTypeTok{strip.text =} \KeywordTok{element_blank}\NormalTok{()}
+\NormalTok{    )}
+\NormalTok{\})}
+\CommentTok{# fig_vgrams <- purrr::map(fig_vgrams, ggplot2::ggplotGrob)}
+
+\CommentTok{# make ggplot of chelsa data}
+\NormalTok{chelsa <-}\StringTok{ }\KeywordTok{as.list}\NormalTok{(landscape_data[[chelsa_names]]) }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(stars}\OperatorTok{::}\NormalTok{st_as_stars)}
+
+\CommentTok{# colour palettes}
+\NormalTok{pal <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"bilbao"}\NormalTok{, }\StringTok{"davos"}\NormalTok{)}
+\NormalTok{title <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}
+  \StringTok{"a Annual Mean Temperature"}\NormalTok{,}
+  \StringTok{"b Annual Precipitation"}
+\NormalTok{)}
+\NormalTok{direction <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{lims <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}
+  \KeywordTok{range}\NormalTok{(}\KeywordTok{values}\NormalTok{(landscape_data}\OperatorTok{$}\NormalTok{bio_}\DecValTok{01}\NormalTok{), }\DataTypeTok{na.rm =}\NormalTok{ T),}
+  \KeywordTok{range}\NormalTok{(}\KeywordTok{values}\NormalTok{(landscape_data}\OperatorTok{$}\NormalTok{bio_}\DecValTok{12}\NormalTok{), }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\NormalTok{)}
+\NormalTok{fig_list_chelsa <-}
+\StringTok{  }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{pmap}\NormalTok{(}
+    \KeywordTok{list}\NormalTok{(chelsa, pal, title, direction, lims),}
+    \ControlFlowTok{function}\NormalTok{(df, pal, t, d, l) \{}
+      \KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{        }\NormalTok{stars}\OperatorTok{::}\KeywordTok{geom_stars}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df) }\OperatorTok{+}
+\StringTok{        }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ land, }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{) }\OperatorTok{+}
+\StringTok{        }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ wg, }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{0.3}\NormalTok{) }\OperatorTok{+}
+\StringTok{        }\KeywordTok{scale_fill_scico}\NormalTok{(}
+          \DataTypeTok{palette =}\NormalTok{ pal, }\DataTypeTok{direction =}\NormalTok{ d,}
+          \DataTypeTok{label =}\NormalTok{ comma, }\DataTypeTok{na.value =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{limits =}\NormalTok{ l}
+\NormalTok{        ) }\OperatorTok{+}
+\StringTok{        }\KeywordTok{coord_sf}\NormalTok{(}
+          \DataTypeTok{xlim =}\NormalTok{ bbox[}\KeywordTok{c}\NormalTok{(}\StringTok{"xmin"}\NormalTok{, }\StringTok{"xmax"}\NormalTok{)],}
+          \DataTypeTok{ylim =}\NormalTok{ bbox[}\KeywordTok{c}\NormalTok{(}\StringTok{"ymin"}\NormalTok{, }\StringTok{"ymax"}\NormalTok{)]}
+\NormalTok{        ) }\OperatorTok{+}
+\StringTok{        }\NormalTok{ggspatial}\OperatorTok{::}\KeywordTok{annotation_scale}\NormalTok{(}\DataTypeTok{location =} \StringTok{"tr"}\NormalTok{, }\DataTypeTok{width_hint =} \FloatTok{0.4}\NormalTok{, }\DataTypeTok{text_cex =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
+\StringTok{        }\KeywordTok{theme_few}\NormalTok{() }\OperatorTok{+}
+\StringTok{        }\KeywordTok{theme}\NormalTok{(}
+          \DataTypeTok{legend.position =} \StringTok{"top"}\NormalTok{,}
+          \DataTypeTok{title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{face =} \StringTok{"bold"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{8}\NormalTok{),}
+          \DataTypeTok{legend.key.height =} \KeywordTok{unit}\NormalTok{(}\FloatTok{0.2}\NormalTok{, }\StringTok{"cm"}\NormalTok{),}
+          \DataTypeTok{legend.key.width =} \KeywordTok{unit}\NormalTok{(}\DecValTok{1}\NormalTok{, }\StringTok{"cm"}\NormalTok{),}
+          \DataTypeTok{legend.text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{8}\NormalTok{),}
+          \DataTypeTok{axis.title =} \KeywordTok{element_blank}\NormalTok{(),}
+          \DataTypeTok{axis.text.y =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \FloatTok{0.5}\NormalTok{),}
+          \DataTypeTok{panel.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"lightblue"}\NormalTok{),}
+          \DataTypeTok{legend.title =} \KeywordTok{element_blank}\NormalTok{()}
+\NormalTok{        ) }\OperatorTok{+}
+\StringTok{        }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{title =}\NormalTok{ t)}
+\NormalTok{    \}}
+\NormalTok{  )}
+\CommentTok{#fig_list_chelsa <- purrr::map(fig_list_chelsa, ggplotGrob)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{# fig_list_chelsa <- append(fig_list_chelsa, fig_vgrams)}
+\CommentTok{# lmatrix <- matrix(c(c(1, 2, 3, 4, 5), c(1, 2, 3, 4, 5), c(6, 7, 8, 9, 10)),}
+\CommentTok{#   nrow = 3, byrow = T}
+\CommentTok{# )}
+\CommentTok{# plot_grid <- grid.arrange(grobs = fig_list_chelsa, layout_matrix = lmatrix)}
+\CommentTok{#}
+\CommentTok{# ggsave(}
+\CommentTok{#   plot = plot_grid, filename = "figs/fig_chelsa_variograms.png",}
+\CommentTok{#   dpi = 300, width = 12, height = 6}
+\CommentTok{# )}
+\CommentTok{# dev.off()}
+
+\KeywordTok{library}\NormalTok{(patchwork)}
+\NormalTok{fig_variogram <-}\StringTok{ }\KeywordTok{wrap_plots}\NormalTok{(}\KeywordTok{append}\NormalTok{(fig_list_chelsa, fig_vgrams))}
+\KeywordTok{ggsave}\NormalTok{(fig_variogram,}
+  \DataTypeTok{filename =} \StringTok{"figs/fig_chelsa_variograms.png"}\NormalTok{,}
+  \DataTypeTok{dpi =} \DecValTok{300}\NormalTok{,}
+  \DataTypeTok{width =} \DecValTok{6}\NormalTok{, }\DataTypeTok{height =} \DecValTok{6}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\href{figs/fig_chelsa_variograms.png}{CHELSA rasters with study area outline, and associated semivariograms. Semivariograms are on a log-transformed y-axis.}
+
+\hypertarget{climatic-raster-resampling}{%
+\section{Climatic raster resampling}\label{climatic-raster-resampling}}
+
+\hypertarget{prepare-landcover}{%
+\subsection{Prepare landcover}\label{prepare-landcover}}
+
+To access the classified Sentinel image, please visit: \url{https://code.earthengine.google.com/ec69fc4ffad32a532b25202009243d42}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{# read in landcover raster location}
+\NormalTok{landcover <-}\StringTok{ "data/landUseClassification/classifiedImage-UTM.tif"}
+\CommentTok{# get extent}
+\NormalTok{e <-}\StringTok{ }\KeywordTok{bbox}\NormalTok{(}\KeywordTok{raster}\NormalTok{(landcover))}
+
+\CommentTok{# init resolution}
+\NormalTok{res_init <-}\StringTok{ }\KeywordTok{res}\NormalTok{(}\KeywordTok{raster}\NormalTok{(landcover))}
+\CommentTok{# res to transform to 1000m}
+\NormalTok{res_final <-}\StringTok{ }\KeywordTok{map}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DecValTok{250}\NormalTok{, }\DecValTok{500}\NormalTok{, }\FloatTok{1e3}\NormalTok{, }\FloatTok{2.5e3}\NormalTok{), }\ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  x }\OperatorTok{*}\StringTok{ }\NormalTok{res_init}
+\NormalTok{\})}
+
+\CommentTok{# use gdalutils gdalwarp for resampling transform}
+\CommentTok{# to 1km from 10m}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(res_final)) \{}
+\NormalTok{  this_res <-}\StringTok{ }\NormalTok{res_final[[i]]}
+\NormalTok{  this_res_char <-}\StringTok{ }\NormalTok{stringr}\OperatorTok{::}\KeywordTok{str_pad}\NormalTok{(this_res[}\DecValTok{1}\NormalTok{], }\DecValTok{5}\NormalTok{, }\DataTypeTok{pad =} \StringTok{"0"}\NormalTok{)}
+\NormalTok{  gdalUtils}\OperatorTok{::}\KeywordTok{gdalwarp}\NormalTok{(}
+    \DataTypeTok{srcfile =}\NormalTok{ landcover,}
+    \DataTypeTok{dstfile =} \KeywordTok{as.character}\NormalTok{(}\KeywordTok{glue}\NormalTok{(}\StringTok{"data/landUseClassification/lc_\{this_res_char\}m.tif"}\NormalTok{)),}
+    \DataTypeTok{tr =} \KeywordTok{c}\NormalTok{(this_res), }\DataTypeTok{r =} \StringTok{"mode"}\NormalTok{, }\DataTypeTok{te =} \KeywordTok{c}\NormalTok{(e)}
+\NormalTok{  )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{# read in resampled landcover raster files as a list}
+\NormalTok{lc_files <-}\StringTok{ }\KeywordTok{list.files}\NormalTok{(}\StringTok{"data/landUseClassification/"}\NormalTok{, }\DataTypeTok{pattern =} \StringTok{"lc"}\NormalTok{, }\DataTypeTok{full.names =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{lc_data <-}\StringTok{ }\KeywordTok{map}\NormalTok{(lc_files, raster)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{prepare-spatial-extent}{%
+\subsection{Prepare spatial extent}\label{prepare-spatial-extent}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{# load hills}
+\KeywordTok{library}\NormalTok{(sf)}
+\NormalTok{hills <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"data/spatial/hillsShapefile/Nil_Ana_Pal.shp"}\NormalTok{)}
+\NormalTok{hills <-}\StringTok{ }\KeywordTok{st_transform}\NormalTok{(hills, }\DecValTok{32643}\NormalTok{)}
+\NormalTok{buffer <-}\StringTok{ }\KeywordTok{st_buffer}\NormalTok{(hills, }\FloatTok{3e4}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{st_transform}\NormalTok{(}\DecValTok{4326}\NormalTok{)}
+\NormalTok{bbox <-}\StringTok{ }\KeywordTok{st_bbox}\NormalTok{(hills)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{prepare-chelsa-rasters}{%
+\subsection{Prepare CHELSA rasters}\label{prepare-chelsa-rasters}}
+
+Please download the CHELSA rasters from \url{https://chelsa-climate.org/bioclim/}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{# list chelsa files}
+\NormalTok{chelsaFiles <-}\StringTok{ }\KeywordTok{list.files}\NormalTok{(}\StringTok{"data/chelsa/"}\NormalTok{, }\DataTypeTok{full.names =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{pattern =} \StringTok{"*.tif"}\NormalTok{)}
+
+\CommentTok{# gather chelsa rasters}
+\NormalTok{chelsaData <-}\StringTok{ }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(chelsaFiles, }\ControlFlowTok{function}\NormalTok{(chr) \{}
+\NormalTok{  a <-}\StringTok{ }\KeywordTok{raster}\NormalTok{(chr)}
+  \KeywordTok{crs}\NormalTok{(a) <-}\StringTok{ }\KeywordTok{crs}\NormalTok{(buffer)}
+\NormalTok{  a <-}\StringTok{ }\KeywordTok{crop}\NormalTok{(a, }\KeywordTok{as}\NormalTok{(buffer, }\StringTok{"Spatial"}\NormalTok{))}
+  \KeywordTok{return}\NormalTok{(a)}
+\NormalTok{\})}
+
+\CommentTok{# stack chelsa data}
+\NormalTok{chelsaData <-}\StringTok{ }\NormalTok{raster}\OperatorTok{::}\KeywordTok{stack}\NormalTok{(chelsaData)}
+\KeywordTok{names}\NormalTok{(chelsaData) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"chelsa_bio10_01"}\NormalTok{, }\StringTok{"chelsa_bio10_12"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{resample-prepared-rasters}{%
+\subsection{Resample prepared rasters}\label{resample-prepared-rasters}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{# make resampled data}
+\NormalTok{resamp_data <-}\StringTok{ }\KeywordTok{map}\NormalTok{(lc_data, }\ControlFlowTok{function}\NormalTok{(this_scale) \{}
+\NormalTok{  rr <-}\StringTok{ }\KeywordTok{projectRaster}\NormalTok{(}
+    \DataTypeTok{from =}\NormalTok{ chelsaData, }\DataTypeTok{to =}\NormalTok{ this_scale,}
+    \DataTypeTok{crs =} \KeywordTok{crs}\NormalTok{(this_scale), }\DataTypeTok{res =} \KeywordTok{res}\NormalTok{(this_scale)}
+\NormalTok{  )}
+\NormalTok{\})}
+
+\CommentTok{# make a stars list}
+\NormalTok{resamp_data <-}\StringTok{ }\KeywordTok{map2}\NormalTok{(resamp_data, lc_data, }\ControlFlowTok{function}\NormalTok{(z1, z2) \{}
+\NormalTok{  z2[z2 }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{] <-}\StringTok{ }\OtherTok{NA}
+\NormalTok{  z2 <-}\StringTok{ }\KeywordTok{append}\NormalTok{(z2, }\KeywordTok{as.list}\NormalTok{(z1)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{map}\NormalTok{(stars}\OperatorTok{::}\NormalTok{st_as_stars)}
+\NormalTok{\}) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{flatten}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{climate-in-relation-to-landcover}{%
 \section{Climate in Relation to Landcover}\label{climate-in-relation-to-landcover}}
 
-This script showcases how climate data varies as a function of land cover types across our study area.
+This script showcases how climatic predictors vary as a function of land cover types across our study area.
 
-\hypertarget{prepare-libraries-2}{%
-\subsection{Prepare libraries}\label{prepare-libraries-2}}
+\hypertarget{prepare-libraries-1}{%
+\subsection{Prepare libraries}\label{prepare-libraries-1}}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -545,7 +991,9 @@ Figure code is hidden in versions rendered as HTML and PDF.
 \section{Distribution of Observer Expertise}\label{distribution-of-observer-expertise}}
 
 This script plots observer expertise over time (2013-2019) as well as across land cover types.
-\#\# Prepare libraries
+
+\hypertarget{prepare-libraries-2}{%
+\subsection{Prepare libraries}\label{prepare-libraries-2}}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -645,331 +1093,6 @@ Figure code is hidden in versions rendered as HTML or PDF.
 \includegraphics{figs/fig_exp_lc.png}
 \caption{Distribution of expertise scores in the seven landcover classes present in the study site.}
 \end{figure}
-
-\hypertarget{spatial-autocorrelation-of-climatic-predictors}{%
-\section{Spatial Autocorrelation of Climatic Predictors}\label{spatial-autocorrelation-of-climatic-predictors}}
-
-\hypertarget{load-libraries}{%
-\subsection{Load libraries}\label{load-libraries}}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# load libs}
-\KeywordTok{library}\NormalTok{(raster)}
-\KeywordTok{library}\NormalTok{(gstat)}
-\KeywordTok{library}\NormalTok{(stars)}
-\KeywordTok{library}\NormalTok{(purrr)}
-\KeywordTok{library}\NormalTok{(tibble)}
-\KeywordTok{library}\NormalTok{(dplyr)}
-\KeywordTok{library}\NormalTok{(tidyr)}
-\KeywordTok{library}\NormalTok{(glue)}
-\KeywordTok{library}\NormalTok{(scales)}
-\KeywordTok{library}\NormalTok{(gdalUtils)}
-\KeywordTok{library}\NormalTok{(sf)}
-
-\CommentTok{# plot libs}
-\KeywordTok{library}\NormalTok{(ggplot2)}
-\KeywordTok{library}\NormalTok{(ggthemes)}
-\KeywordTok{library}\NormalTok{(scico)}
-\KeywordTok{library}\NormalTok{(gridExtra)}
-\KeywordTok{library}\NormalTok{(cowplot)}
-\KeywordTok{library}\NormalTok{(ggspatial)}
-
-\CommentTok{#' make custom functiont to convert matrix to df}
-\NormalTok{raster_to_df <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(inp) \{}
-
-  \CommentTok{# assert is a raster obj}
-\NormalTok{  assertthat}\OperatorTok{::}\KeywordTok{assert_that}\NormalTok{(}\StringTok{"RasterLayer"} \OperatorTok{%in%}\StringTok{ }\KeywordTok{class}\NormalTok{(inp),}
-    \DataTypeTok{msg =} \StringTok{"input is not a raster"}
-\NormalTok{  )}
-
-\NormalTok{  coords <-}\StringTok{ }\KeywordTok{coordinates}\NormalTok{(inp)}
-\NormalTok{  vals <-}\StringTok{ }\KeywordTok{getValues}\NormalTok{(inp)}
-
-\NormalTok{  data <-}\StringTok{ }\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ coords[, }\DecValTok{1}\NormalTok{], }\DataTypeTok{y =}\NormalTok{ coords[, }\DecValTok{2}\NormalTok{], }\DataTypeTok{value =}\NormalTok{ vals)}
-
-  \KeywordTok{return}\NormalTok{(data)}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{prepare-data}{%
-\subsection{Prepare data}\label{prepare-data}}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# list landscape covariate stacks}
-\NormalTok{landscape_files <-}\StringTok{ "data/spatial/landscape_resamp01_km.tif"}
-\NormalTok{landscape_data <-}\StringTok{ }\KeywordTok{stack}\NormalTok{(landscape_files)}
-
-\CommentTok{# get proper names}
-\NormalTok{elev_names <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"elev"}\NormalTok{, }\StringTok{"slope"}\NormalTok{, }\StringTok{"aspect"}\NormalTok{)}
-\NormalTok{chelsa_names <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"bio_01"}\NormalTok{, }\StringTok{"bio_12"}\NormalTok{)}
-\KeywordTok{names}\NormalTok{(landscape_data) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(elev_names, chelsa_names, }\StringTok{"landcover"}\NormalTok{)}
-
-
-\CommentTok{# get chelsa rasters}
-\NormalTok{chelsa <-}\StringTok{ }\NormalTok{landscape_data[[chelsa_names]]}
-\NormalTok{chelsa <-}\StringTok{ }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(}\KeywordTok{as.list}\NormalTok{(chelsa), raster_to_df)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{calculate-variograms-of-environmental-layers}{%
-\subsection{Calculate variograms of environmental layers}\label{calculate-variograms-of-environmental-layers}}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# prep variograms}
-\NormalTok{vgrams <-}\StringTok{ }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(chelsa, }\ControlFlowTok{function}\NormalTok{(z) \{}
-\NormalTok{  z <-}\StringTok{ }\KeywordTok{drop_na}\NormalTok{(z)}
-\NormalTok{  vgram <-}\StringTok{ }\NormalTok{gstat}\OperatorTok{::}\KeywordTok{variogram}\NormalTok{(value }\OperatorTok{~}\StringTok{ }\DecValTok{1}\NormalTok{, }\DataTypeTok{loc =} \OperatorTok{~}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y, }\DataTypeTok{data =}\NormalTok{ z)}
-  \KeywordTok{return}\NormalTok{(vgram)}
-\NormalTok{\})}
-
-\CommentTok{# save temp}
-\KeywordTok{save}\NormalTok{(vgrams, }\DataTypeTok{file =} \StringTok{"data/chelsa/chelsaVariograms.rdata"}\NormalTok{)}
-
-\CommentTok{# get variogram data}
-\NormalTok{vgrams <-}\StringTok{ }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(vgrams, }\ControlFlowTok{function}\NormalTok{(df) \{}
-\NormalTok{  df }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(dist, gamma)}
-\NormalTok{\})}
-\NormalTok{vgrams <-}\StringTok{ }\KeywordTok{tibble}\NormalTok{(}
-  \DataTypeTok{variable =}\NormalTok{ chelsa_names,}
-  \DataTypeTok{data =}\NormalTok{ vgrams}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\NormalTok{wg <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"data/spatial/hillsShapefile/Nil_Ana_Pal.shp"}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{st_transform}\NormalTok{(}\DecValTok{32643}\NormalTok{)}
-\NormalTok{bbox <-}\StringTok{ }\KeywordTok{st_bbox}\NormalTok{(wg)}
-
-\CommentTok{# add lamd}
-\KeywordTok{library}\NormalTok{(rnaturalearth)}
-\NormalTok{land <-}\StringTok{ }\KeywordTok{ne_countries}\NormalTok{(}
-  \DataTypeTok{scale =} \DecValTok{50}\NormalTok{, }\DataTypeTok{type =} \StringTok{"countries"}\NormalTok{, }\DataTypeTok{continent =} \StringTok{"asia"}\NormalTok{,}
-  \DataTypeTok{country =} \StringTok{"india"}\NormalTok{,}
-  \DataTypeTok{returnclass =} \KeywordTok{c}\NormalTok{(}\StringTok{"sf"}\NormalTok{)}
-\NormalTok{)}
-
-\CommentTok{# crop land}
-\NormalTok{land <-}\StringTok{ }\KeywordTok{st_transform}\NormalTok{(land, }\DecValTok{32643}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{visualise-variograms-of-environmental-data}{%
-\subsection{Visualise variograms of environmental data}\label{visualise-variograms-of-environmental-data}}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# make ggplot of variograms}
-\NormalTok{yaxis <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"semivariance"}\NormalTok{, }\StringTok{""}\NormalTok{)}
-\NormalTok{xaxis <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\StringTok{"distance (km)"}\NormalTok{)}
-\NormalTok{fig_vgrams <-}\StringTok{ }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{pmap}\NormalTok{(}\KeywordTok{list}\NormalTok{(vgrams}\OperatorTok{$}\NormalTok{data, yaxis, xaxis), }\ControlFlowTok{function}\NormalTok{(df, ya, xa) \{}
-  \KeywordTok{ggplot}\NormalTok{(df) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ dist }\OperatorTok{/}\StringTok{ }\DecValTok{1000}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ gamma), }\DataTypeTok{size =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ dist }\OperatorTok{/}\StringTok{ }\DecValTok{1000}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ gamma), }\DataTypeTok{col =} \StringTok{"black"}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{labels =}\NormalTok{ comma, }\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{25}\NormalTok{))) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_log10}\NormalTok{(}\DataTypeTok{labels =}\NormalTok{ comma) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ xa, }\DataTypeTok{y =}\NormalTok{ ya) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{theme_few}\NormalTok{() }\OperatorTok{+}
-\StringTok{    }\KeywordTok{theme}\NormalTok{(}
-      \DataTypeTok{axis.text.y =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{size =} \DecValTok{8}\NormalTok{),}
-      \DataTypeTok{strip.text =} \KeywordTok{element_blank}\NormalTok{()}
-\NormalTok{    )}
-\NormalTok{\})}
-\CommentTok{# fig_vgrams <- purrr::map(fig_vgrams, ggplot2::ggplotGrob)}
-
-\CommentTok{# make ggplot of chelsa data}
-\NormalTok{chelsa <-}\StringTok{ }\KeywordTok{as.list}\NormalTok{(landscape_data[[chelsa_names]]) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(stars}\OperatorTok{::}\NormalTok{st_as_stars)}
-
-\CommentTok{# colour palettes}
-\NormalTok{pal <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"bilbao"}\NormalTok{, }\StringTok{"davos"}\NormalTok{)}
-\NormalTok{title <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}
-  \StringTok{"a Annual Mean Temperature"}\NormalTok{,}
-  \StringTok{"b Annual Precipitation"}
-\NormalTok{)}
-\NormalTok{direction <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
-\NormalTok{lims <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}
-  \KeywordTok{range}\NormalTok{(}\KeywordTok{values}\NormalTok{(landscape_data}\OperatorTok{$}\NormalTok{bio_}\DecValTok{01}\NormalTok{), }\DataTypeTok{na.rm =}\NormalTok{ T),}
-  \KeywordTok{range}\NormalTok{(}\KeywordTok{values}\NormalTok{(landscape_data}\OperatorTok{$}\NormalTok{bio_}\DecValTok{12}\NormalTok{), }\DataTypeTok{na.rm =}\NormalTok{ T)}
-\NormalTok{)}
-\NormalTok{fig_list_chelsa <-}
-\StringTok{  }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{pmap}\NormalTok{(}
-    \KeywordTok{list}\NormalTok{(chelsa, pal, title, direction, lims),}
-    \ControlFlowTok{function}\NormalTok{(df, pal, t, d, l) \{}
-      \KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
-\StringTok{        }\NormalTok{stars}\OperatorTok{::}\KeywordTok{geom_stars}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df) }\OperatorTok{+}
-\StringTok{        }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ land, }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{) }\OperatorTok{+}
-\StringTok{        }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ wg, }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{0.3}\NormalTok{) }\OperatorTok{+}
-\StringTok{        }\KeywordTok{scale_fill_scico}\NormalTok{(}
-          \DataTypeTok{palette =}\NormalTok{ pal, }\DataTypeTok{direction =}\NormalTok{ d,}
-          \DataTypeTok{label =}\NormalTok{ comma, }\DataTypeTok{na.value =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{limits =}\NormalTok{ l}
-\NormalTok{        ) }\OperatorTok{+}
-\StringTok{        }\KeywordTok{coord_sf}\NormalTok{(}
-          \DataTypeTok{xlim =}\NormalTok{ bbox[}\KeywordTok{c}\NormalTok{(}\StringTok{"xmin"}\NormalTok{, }\StringTok{"xmax"}\NormalTok{)],}
-          \DataTypeTok{ylim =}\NormalTok{ bbox[}\KeywordTok{c}\NormalTok{(}\StringTok{"ymin"}\NormalTok{, }\StringTok{"ymax"}\NormalTok{)]}
-\NormalTok{        ) }\OperatorTok{+}
-\StringTok{        }\NormalTok{ggspatial}\OperatorTok{::}\KeywordTok{annotation_scale}\NormalTok{(}\DataTypeTok{location =} \StringTok{"tr"}\NormalTok{, }\DataTypeTok{width_hint =} \FloatTok{0.4}\NormalTok{, }\DataTypeTok{text_cex =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
-\StringTok{        }\KeywordTok{theme_few}\NormalTok{() }\OperatorTok{+}
-\StringTok{        }\KeywordTok{theme}\NormalTok{(}
-          \DataTypeTok{legend.position =} \StringTok{"top"}\NormalTok{,}
-          \DataTypeTok{title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{face =} \StringTok{"bold"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{8}\NormalTok{),}
-          \DataTypeTok{legend.key.height =} \KeywordTok{unit}\NormalTok{(}\FloatTok{0.2}\NormalTok{, }\StringTok{"cm"}\NormalTok{),}
-          \DataTypeTok{legend.key.width =} \KeywordTok{unit}\NormalTok{(}\DecValTok{1}\NormalTok{, }\StringTok{"cm"}\NormalTok{),}
-          \DataTypeTok{legend.text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{8}\NormalTok{),}
-          \DataTypeTok{axis.title =} \KeywordTok{element_blank}\NormalTok{(),}
-          \DataTypeTok{axis.text.y =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \FloatTok{0.5}\NormalTok{),}
-          \DataTypeTok{panel.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"lightblue"}\NormalTok{),}
-          \DataTypeTok{legend.title =} \KeywordTok{element_blank}\NormalTok{()}
-\NormalTok{        ) }\OperatorTok{+}
-\StringTok{        }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{title =}\NormalTok{ t)}
-\NormalTok{    \}}
-\NormalTok{  )}
-\CommentTok{# fig_list_chelsa <- purrr::map(fig_list_chelsa, ggplotGrob)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# fig_list_chelsa <- append(fig_list_chelsa, fig_vgrams)}
-\CommentTok{# lmatrix <- matrix(c(c(1, 2, 3, 4, 5), c(1, 2, 3, 4, 5), c(6, 7, 8, 9, 10)),}
-\CommentTok{#   nrow = 3, byrow = T}
-\CommentTok{# )}
-\CommentTok{# plot_grid <- grid.arrange(grobs = fig_list_chelsa, layout_matrix = lmatrix)}
-\CommentTok{#}
-\CommentTok{# ggsave(}
-\CommentTok{#   plot = plot_grid, filename = "figs/fig_chelsa_variograms.png",}
-\CommentTok{#   dpi = 300, width = 12, height = 6}
-\CommentTok{# )}
-\CommentTok{# dev.off()}
-
-\KeywordTok{library}\NormalTok{(patchwork)}
-\NormalTok{fig_variogram <-}\StringTok{ }\KeywordTok{wrap_plots}\NormalTok{(}\KeywordTok{append}\NormalTok{(fig_list_chelsa, fig_vgrams))}
-\KeywordTok{ggsave}\NormalTok{(fig_variogram,}
-  \DataTypeTok{filename =} \StringTok{"figs/fig_chelsa_variograms.png"}\NormalTok{,}
-  \DataTypeTok{dpi =} \DecValTok{300}\NormalTok{,}
-  \DataTypeTok{width =} \DecValTok{6}\NormalTok{, }\DataTypeTok{height =} \DecValTok{6}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{figs/fig_chelsa_variograms.png}
-\caption{CHELSA rasters with study area outline, and associated semivariograms. Semivariograms are on a log-transformed y-axis.}
-\end{figure}
-
-\hypertarget{climatic-raster-resampling}{%
-\section{Climatic raster resampling}\label{climatic-raster-resampling}}
-
-\hypertarget{prepare-landcover}{%
-\subsection{Prepare landcover}\label{prepare-landcover}}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# read in landcover raster location}
-\NormalTok{landcover <-}\StringTok{ "data/landUseClassification/classifiedImage-UTM.tif"}
-\CommentTok{# get extent}
-\NormalTok{e <-}\StringTok{ }\KeywordTok{bbox}\NormalTok{(}\KeywordTok{raster}\NormalTok{(landcover))}
-
-\CommentTok{# init resolution}
-\NormalTok{res_init <-}\StringTok{ }\KeywordTok{res}\NormalTok{(}\KeywordTok{raster}\NormalTok{(landcover))}
-\CommentTok{# res to transform to 1000m}
-\NormalTok{res_final <-}\StringTok{ }\KeywordTok{map}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DecValTok{250}\NormalTok{, }\DecValTok{500}\NormalTok{, }\FloatTok{1e3}\NormalTok{, }\FloatTok{2.5e3}\NormalTok{), }\ControlFlowTok{function}\NormalTok{(x) \{}
-\NormalTok{  x }\OperatorTok{*}\StringTok{ }\NormalTok{res_init}
-\NormalTok{\})}
-
-\CommentTok{# use gdalutils gdalwarp for resampling transform}
-\CommentTok{# to 1km from 10m}
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(res_final)) \{}
-\NormalTok{  this_res <-}\StringTok{ }\NormalTok{res_final[[i]]}
-\NormalTok{  this_res_char <-}\StringTok{ }\NormalTok{stringr}\OperatorTok{::}\KeywordTok{str_pad}\NormalTok{(this_res[}\DecValTok{1}\NormalTok{], }\DecValTok{5}\NormalTok{, }\DataTypeTok{pad =} \StringTok{"0"}\NormalTok{)}
-\NormalTok{  gdalUtils}\OperatorTok{::}\KeywordTok{gdalwarp}\NormalTok{(}
-    \DataTypeTok{srcfile =}\NormalTok{ landcover,}
-    \DataTypeTok{dstfile =} \KeywordTok{as.character}\NormalTok{(}\KeywordTok{glue}\NormalTok{(}\StringTok{"data/landUseClassification/lc_\{this_res_char\}m.tif"}\NormalTok{)),}
-    \DataTypeTok{tr =} \KeywordTok{c}\NormalTok{(this_res), }\DataTypeTok{r =} \StringTok{"mode"}\NormalTok{, }\DataTypeTok{te =} \KeywordTok{c}\NormalTok{(e)}
-\NormalTok{  )}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# read in resampled landcover raster files as a list}
-\NormalTok{lc_files <-}\StringTok{ }\KeywordTok{list.files}\NormalTok{(}\StringTok{"data/landUseClassification/"}\NormalTok{, }\DataTypeTok{pattern =} \StringTok{"lc"}\NormalTok{, }\DataTypeTok{full.names =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{lc_data <-}\StringTok{ }\KeywordTok{map}\NormalTok{(lc_files, raster)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{prepare-spatial-extent}{%
-\subsection{Prepare spatial extent}\label{prepare-spatial-extent}}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# load hills}
-\KeywordTok{library}\NormalTok{(sf)}
-\NormalTok{hills <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"data/spatial/hillsShapefile/Nil_Ana_Pal.shp"}\NormalTok{)}
-\NormalTok{hills <-}\StringTok{ }\KeywordTok{st_transform}\NormalTok{(hills, }\DecValTok{32643}\NormalTok{)}
-\NormalTok{buffer <-}\StringTok{ }\KeywordTok{st_buffer}\NormalTok{(hills, }\FloatTok{3e4}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{st_transform}\NormalTok{(}\DecValTok{4326}\NormalTok{)}
-\NormalTok{bbox <-}\StringTok{ }\KeywordTok{st_bbox}\NormalTok{(hills)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{prepare-chelsa-rasters}{%
-\subsection{Prepare CHELSA rasters}\label{prepare-chelsa-rasters}}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# list chelsa files}
-\NormalTok{chelsaFiles <-}\StringTok{ }\KeywordTok{list.files}\NormalTok{(}\StringTok{"data/chelsa/"}\NormalTok{, }\DataTypeTok{full.names =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{pattern =} \StringTok{"*.tif"}\NormalTok{)}
-
-\CommentTok{# gather chelsa rasters}
-\NormalTok{chelsaData <-}\StringTok{ }\NormalTok{purrr}\OperatorTok{::}\KeywordTok{map}\NormalTok{(chelsaFiles, }\ControlFlowTok{function}\NormalTok{(chr) \{}
-\NormalTok{  a <-}\StringTok{ }\KeywordTok{raster}\NormalTok{(chr)}
-  \KeywordTok{crs}\NormalTok{(a) <-}\StringTok{ }\KeywordTok{crs}\NormalTok{(buffer)}
-\NormalTok{  a <-}\StringTok{ }\KeywordTok{crop}\NormalTok{(a, }\KeywordTok{as}\NormalTok{(buffer, }\StringTok{"Spatial"}\NormalTok{))}
-  \KeywordTok{return}\NormalTok{(a)}
-\NormalTok{\})}
-
-\CommentTok{# stack chelsa data}
-\NormalTok{chelsaData <-}\StringTok{ }\NormalTok{raster}\OperatorTok{::}\KeywordTok{stack}\NormalTok{(chelsaData)}
-\KeywordTok{names}\NormalTok{(chelsaData) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"chelsa_bio10_01"}\NormalTok{, }\StringTok{"chelsa_bio10_12"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{resample-prepared-rasters}{%
-\subsection{Resample prepared rasters}\label{resample-prepared-rasters}}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# make resampled data}
-\NormalTok{resamp_data <-}\StringTok{ }\KeywordTok{map}\NormalTok{(lc_data, }\ControlFlowTok{function}\NormalTok{(this_scale) \{}
-\NormalTok{  rr <-}\StringTok{ }\KeywordTok{projectRaster}\NormalTok{(}
-    \DataTypeTok{from =}\NormalTok{ chelsaData, }\DataTypeTok{to =}\NormalTok{ this_scale,}
-    \DataTypeTok{crs =} \KeywordTok{crs}\NormalTok{(this_scale), }\DataTypeTok{res =} \KeywordTok{res}\NormalTok{(this_scale)}
-\NormalTok{  )}
-\NormalTok{\})}
-
-\CommentTok{# make a stars list}
-\NormalTok{resamp_data <-}\StringTok{ }\KeywordTok{map2}\NormalTok{(resamp_data, lc_data, }\ControlFlowTok{function}\NormalTok{(z1, z2) \{}
-\NormalTok{  z2[z2 }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{] <-}\StringTok{ }\OtherTok{NA}
-\NormalTok{  z2 <-}\StringTok{ }\KeywordTok{append}\NormalTok{(z2, }\KeywordTok{as.list}\NormalTok{(z1)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{map}\NormalTok{(stars}\OperatorTok{::}\NormalTok{st_as_stars)}
-\NormalTok{\}) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{flatten}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{# ![CHELSA rasters with study area outline, at different scales. }
-\CommentTok{# Semivariograms are on a log-transformed y-axis.](figs/fig_chelsa_resamp.png)}
-\end{Highlighting}
-\end{Shaded}
 
 \hypertarget{matching-effort-cutoffs-with-spatial-independence-criteria}{%
 \section{Matching Effort Cutoffs with Spatial Independence Criteria}\label{matching-effort-cutoffs-with-spatial-independence-criteria}}
@@ -1602,185 +1725,58 @@ How many points, at different spatial scales, remain after the application of ea
 
 \includegraphics{figs/fig_spatial_thinning_02.png}
 
-\hypertarget{landcover-classification}{%
-\section{Landcover classification}\label{landcover-classification}}
+\hypertarget{predicting-species-specific-occupancy}{%
+\section{Predicting Species-specific Occupancy}\label{predicting-species-specific-occupancy}}
 
-This script was used to classify a 2019 Sentinel composite image across the Nilgiris and the Anamalais into seven distinct land cover types.
+This supplement plots species-specific probabilities of occupancy as a function of significant environmental predictors.
+
+\hypertarget{prepare-libraries-4}{%
+\subsection{Prepare libraries}\label{prepare-libraries-4}}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\CommentTok{// Data: Groundtruthed points from Arasumani et al 2019}
+\CommentTok{# to load data}
+\KeywordTok{library}\NormalTok{(readxl)}
 
-\CommentTok{// Function to obtain a Cloud-Free Image // }
+\CommentTok{# to handle data}
+\KeywordTok{library}\NormalTok{(dplyr)}
+\KeywordTok{library}\NormalTok{(readr)}
+\KeywordTok{library}\NormalTok{(forcats)}
+\KeywordTok{library}\NormalTok{(tidyr)}
+\KeywordTok{library}\NormalTok{(purrr)}
+\KeywordTok{library}\NormalTok{(stringr)}
 
-\CommentTok{/**}
-\CommentTok{ * Function to mask clouds using the Sentinel-2 QA band}
-\CommentTok{ * }\AnnotationTok{@param}\CommentTok{ }\CommentVarTok{\{ee.Image\}}\CommentTok{ image Sentinel-2 image}
-\CommentTok{ * }\AnnotationTok{@return}\CommentTok{ \{ee.Image\} cloud masked Sentinel-2 image}
-\CommentTok{ */}
- 
-\KeywordTok{function} \AttributeTok{maskS2clouds}\NormalTok{(image) }\OperatorTok{\{}
-  \KeywordTok{var}\NormalTok{ qa }\OperatorTok{=} \VariableTok{image}\NormalTok{.}\AttributeTok{select}\NormalTok{(}\StringTok{'QA60'}\NormalTok{)}\OperatorTok{;}
-
-  \CommentTok{// Bits 10 and 11 are clouds and cirrus, respectively.}
-  \KeywordTok{var}\NormalTok{ cloudBitMask }\OperatorTok{=} \DecValTok{1} \OperatorTok{<<} \DecValTok{10}\OperatorTok{;}
-  \KeywordTok{var}\NormalTok{ cirrusBitMask }\OperatorTok{=} \DecValTok{1} \OperatorTok{<<} \DecValTok{11}\OperatorTok{;}
-
-  \CommentTok{// Both flags should be set to zero, indicating clear conditions.}
-  \KeywordTok{var}\NormalTok{ mask }\OperatorTok{=} \VariableTok{qa}\NormalTok{.}\AttributeTok{bitwiseAnd}\NormalTok{(cloudBitMask).}\AttributeTok{eq}\NormalTok{(}\DecValTok{0}\NormalTok{)}
-\NormalTok{      .}\AttributeTok{and}\NormalTok{(}\VariableTok{qa}\NormalTok{.}\AttributeTok{bitwiseAnd}\NormalTok{(cirrusBitMask).}\AttributeTok{eq}\NormalTok{(}\DecValTok{0}\NormalTok{))}\OperatorTok{;}
-
-  \ControlFlowTok{return} \VariableTok{image}\NormalTok{.}\AttributeTok{updateMask}\NormalTok{(mask).}\AttributeTok{divide}\NormalTok{(}\DecValTok{10000}\NormalTok{)}\OperatorTok{;}
-\OperatorTok{\}}
-
-\CommentTok{// Importing shapefile needed for classification}
-\KeywordTok{var}\NormalTok{ clipper }\OperatorTok{=} \KeywordTok{function}\NormalTok{(image)}\OperatorTok{\{}
-  \ControlFlowTok{return} \VariableTok{image}\NormalTok{.}\AttributeTok{clip}\NormalTok{(WG_Buffer)}\OperatorTok{;}
-\OperatorTok{\};}
-
-
-\CommentTok{// Import raw Sentinel scenes and clip them over your study area}
-\KeywordTok{var}\NormalTok{ filtered }\OperatorTok{=} \VariableTok{sentinel}\NormalTok{.}\AttributeTok{filterDate}\NormalTok{(}\StringTok{'2018-01-01'}\OperatorTok{,}\StringTok{'2018-12-01'}\NormalTok{).}\AttributeTok{map}\NormalTok{(clipper)}\OperatorTok{;}
-
-\CommentTok{// Load Sentinel-2 TOA reflectance data.}
-\CommentTok{// Pre-filter to get less cloudy granules.}
-
-\KeywordTok{var}\NormalTok{ dataset }\OperatorTok{=} \VariableTok{filtered}\NormalTok{.}\AttributeTok{filter}\NormalTok{(}\VariableTok{ee}\NormalTok{.}\VariableTok{Filter}\NormalTok{.}\AttributeTok{lt}\NormalTok{(}\StringTok{'CLOUDY_PIXEL_PERCENTAGE'}\OperatorTok{,} \DecValTok{20}\NormalTok{))}
-\NormalTok{                  .}\AttributeTok{map}\NormalTok{(maskS2clouds)}\OperatorTok{;}
-\KeywordTok{var}\NormalTok{ scene }\OperatorTok{=} \VariableTok{dataset}\NormalTok{.}\AttributeTok{reduce}\NormalTok{(}\VariableTok{ee}\NormalTok{.}\VariableTok{Reducer}\NormalTok{.}\AttributeTok{median}\NormalTok{())}\OperatorTok{;}
-
-\VariableTok{Map}\NormalTok{.}\AttributeTok{addLayer}\NormalTok{(WG_Buffer}\OperatorTok{,} \OperatorTok{\{\},} \StringTok{'Buffer Outline for Nil/Ana/Pal'}\NormalTok{)}\OperatorTok{;}
-\CommentTok{// Map.addLayer(scene,\{\},'Image for Classification');}
-\CommentTok{// Map.addLayer(WG, \{\},'Outline for Nilgiris/Anaimalais/Palanis');}
-
-
-\CommentTok{// Step 2: Creating training data manually}
-\CommentTok{// Added a new shapefile field manually in ArcMap so that GEE can take a float field for classification}
-\CommentTok{// Field: landcover}
-\CommentTok{// Values: agriculture (1), forest (2), grassland (3), plantation (4), settlements (5), tea (6), waterbodies (7)}
-\CommentTok{// Note - Arasu has classified plantation as Acacia, Pine et al sub classes (for future analysis)}
-
-\CommentTok{// Merging the featureCollections to obtain a single featureCollection}
-
-\KeywordTok{var}\NormalTok{ trainingFeatures }\OperatorTok{=} \VariableTok{agriculture}\NormalTok{.}\AttributeTok{merge}\NormalTok{(forests).}\AttributeTok{merge}\NormalTok{(forests2).}\AttributeTok{merge}\NormalTok{(grasslands).}\AttributeTok{merge}\NormalTok{(grasslands2)}
-\NormalTok{                               .}\AttributeTok{merge}\NormalTok{(settlements).}\AttributeTok{merge}\NormalTok{(plantations)}
-\NormalTok{                            .}\AttributeTok{merge}\NormalTok{(waterbodies).}\AttributeTok{merge}\NormalTok{(tea).}\AttributeTok{merge}\NormalTok{(tea2).}\AttributeTok{merge}\NormalTok{(tea3).}\AttributeTok{merge}\NormalTok{(forests3)}\OperatorTok{;}
-
-\CommentTok{// // Specify the bands of the sentinel image to be used as predictors (p)}
-\KeywordTok{var}\NormalTok{ predictionBands }\OperatorTok{=}\NormalTok{ [}\StringTok{'B2_median'}\OperatorTok{,}\StringTok{'B3_median'}\OperatorTok{,}\StringTok{'B4_median'}\OperatorTok{,}\StringTok{'B8_median'}\NormalTok{]}\OperatorTok{;}
-
-
-\CommentTok{// // Now a random forest is a collection of random trees. It's predictions are used to compute an}
-\CommentTok{// // average (regression) or vote on a label (classification)}
-
-\KeywordTok{var}\NormalTok{ sample }\OperatorTok{=} \VariableTok{scene}\NormalTok{.}\AttributeTok{select}\NormalTok{(predictionBands)}
-\NormalTok{                      .}\AttributeTok{sampleRegions}\NormalTok{(}\OperatorTok{\{}
-                        \DataTypeTok{collection}\OperatorTok{:}\NormalTok{ trainingFeatures}\OperatorTok{,}
-                        \DataTypeTok{properties }\OperatorTok{:}\NormalTok{ [}\StringTok{'landcover'}\NormalTok{]}\OperatorTok{,}
-                        \DataTypeTok{scale}\OperatorTok{:} \DecValTok{10}
-                              \OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{// Let's run a classifier for randomForest}
-\KeywordTok{var}\NormalTok{ classifier }\OperatorTok{=} \VariableTok{ee}\NormalTok{.}\VariableTok{Classifier}\NormalTok{.}\AttributeTok{randomForest}\NormalTok{(}\DecValTok{10}\NormalTok{).}\AttributeTok{train}\NormalTok{(}\OperatorTok{\{}
-                            \DataTypeTok{features}\OperatorTok{:}\NormalTok{ sample}\OperatorTok{,}
-                            \DataTypeTok{classProperty}\OperatorTok{:} \StringTok{'landcover'}\OperatorTok{,}
-                            \DataTypeTok{inputProperties}\OperatorTok{:}\NormalTok{ predictionBands}
-\OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
-
-
-\KeywordTok{var}\NormalTok{ classified }\OperatorTok{=} \VariableTok{scene}\NormalTok{.}\AttributeTok{select}\NormalTok{(predictionBands).}\AttributeTok{classify}\NormalTok{(classifier)}\OperatorTok{;}
-\VariableTok{Map}\NormalTok{.}\AttributeTok{addLayer}\NormalTok{(classified}\OperatorTok{,} \OperatorTok{\{}\DataTypeTok{min}\OperatorTok{:}\DecValTok{1}\OperatorTok{,} \DataTypeTok{max}\OperatorTok{:}\DecValTok{7}\OperatorTok{,}\DataTypeTok{palette}\OperatorTok{:}\NormalTok{[}
-  \StringTok{'be4fc4'}\OperatorTok{,} \CommentTok{// agriculture, violetish}
-  \StringTok{'04a310'}\OperatorTok{,} \CommentTok{// forests, lighter green}
-  \StringTok{'cbb315'}\OperatorTok{,} \CommentTok{// grasslands, yellowish}
-  \StringTok{'c17111'}\OperatorTok{,} \CommentTok{// plantations, brownish}
-  \StringTok{'b0a69d'}\OperatorTok{,} \CommentTok{// settlements, grayish}
-  \StringTok{'025a05'}\OperatorTok{,} \CommentTok{// tea, dark greenish}
-  \StringTok{'2035df'}\OperatorTok{,} \CommentTok{// waterbodies, royal blue }
-\NormalTok{  ]}\OperatorTok{\},} \StringTok{'classified'}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{// Partitioning training data to run an accuracy assessment}
-\CommentTok{// Adding a randomColumn of values ranging from 0 to 1}
-\KeywordTok{var}\NormalTok{ trainingTesting }\OperatorTok{=} \VariableTok{sample}\NormalTok{.}\AttributeTok{randomColumn}\NormalTok{()}\OperatorTok{;}
-
-\KeywordTok{var}\NormalTok{ trainingSet }\OperatorTok{=} \VariableTok{trainingTesting}\NormalTok{.}\AttributeTok{filter}\NormalTok{(}\VariableTok{ee}\NormalTok{.}\VariableTok{Filter}\NormalTok{.}\AttributeTok{lt}\NormalTok{(}\StringTok{'random'}\OperatorTok{,}\FloatTok{0.8}\NormalTok{))}\OperatorTok{;}
-\KeywordTok{var}\NormalTok{ testingSet }\OperatorTok{=} \VariableTok{trainingTesting}\NormalTok{.}\AttributeTok{filter}\NormalTok{(}\VariableTok{ee}\NormalTok{.}\VariableTok{Filter}\NormalTok{.}\AttributeTok{gte}\NormalTok{(}\StringTok{'random'}\OperatorTok{,}\FloatTok{0.2}\NormalTok{))}\OperatorTok{;}
-
-\CommentTok{// Now run the classifier only with the trainingSet}
-\KeywordTok{var}\NormalTok{ trained }\OperatorTok{=} \VariableTok{ee}\NormalTok{.}\VariableTok{Classifier}\NormalTok{.}\AttributeTok{randomForest}\NormalTok{(}\DecValTok{10}\NormalTok{).}\AttributeTok{train}\NormalTok{(}\OperatorTok{\{}
-  \DataTypeTok{features}\OperatorTok{:}\NormalTok{ trainingSet}\OperatorTok{,}
-  \DataTypeTok{classProperty}\OperatorTok{:} \StringTok{'landcover'}\OperatorTok{,}
-  \DataTypeTok{inputProperties}\OperatorTok{:}\NormalTok{ predictionBands}
-\OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{// Now classify the testData and obtain a Confusion matrix}
-\KeywordTok{var}\NormalTok{ confusionMatrix }\OperatorTok{=} \VariableTok{ee}\NormalTok{.}\AttributeTok{ConfusionMatrix}\NormalTok{(}\VariableTok{testingSet}\NormalTok{.}\AttributeTok{classify}\NormalTok{(trained)}
-\NormalTok{                                                  .}\AttributeTok{errorMatrix}\NormalTok{(}\OperatorTok{\{}
-                                                    \DataTypeTok{actual}\OperatorTok{:} \StringTok{'landcover'}\OperatorTok{,}
-                                                    \DataTypeTok{predicted}\OperatorTok{:} \StringTok{'classification'}
-                                                  \OperatorTok{\}}\NormalTok{))}\OperatorTok{;}
-
-\CommentTok{// Now print the ConfusionMatrix and expand the object to inspect the matrix()}
-\CommentTok{// The entries represent the number of pixels and the items on the diagonal represent}
-\CommentTok{// correct classification. Items off the diagonal are misclassifications, where class in row i}
-\CommentTok{// is classified as column j}
-
-\CommentTok{// One can also obtain basic descriptive statistics from the confusionMatrix}
-\CommentTok{// Note this won't work as the number of pixels is too high (Export as .csv to obtain result)}
-
-\CommentTok{// print('Confusion matrix:', confusionMatrix);}
-\CommentTok{// print('Overall Accuracy:', confusionMatrix.accuracy());}
-\CommentTok{// print('Producers Accuracy:', confusionMatrix.producersAccuracy());}
-\CommentTok{// print('Consumers Accuracy:', confusionMatrix.consumersAccuracy());}
-
-\CommentTok{// Since printing the above is gives you a computation timed out error}
-\KeywordTok{var}\NormalTok{ exportconfusionMatrix }\OperatorTok{=} \VariableTok{ee}\NormalTok{.}\AttributeTok{Feature}\NormalTok{(}\KeywordTok{null}\OperatorTok{,} \OperatorTok{\{}\DataTypeTok{matrix}\OperatorTok{:} \VariableTok{confusionMatrix}\NormalTok{.}\AttributeTok{array}\NormalTok{()}\OperatorTok{\}}\NormalTok{)}\OperatorTok{;} 
-\KeywordTok{var}\NormalTok{ exportAccuracy }\OperatorTok{=} \VariableTok{ee}\NormalTok{.}\AttributeTok{Feature}\NormalTok{(}\KeywordTok{null}\OperatorTok{,} \OperatorTok{\{}\DataTypeTok{matrix}\OperatorTok{:} \VariableTok{confusionMatrix}\NormalTok{.}\AttributeTok{accuracy}\NormalTok{()}\OperatorTok{\}}\NormalTok{)}\OperatorTok{;} 
-
-\VariableTok{Export}\NormalTok{.}\VariableTok{table}\NormalTok{.}\AttributeTok{toDrive}\NormalTok{(}\OperatorTok{\{}
-  \DataTypeTok{collection}\OperatorTok{:} \VariableTok{ee}\NormalTok{.}\AttributeTok{FeatureCollection}\NormalTok{(exportconfusionMatrix)}\OperatorTok{,}
-  \DataTypeTok{description}\OperatorTok{:} \StringTok{'confusionMatrix'}\OperatorTok{,}
-  \DataTypeTok{fileFormat}\OperatorTok{:} \StringTok{'CSV'}
-\OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{Export}\NormalTok{.}\VariableTok{table}\NormalTok{.}\AttributeTok{toDrive}\NormalTok{(}\OperatorTok{\{}
-  \DataTypeTok{collection}\OperatorTok{:} \VariableTok{ee}\NormalTok{.}\AttributeTok{FeatureCollection}\NormalTok{(exportAccuracy)}\OperatorTok{,}
-  \DataTypeTok{description}\OperatorTok{:} \StringTok{'Accuracy'}\OperatorTok{,}
-  \DataTypeTok{fileFormat}\OperatorTok{:} \StringTok{'CSV'}
-\OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{// Below code suggests that the current projection system is WGS84}
-\CommentTok{// print(classified.projection());}
-
-\CommentTok{// To project it to UTM}
-\KeywordTok{var}\NormalTok{ reprojected }\OperatorTok{=} \VariableTok{classified}\NormalTok{.}\AttributeTok{reproject}\NormalTok{(}\StringTok{'EPSG:32643'}\OperatorTok{,}\KeywordTok{null}\OperatorTok{,}\DecValTok{10}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{// Export classified image}
-\VariableTok{Export}\NormalTok{.}\VariableTok{image}\NormalTok{.}\AttributeTok{toDrive}\NormalTok{(}\OperatorTok{\{}
-  \DataTypeTok{image}\OperatorTok{:}\NormalTok{ classified}\OperatorTok{,}
-  \DataTypeTok{description}\OperatorTok{:} \StringTok{'Classified Image'}\OperatorTok{,}
-  \DataTypeTok{scale}\OperatorTok{:} \DecValTok{10}\OperatorTok{,}
-  \DataTypeTok{region}\OperatorTok{:}\NormalTok{ WG_Buffer}\OperatorTok{,}      \CommentTok{//.geometry().bounds(),}
-  \DataTypeTok{fileFormat}\OperatorTok{:} \StringTok{'GeoTIFF'}\OperatorTok{,}
-  \DataTypeTok{formatOptions}\OperatorTok{:} \OperatorTok{\{}
-    \DataTypeTok{cloudOptimized}\OperatorTok{:} \KeywordTok{true}
-  \OperatorTok{\},}
-  \DataTypeTok{maxPixels}\OperatorTok{:} \DecValTok{618539476}
-\OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{// Export projected image}
-\VariableTok{Export}\NormalTok{.}\VariableTok{image}\NormalTok{.}\AttributeTok{toDrive}\NormalTok{(}\OperatorTok{\{}
-  \DataTypeTok{image}\OperatorTok{:}\NormalTok{ reprojected}\OperatorTok{,}
-  \DataTypeTok{description}\OperatorTok{:} \StringTok{'Reprojected Image'}\OperatorTok{,}
-  \DataTypeTok{scale}\OperatorTok{:} \DecValTok{10}\OperatorTok{,}
-  \DataTypeTok{region}\OperatorTok{:}\NormalTok{ WG_Buffer}\OperatorTok{,}         \CommentTok{//.geometry().bounds(),}
-  \DataTypeTok{fileFormat}\OperatorTok{:} \StringTok{'GeoTIFF'}\OperatorTok{,}
-  \DataTypeTok{formatOptions}\OperatorTok{:} \OperatorTok{\{}
-    \DataTypeTok{cloudOptimized}\OperatorTok{:} \KeywordTok{true}
-  \OperatorTok{\},}
-  \DataTypeTok{maxPixels}\OperatorTok{:} \DecValTok{618539476}
-\OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
+\CommentTok{# plotting}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{library}\NormalTok{(patchwork)}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{read-data}{%
+\subsection{Read data}\label{read-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{# read data}
+\NormalTok{data <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/results/data_occupancy_predictors.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{# drop na}
+\NormalTok{data <-}\StringTok{ }\KeywordTok{select}\NormalTok{(}
+\NormalTok{  data,}
+  \OperatorTok{-}\NormalTok{ci}
+\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{drop_na}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{nest}\NormalTok{(}\DataTypeTok{data =} \KeywordTok{c}\NormalTok{(predictor, m_group, seq_x, mean, scale))}
+\end{Highlighting}
+\end{Shaded}
+
+Figure code is hidden in versions rendered as HTML and PDF.
+Example output is shown below.
+
+\textbf{Figure here}
 
 \end{document}
