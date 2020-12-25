@@ -40,4 +40,4 @@ vignettes/*.pdf
 
 # remove data
 ebd_*.txt
-data
+data/spatial/elevation 

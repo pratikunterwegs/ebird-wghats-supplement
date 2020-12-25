@@ -22,8 +22,6 @@ Below we describe what each script of the Supplementary material is intended to 
 
 - _06_supplement06-effort-vs-spatialIndependence.rmd:_. In this script, we checked how many checklists/data would be retained given a particular value of distance to account for spatial independence. We show that over 80% of checklists are retained with a distance cutoff of 1km. 
 
-- _06_supplement06-effort-vs-spatialIndependence.rmd:_. In this script, we checked how many checklists/data would be retained given a particular value of distance to account for spatial independence. We show that over 80% of checklists are retained with a distance cutoff of 1km. 
-
 - _07_supplement07-spThin-mult-approaches.rmd:_. In this script, a number of thinning approaches were tested to determine which method retained the highest proportion of points, while accounting for sampling effort (time and distance).  
 
 - _08_results_occupancy_predictors.rmd:_. In this script, we plot species-specific probabilities of occupancy as a function of significant environmental predictors.  
