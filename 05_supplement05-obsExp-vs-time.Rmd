@@ -83,7 +83,7 @@ ggsave(filename = "figs/fig_nsp_score.png", width = 12, height = 7, device = png
 dev.off()
 ```
 
-![Total number of species (blue) and species of interest to this study (green) reported in checklists from the study area over the years 2013 -- 2018, as a function of the expertise score of the reporting observer. Points represent means, with bars showing the 95% confidence intervals; data shown are for expertise scores rounded to multiples of 0.2, and the y-axis is on a log scale. Raw data are shown in the background (grey points).](figs/fig_nsp_score.png)
+![Total number of species (blue) and species of interest to this study (green) reported in checklists from the study area over the years 2013 -- 2019, as a function of the expertise score of the reporting observer. Points represent means, with bars showing the 95% confidence intervals; data shown are for expertise scores rounded to multiples of 0.2, and the y-axis is on a log scale. Raw data are shown in the background (grey points).](figs/fig_nsp_score.png)
 
 ## Observer expertise in relation to landcover
 
@@ -108,4 +108,4 @@ ggsave(filename = "figs/fig_exp_lc.png", width = 8, height = 4, device = png(), 
 dev.off()
 ```
 
-![Distribution of expertise scores in the seven landcover classes present in the study site.](figs/fig_exp_lc.png)
+![Distribution of expertise scores across the seven landcover classes present in the study site.](figs/fig_exp_lc.png)

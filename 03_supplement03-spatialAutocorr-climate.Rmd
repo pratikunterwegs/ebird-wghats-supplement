@@ -174,30 +174,6 @@ fig_list_chelsa <-
 #fig_list_chelsa <- purrr::map(fig_list_chelsa, ggplotGrob)
 ```
 
-```{r prep_figures_vgrams, eval=FALSE, message=FALSE}
-# fig_list_chelsa <- append(fig_list_chelsa, fig_vgrams)
-# lmatrix <- matrix(c(c(1, 2, 3, 4, 5), c(1, 2, 3, 4, 5), c(6, 7, 8, 9, 10)),
-#   nrow = 3, byrow = T
-# )
-# plot_grid <- grid.arrange(grobs = fig_list_chelsa, layout_matrix = lmatrix)
-#
-# ggsave(
-#   plot = plot_grid, filename = "figs/fig_chelsa_variograms.png",
-#   dpi = 300, width = 12, height = 6
-# )
-# dev.off()
-
-library(patchwork)
-fig_variogram <- wrap_plots(append(fig_list_chelsa, fig_vgrams))
-ggsave(fig_variogram,
-  filename = "figs/fig_chelsa_variograms.png",
-  dpi = 300,
-  width = 6, height = 6
-)
-```
-
-[CHELSA rasters with study area outline, and associated semivariograms. Semivariograms are on a log-transformed y-axis.](figs/fig_chelsa_variograms.png)
-
 # Climatic raster resampling
 
 ## Prepare landcover

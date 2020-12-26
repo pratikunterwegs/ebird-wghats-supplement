@@ -522,4 +522,4 @@ ggsave(fig_spatial_thinning,
 dev.off()
 ```
 
-![](figs/fig_spatial_thinning_02.png)
+![Three spatial thinning approaches were tested and we show that the largest proportion of effort as well as detections could be retained using a traditional grid based approach](figs/fig_spatial_thinning_02.png)

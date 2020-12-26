@@ -98,4 +98,4 @@ ggsave(fig_climate_lc,
 dev.off()
 ```
 
-![CHELSA climatic variables as a function of landcover class. Grey points in the background represent raw data.](figs/fig_climate_landcover.png)
+![CHELSA climatic variables (Annual Mean Temperature on the left and Annual Precipitation on the right) are plotted as a function of landcover type. Grey points in the background represent raw data.](figs/fig_climate_landcover.png)

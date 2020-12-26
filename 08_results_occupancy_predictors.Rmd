@@ -78,8 +78,3 @@ cairo_pdf(
 fig_occupancy
 dev.off()
 ```
-
-Figure code is hidden in versions rendered as HTML and PDF.
-Example output is shown below.
-
-**Figure here**

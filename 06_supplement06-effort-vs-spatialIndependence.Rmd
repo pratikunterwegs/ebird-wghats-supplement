@@ -67,4 +67,4 @@ ggsave(
 dev.off()
 ```
 
-![](figs/fig_cutoff_effort.png)
+![Proportion of checklists that are retained across the study area as a function of the distance cutoff specified. For instance, 80% of checklists are retained with a distance cutoff of 1km.](figs/fig_cutoff_effort.png)
