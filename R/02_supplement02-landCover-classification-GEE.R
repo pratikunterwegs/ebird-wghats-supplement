@@ -6,6 +6,7 @@
 #' # Landcover classification
 #' 
 #' This script was used to classify a 2019 Sentinel composite image across the Nilgiris and the Anamalais into seven distinct land cover types. The same code can be viewed on GEE here: https://code.earthengine.google.com/ec69fc4ffad32a532b25202009243d42. 
+#' We use ground truthed points from a previous study [@arasumani2019].
 #' 
 ## // Data: Groundtruthed points from Arasumani et al 2019
 
