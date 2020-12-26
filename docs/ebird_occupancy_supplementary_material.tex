@@ -163,7 +163,7 @@ Please contact the following in case of interest in the project.
 
 This script shows the proportion of checklists that report a particular species across every 25km by 25km grid across the Nilgiris and the Anamalais. Using this analysis, we arrived at a final list of species for occupancy modeling.
 
-We derived this list from inclusion criteria adapted from the State of India's Birds 2020 (Viswanathan et al., 2020). Initially, we considered all 561 species in eBird that occurred within the outlines of our study area. We then considered only those species that had a minimum of 1000 detections each between 2013 and 2019 (reducing to 303 species). Next, the study area was divided into 25 x 25 km cells following (Viswanathan et al., 2020). We then kept only those species that occurred in at least 5\% of all checklists across 50\% of the 25 x 25 km cells from where they have been reported (reducing to 93 species). We used the above criteria to ensure as much uniform sampling of a species as possible across our study area and to reduce any erroneous associations between environmental drivers and species occupancy. Across our final list of 93 species, we analyzed a total of \textasciitilde{}3.2 million detections (presences) between 2013 and 2019.
+We derived this list from inclusion criteria adapted from the State of India's Birds 2020 (Viswanathan et al. \protect\hyperlink{ref-viswanathan2020}{2020}). Initially, we considered all 561 species in eBird that occurred within the outlines of our study area. We then considered only those species that had a minimum of 1000 detections each between 2013 and 2019 (reducing to 303 species). Next, the study area was divided into 25 x 25 km cells following Viswanathan et al.~(2020). We then kept only those species that occurred in at least 5\% of all checklists across 50\% of the 25 x 25 km cells from where they have been reported (reducing to 93 species). We used the above criteria to ensure as much uniform sampling of a species as possible across our study area and to reduce any erroneous associations between environmental drivers and species occupancy. Across our final list of 93 species, we analyzed a total of \textasciitilde{}3.2 million detections (presences) between 2013 and 2019.
 
 \hypertarget{prepare-libraries}{%
 \subsection{Prepare libraries}\label{prepare-libraries}}
@@ -412,6 +412,7 @@ Add a spatial filter and assign grids of 25km x 25km.
 \section{Landcover classification}\label{landcover-classification}}
 
 This script was used to classify a 2019 Sentinel composite image across the Nilgiris and the Anamalais into seven distinct land cover types. The same code can be viewed on GEE here: \url{https://code.earthengine.google.com/ec69fc4ffad32a532b25202009243d42}.
+We use ground truthed points from a previous study (Arasumani et al. \protect\hyperlink{ref-arasumani2019}{2019}).
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1755,5 +1756,17 @@ This supplement plots species-specific probabilities of occupancy as a function 
 \StringTok{  }\KeywordTok{nest}\NormalTok{(}\DataTypeTok{data =} \KeywordTok{c}\NormalTok{(predictor, m_group, seq_x, mean, scale))}
 \end{Highlighting}
 \end{Shaded}
+
+\clearpage
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-arasumani2019}{}%
+Arasumani, M., Danish Khan, C.K. Vishnudas, M. Muthukumar, Milind Bunyan, and V.V. Robin. 2019. ``Invasion Compounds an Ecosystem-Wide Loss to Afforestation in the Tropical Grasslands of the Shola Sky Islands.'' \emph{Biological Conservation} 230 (February): 141--50. \url{https://doi.org/10.1016/j.biocon.2018.12.019}.
+
+\leavevmode\hypertarget{ref-viswanathan2020}{}%
+Viswanathan, A., A. Reddy, A. Deomurari, K. Suryawanshi, M. D. Madhusudan, M. Kaushik, P. J, R. Jayapal, and S. \& Quader. 2020. \emph{State of India's Birds 2020: Background and Methodology.} Manual.
 
 \end{document}

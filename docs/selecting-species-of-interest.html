@@ -190,6 +190,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1" data-path="predicting-species-specific-occupancy.html"><a href="predicting-species-specific-occupancy.html#prepare-libraries-4"><i class="fa fa-check"></i><b>10.1</b> Prepare libraries</a></li>
 <li class="chapter" data-level="10.2" data-path="predicting-species-specific-occupancy.html"><a href="predicting-species-specific-occupancy.html#read-data"><i class="fa fa-check"></i><b>10.2</b> Read data</a></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
 </ul>
 
       </nav>
@@ -210,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="selecting-species-of-interest" class="section level1">
 <h1><span class="header-section-number">Section 2</span> Selecting species of interest</h1>
 <p>This script shows the proportion of checklists that report a particular species across every 25km by 25km grid across the Nilgiris and the Anamalais. Using this analysis, we arrived at a final list of species for occupancy modeling.</p>
-<p>We derived this list from inclusion criteria adapted from the State of India’s Birds 2020 (Viswanathan et al., 2020). Initially, we considered all 561 species in eBird that occurred within the outlines of our study area. We then considered only those species that had a minimum of 1000 detections each between 2013 and 2019 (reducing to 303 species). Next, the study area was divided into 25 x 25 km cells following (Viswanathan et al., 2020). We then kept only those species that occurred in at least 5% of all checklists across 50% of the 25 x 25 km cells from where they have been reported (reducing to 93 species). We used the above criteria to ensure as much uniform sampling of a species as possible across our study area and to reduce any erroneous associations between environmental drivers and species occupancy. Across our final list of 93 species, we analyzed a total of ~3.2 million detections (presences) between 2013 and 2019.</p>
+<p>We derived this list from inclusion criteria adapted from the State of India’s Birds 2020 <span class="citation">(Viswanathan et al. <a href="#ref-viswanathan2020">2020</a>)</span>. Initially, we considered all 561 species in eBird that occurred within the outlines of our study area. We then considered only those species that had a minimum of 1000 detections each between 2013 and 2019 (reducing to 303 species). Next, the study area was divided into 25 x 25 km cells following Viswanathan et al. (2020). We then kept only those species that occurred in at least 5% of all checklists across 50% of the 25 x 25 km cells from where they have been reported (reducing to 93 species). We used the above criteria to ensure as much uniform sampling of a species as possible across our study area and to reduce any erroneous associations between environmental drivers and species occupancy. Across our final list of 93 species, we analyzed a total of ~3.2 million detections (presences) between 2013 and 2019.</p>
 <div id="prepare-libraries" class="section level2">
 <h2><span class="header-section-number">2.1</span> Prepare libraries</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># load libraries</span></a>
@@ -410,6 +411,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb8-4" title="4"></a>
 <a class="sourceLine" id="cb8-5" title="5"><span class="kw">write_csv</span>(new_sp_list, <span class="st">&quot;data/03_list-of-species-cutoff.csv&quot;</span>)</a></code></pre></div>
 
+</div>
+</div>
+<h3> References</h3>
+<div id="refs" class="references">
+<div id="ref-viswanathan2020">
+<p>Viswanathan, A., A. Reddy, A. Deomurari, K. Suryawanshi, M. D. Madhusudan, M. Kaushik, P. J, R. Jayapal, and S. &amp; Quader. 2020. <em>State of India’s Birds 2020: Background and Methodology.</em> Manual.</p>
 </div>
 </div>
             </section>
