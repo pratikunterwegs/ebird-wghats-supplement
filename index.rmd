@@ -9,7 +9,7 @@ author:
     - Ruth DeFries
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-bibliography: [2019_ebird.bib]
+bibliography: [references_ebird.bib]
 biblio-style: apalike
 link-citations: yes
 output: 
