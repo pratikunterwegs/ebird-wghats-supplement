@@ -1,25 +1,38 @@
-## ----load_libs_results02, eval=FALSE------------------------------------------
-## # to load data
-## library(readxl)
-## 
-## # to handle data
-## library(dplyr)
-## library(readr)
-## library(forcats)
-## library(tidyr)
-## library(purrr)
-## library(stringr)
-## 
-## # plotting
-## library(ggplot2)
-## library(patchwork)
+#' ---
+#' editor_options: 
+#'   chunk_output_type: console
+#' ---
+#' 
+#' # Predicting Species-specific Occupancy
+#' 
+#' This supplement plots species-specific probabilities of occupancy as a function of significant environmental predictors. 
+#' 
+#' ## Prepare libraries
+#' 
+## ----load_libs_results02------------------------------------------------------
+# to load data
+library(readxl)
 
+# to handle data
+library(dplyr)
+library(readr)
+library(forcats)
+library(tidyr)
+library(purrr)
+library(stringr)
 
+# plotting
+library(ggplot2)
+library(patchwork)
+
+#' 
+#' ## Read data
+#' 
 ## -----------------------------------------------------------------------------
 # read data
 data <- read_csv("data/results/data_occupancy_predictors.csv")
 
-
+#' 
 ## -----------------------------------------------------------------------------
 # drop na
 data <- select(
@@ -29,7 +42,7 @@ data <- select(
   drop_na() %>%
   nest(data = c(predictor, m_group, seq_x, mean, scale))
 
-
+#' 
 ## ----echo=FALSE---------------------------------------------------------------
 fig_occupancy <- map2(
   data$data, data$scientific_name,
@@ -56,7 +69,7 @@ fig_occupancy <- map2(
   }
 )
 
-
+#' 
 ## ----echo=FALSE---------------------------------------------------------------
 cairo_pdf(
   filename = "figs/fig_occupancy_predictors.pdf",
