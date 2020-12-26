@@ -28,7 +28,7 @@
 <meta name="author" content="Ruth DeFries" />
 
 
-<meta name="date" content="2020-12-25" />
+<meta name="date" content="2020-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -366,26 +366,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb14-64" title="64">    }</a>
 <a class="sourceLine" id="cb14-65" title="65">  )</a>
 <a class="sourceLine" id="cb14-66" title="66"><span class="co">#fig_list_chelsa &lt;- purrr::map(fig_list_chelsa, ggplotGrob)</span></a></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># fig_list_chelsa &lt;- append(fig_list_chelsa, fig_vgrams)</span></a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="co"># lmatrix &lt;- matrix(c(c(1, 2, 3, 4, 5), c(1, 2, 3, 4, 5), c(6, 7, 8, 9, 10)),</span></a>
-<a class="sourceLine" id="cb15-3" title="3"><span class="co">#   nrow = 3, byrow = T</span></a>
-<a class="sourceLine" id="cb15-4" title="4"><span class="co"># )</span></a>
-<a class="sourceLine" id="cb15-5" title="5"><span class="co"># plot_grid &lt;- grid.arrange(grobs = fig_list_chelsa, layout_matrix = lmatrix)</span></a>
-<a class="sourceLine" id="cb15-6" title="6"><span class="co">#</span></a>
-<a class="sourceLine" id="cb15-7" title="7"><span class="co"># ggsave(</span></a>
-<a class="sourceLine" id="cb15-8" title="8"><span class="co">#   plot = plot_grid, filename = &quot;figs/fig_chelsa_variograms.png&quot;,</span></a>
-<a class="sourceLine" id="cb15-9" title="9"><span class="co">#   dpi = 300, width = 12, height = 6</span></a>
-<a class="sourceLine" id="cb15-10" title="10"><span class="co"># )</span></a>
-<a class="sourceLine" id="cb15-11" title="11"><span class="co"># dev.off()</span></a>
-<a class="sourceLine" id="cb15-12" title="12"></a>
-<a class="sourceLine" id="cb15-13" title="13"><span class="kw">library</span>(patchwork)</a>
-<a class="sourceLine" id="cb15-14" title="14">fig_variogram &lt;-<span class="st"> </span><span class="kw">wrap_plots</span>(<span class="kw">append</span>(fig_list_chelsa, fig_vgrams))</a>
-<a class="sourceLine" id="cb15-15" title="15"><span class="kw">ggsave</span>(fig_variogram,</a>
-<a class="sourceLine" id="cb15-16" title="16">  <span class="dt">filename =</span> <span class="st">&quot;figs/fig_chelsa_variograms.png&quot;</span>,</a>
-<a class="sourceLine" id="cb15-17" title="17">  <span class="dt">dpi =</span> <span class="dv">300</span>,</a>
-<a class="sourceLine" id="cb15-18" title="18">  <span class="dt">width =</span> <span class="dv">6</span>, <span class="dt">height =</span> <span class="dv">6</span></a>
-<a class="sourceLine" id="cb15-19" title="19">)</a></code></pre></div>
-<p><a href="figs/fig_chelsa_variograms.png">CHELSA rasters with study area outline, and associated semivariograms. Semivariograms are on a log-transformed y-axis.</a></p>
 </div>
 </div>
             </section>
@@ -427,7 +407,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["ebird_occupancy_supplementary_material.pdf"],
+"download": null,
 "toc": {
 "collapse": "section"
 }

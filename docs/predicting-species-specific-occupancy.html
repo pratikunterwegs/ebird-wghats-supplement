@@ -28,7 +28,7 @@
 <meta name="author" content="Ruth DeFries" />
 
 
-<meta name="date" content="2020-12-25" />
+<meta name="date" content="2020-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -212,35 +212,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This supplement plots species-specific probabilities of occupancy as a function of significant environmental predictors.</p>
 <div id="prepare-libraries-4" class="section level2">
 <h2><span class="header-section-number">10.1</span> Prepare libraries</h2>
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co"># to load data</span></a>
-<a class="sourceLine" id="cb41-2" title="2"><span class="kw">library</span>(readxl)</a>
-<a class="sourceLine" id="cb41-3" title="3"></a>
-<a class="sourceLine" id="cb41-4" title="4"><span class="co"># to handle data</span></a>
-<a class="sourceLine" id="cb41-5" title="5"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb41-6" title="6"><span class="kw">library</span>(readr)</a>
-<a class="sourceLine" id="cb41-7" title="7"><span class="kw">library</span>(forcats)</a>
-<a class="sourceLine" id="cb41-8" title="8"><span class="kw">library</span>(tidyr)</a>
-<a class="sourceLine" id="cb41-9" title="9"><span class="kw">library</span>(purrr)</a>
-<a class="sourceLine" id="cb41-10" title="10"><span class="kw">library</span>(stringr)</a>
-<a class="sourceLine" id="cb41-11" title="11"></a>
-<a class="sourceLine" id="cb41-12" title="12"><span class="co"># plotting</span></a>
-<a class="sourceLine" id="cb41-13" title="13"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb41-14" title="14"><span class="kw">library</span>(patchwork)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="co"># to load data</span></a>
+<a class="sourceLine" id="cb40-2" title="2"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb40-3" title="3"></a>
+<a class="sourceLine" id="cb40-4" title="4"><span class="co"># to handle data</span></a>
+<a class="sourceLine" id="cb40-5" title="5"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb40-6" title="6"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb40-7" title="7"><span class="kw">library</span>(forcats)</a>
+<a class="sourceLine" id="cb40-8" title="8"><span class="kw">library</span>(tidyr)</a>
+<a class="sourceLine" id="cb40-9" title="9"><span class="kw">library</span>(purrr)</a>
+<a class="sourceLine" id="cb40-10" title="10"><span class="kw">library</span>(stringr)</a>
+<a class="sourceLine" id="cb40-11" title="11"></a>
+<a class="sourceLine" id="cb40-12" title="12"><span class="co"># plotting</span></a>
+<a class="sourceLine" id="cb40-13" title="13"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb40-14" title="14"><span class="kw">library</span>(patchwork)</a></code></pre></div>
 </div>
 <div id="read-data" class="section level2">
 <h2><span class="header-section-number">10.2</span> Read data</h2>
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co"># read data</span></a>
-<a class="sourceLine" id="cb42-2" title="2">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/results/data_occupancy_predictors.csv&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="co"># drop na</span></a>
-<a class="sourceLine" id="cb43-2" title="2">data &lt;-<span class="st"> </span><span class="kw">select</span>(</a>
-<a class="sourceLine" id="cb43-3" title="3">  data,</a>
-<a class="sourceLine" id="cb43-4" title="4">  <span class="op">-</span>ci</a>
-<a class="sourceLine" id="cb43-5" title="5">) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb43-6" title="6"><span class="st">  </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb43-7" title="7"><span class="st">  </span><span class="kw">nest</span>(<span class="dt">data =</span> <span class="kw">c</span>(predictor, m_group, seq_x, mean, scale))</a></code></pre></div>
-<p>Figure code is hidden in versions rendered as HTML and PDF.
-Example output is shown below.</p>
-<p><strong>Figure here</strong></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co"># read data</span></a>
+<a class="sourceLine" id="cb41-2" title="2">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/results/data_occupancy_predictors.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co"># drop na</span></a>
+<a class="sourceLine" id="cb42-2" title="2">data &lt;-<span class="st"> </span><span class="kw">select</span>(</a>
+<a class="sourceLine" id="cb42-3" title="3">  data,</a>
+<a class="sourceLine" id="cb42-4" title="4">  <span class="op">-</span>ci</a>
+<a class="sourceLine" id="cb42-5" title="5">) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-6" title="6"><span class="st">  </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-7" title="7"><span class="st">  </span><span class="kw">nest</span>(<span class="dt">data =</span> <span class="kw">c</span>(predictor, m_group, seq_x, mean, scale))</a></code></pre></div>
 
 </div>
 </div>
@@ -283,7 +280,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["ebird_occupancy_supplementary_material.pdf"],
+"download": null,
 "toc": {
 "collapse": "section"
 }
