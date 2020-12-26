@@ -7,7 +7,7 @@ editor_options:
 
 ## Load libraries
 
-```{r load_libs_supp06, eval=FALSE, message=FALSE}
+```{r load_libs_supp06,message=FALSE}
 # load libs
 library(raster)
 library(gstat)
@@ -48,7 +48,7 @@ raster_to_df <- function(inp) {
 
 ## Prepare data
 
-```{r load_data_supp06, eval=FALSE, message=FALSE}
+```{r load_data_supp06,message=FALSE}
 # list landscape covariate stacks
 landscape_files <- "data/spatial/landscape_resamp01km.tif"
 landscape_data <- stack(landscape_files)
@@ -65,7 +65,7 @@ chelsa <- purrr::map(as.list(chelsa), raster_to_df)
 
 ## Calculate variograms of environmental layers
 
-```{r make_variograms, eval=FALSE, message=FALSE}
+```{r make_variograms,message=FALSE}
 # prep variograms
 vgrams <- purrr::map(chelsa, function(z) {
   z <- drop_na(z)
@@ -86,7 +86,7 @@ vgrams <- tibble(
 )
 ```
 
-```{r load_map_data, eval=FALSE, message = FALSE}
+```{r load_map_data,message = FALSE}
 wg <- st_read("data/spatial/hillsShapefile/Nil_Ana_Pal.shp") %>%
   st_transform(32643)
 bbox <- st_bbox(wg)
@@ -105,7 +105,7 @@ land <- st_transform(land, 32643)
 
 ## Visualise variograms of environmental data
 
-```{r plot_variograms_maps, eval=FALSE, message=FALSE}
+```{r plot_variograms_maps,message=FALSE}
 # make ggplot of variograms
 yaxis <- c("semivariance", "")
 xaxis <- c("", "distance (km)")
@@ -171,7 +171,7 @@ fig_list_chelsa <-
         labs(x = NULL, y = NULL, title = t)
     }
   )
-#fig_list_chelsa <- purrr::map(fig_list_chelsa, ggplotGrob)
+# fig_list_chelsa <- purrr::map(fig_list_chelsa, ggplotGrob)
 ```
 
 # Climatic raster resampling
@@ -179,7 +179,7 @@ fig_list_chelsa <-
 ## Prepare landcover
 
 To access the classified Sentinel image, please visit: https://code.earthengine.google.com/ec69fc4ffad32a532b25202009243d42
-```{r resample_landcover_mult, eval=FALSE, warning=FALSE, message=FALSE}
+```{r resample_landcover_mult,warning=FALSE, message=FALSE}
 # read in landcover raster location
 landcover <- "data/landUseClassification/classifiedImage-UTM.tif"
 # get extent
@@ -205,7 +205,7 @@ for (i in 1:length(res_final)) {
 }
 ```
 
-```{r read_resampled_lc, eval=FALSE, message=FALSE, warning=FALSE}
+```{r read_resampled_lc,message=FALSE, warning=FALSE}
 # read in resampled landcover raster files as a list
 lc_files <- list.files("data/landUseClassification/", pattern = "lc", full.names = TRUE)
 lc_data <- map(lc_files, raster)
@@ -213,7 +213,7 @@ lc_data <- map(lc_files, raster)
 
 ## Prepare spatial extent
 
-```{r load_hills_s06, eval=FALSE, message=FALSE, warning=FALSE}
+```{r load_hills_s06,message=FALSE, warning=FALSE}
 # load hills
 library(sf)
 hills <- st_read("data/spatial/hillsShapefile/Nil_Ana_Pal.shp")
@@ -226,7 +226,7 @@ bbox <- st_bbox(hills)
 ## Prepare CHELSA rasters
 
 Please download the CHELSA rasters from https://chelsa-climate.org/bioclim/ 
-```{r chelsa_rasters_s06, eval=FALSE, message=FALSE, warning=FALSE}
+```{r chelsa_rasters_s06,message=FALSE, warning=FALSE}
 # list chelsa files
 chelsaFiles <- list.files("data/chelsa/", full.names = TRUE, pattern = "*.tif")
 
@@ -245,7 +245,7 @@ names(chelsaData) <- c("chelsa_bio10_01", "chelsa_bio10_12")
 
 ## Resample prepared rasters
 
-```{r resample_clim_rasters, eval=FALSE, message=FALSE}
+```{r resample_clim_rasters,message=FALSE}
 # make resampled data
 resamp_data <- map(lc_data, function(this_scale) {
   rr <- projectRaster(

@@ -9,7 +9,7 @@ How many sites would be lost if effort distance was restricted based on spatial 
 
 ## Load librarires
 
-```{r load_libs_s08, eval=FALSE}
+```{r load_libs_s08}
 # load data packagaes
 library(data.table)
 library(dplyr)
@@ -23,7 +23,7 @@ library(scales)
 
 ## Load data
 
-```{r load_data_s08, eval=FALSE}
+```{r load_data_s08}
 # load checklist covariates
 data <- fread("data/03_data-covars-perChklist.csv")
 
@@ -46,7 +46,7 @@ effort_distance_summary[
 
 ## Visualise limiting effort by spatial independence limits
 
-```{r make_plots_s08, eval=FALSE}
+```{r make_plots_s08}
 # plot effort distance class cumulative sum
 fig_dist_exclusion <- ggplot(effort_distance_summary) +
   geom_point(aes(effort_distance_class, prop_effort), size = 3) +

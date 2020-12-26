@@ -9,7 +9,7 @@ This script plots observer expertise over time (2013-2019) as well as across lan
 
 ## Prepare libraries
 
-```{r prep_libs_supp05, eval=FALSE}
+```{r prep_libs_supp05}
 # load libs
 library(raster)
 library(glue)
@@ -32,7 +32,7 @@ ci <- function(x) {
 
 ## Load observer expertise scores and checklist covariates
 
-```{r load_data_supp05, eval=FALSE, message=FALSE}
+```{r load_data_supp05,message=FALSE}
 # read in scores and checklist data and link
 scores <- read_csv("data/03_data-obsExpertise-score.csv")
 data <- read_csv("data/03_data-covars-perChklist.csv")
@@ -44,7 +44,7 @@ data <- dplyr::select(data, score, nSp, nSoi, landcover, year) %>%
 
 ## Species observed in relation to observer expertise
 
-```{r nsp_expertise, eval=FALSE, message=FALSE}
+```{r nsp_expertise,message=FALSE}
 # summarise data by rounded score and year
 data_summary01 <- data %>%
   mutate(score = plyr::round_any(score, 0.2)) %>%
@@ -89,7 +89,7 @@ dev.off()
 
 Figure code is hidden in versions rendered as HTML or PDF.
 
-```{r exp_landcover, eval=FALSE, message=FALSE, echo=FALSE}
+```{r exp_landcover,message=FALSE, echo=FALSE}
 # plot histograms of expertise scores in different landcover classes
 data <- filter(data, !is.na(landcover))
 

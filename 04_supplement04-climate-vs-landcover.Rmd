@@ -9,7 +9,7 @@ This script showcases how climatic predictors vary as a function of land cover t
 
 ## Prepare libraries
 
-```{r prep_libs_supp04, eval=FALSE}
+```{r prep_libs_supp04}
 # load libs
 library(raster)
 library(glue)
@@ -30,7 +30,7 @@ ci <- function(x) {
 
 ## Prepare environmental data
 
-```{r load_rasters_supp4, eval=FALSE}
+```{r load_rasters_supp4}
 # read landscape prepare for plotting
 landscape <- stack("data/spatial/landscape_resamp01km.tif")
 
@@ -41,7 +41,7 @@ chelsa_names <- c("bio_01", "bio_12")
 names(landscape) <- as.character(glue('{c(elev_names, chelsa_names, "landcover")}'))
 ```
 
-```{r get_data_at_lc, eval=FALSE}
+```{r get_data_at_lc}
 # make duplicate stack
 land_data <- landscape[[c("landcover", chelsa_names)]]
 
@@ -68,7 +68,7 @@ land_data <- drop_na(land_data) %>%
 
 Figure code is hidden in versions rendered as HTML and PDF.
 
-```{r plot_clim_lc, eval=FALSE, echo=FALSE}
+```{r plot_clim_lc,echo=FALSE}
 # plot in facets
 fig_climate_lc <- ggplot(land_data) +
   geom_jitter(aes(

@@ -9,7 +9,7 @@ This supplement plots species-specific probabilities of occupancy as a function 
 
 ## Prepare libraries
 
-```{r load_libs_results02, eval=FALSE}
+```{r load_libs_results02}
 # to load data
 library(readxl)
 

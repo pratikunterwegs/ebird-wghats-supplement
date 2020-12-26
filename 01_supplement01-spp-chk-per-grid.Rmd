@@ -11,7 +11,7 @@ We derived this list from inclusion criteria adapted from the State of India’s
 
 ## Prepare libraries
 
-```{r setup_sup_02, eval=FALSE}
+```{r setup_sup_02}
 # load libraries
 library(data.table)
 library(readxl)
@@ -34,7 +34,7 @@ round_any <- function(x, accuracy = 25000) {
 ## Read species of interest
 
 We initally considered all species that 
-```{r soi_supplement, eval=FALSE, message=FALSE, warning=FALSE}
+```{r soi_supplement,message=FALSE, warning=FALSE}
 # add species of interest
 specieslist <- read.csv("data/01_list-all-spp-byCount.csv")
 speciesOfInterest <- specieslist$scientific_name
@@ -42,7 +42,7 @@ speciesOfInterest <- specieslist$scientific_name
 
 ## Load raw data for locations
 
-```{r load_raw_data_supp02, eval=FALSE}
+```{r load_raw_data_supp02}
 # read in shapefile of the study area to subset by bounding box
 library(sf)
 wg <- st_read("data/spatial/hillsShapefile/Nil_Ana_Pal.shp")
@@ -72,7 +72,7 @@ ebd <- ebd[, ..columnsOfInterest]
 
 Add a spatial filter and assign grids of 25km x 25km. 
 
-```{r strict_filter_supp02, eval=FALSE}
+```{r strict_filter_supp02}
 # strict spatial filter and assign grid
 locs <- ebd[, .(longitude, latitude)]
 
@@ -107,7 +107,7 @@ ebd <- ebd[(longitude %in% coords$longitude) &
 
 ## Get proportional obs counts in 25km cells
 
-```{r count_obs_cell, eval=FALSE}
+```{r count_obs_cell}
 # round to 25km cell in UTM coords
 ebd[, `:=`(X = round_any(X), Y = round_any(Y))]
 
@@ -140,7 +140,7 @@ ebd_summary <- setDF(ebd_summary) %>%
 
 ## Which species are reported sufficiently in checklists?
 
-```{r eval=FALSE}
+```{r }
 # A total of 42 unique grids (of 25km by 25km) across the study area
 # total number of checklists across unique grids
 
@@ -199,7 +199,7 @@ prop_all_lists <- spp_sum_chk %>%
 
 ## Figure: Checklist distribution
 
-```{r load_map_plot_data, eval=FALSE}
+```{r load_map_plot_data}
 # add land
 library(rnaturalearth)
 land <- ne_countries(
@@ -212,7 +212,7 @@ land <- ne_countries(
 land <- st_transform(land, 32643)
 ```
 
-```{r plot_obs_distributions, eval=FALSE, echo=FALSE}
+```{r plot_obs_distributions,echo=FALSE}
 # make plot
 wg <- st_transform(wg, 32643)
 bbox <- st_bbox(wg)
